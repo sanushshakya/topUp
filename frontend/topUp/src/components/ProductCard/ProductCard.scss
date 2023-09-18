@@ -1,0 +1,36 @@
+.productCard{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: #138E9A;
+    font-size: 1.5rem;
+    border: none;
+    cursor: pointer;
+    img{
+        width: 335px;
+        height: 400px;
+        object-fit: cover;
+        border:  1px solid #ff8c32;
+        border-radius: 10px;
+    }
+    .details{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        .price{
+            color: #ff8c32;
+        }
+    }
+    button{
+        background-color: #ff8c32;
+        border: none;
+        color: white;
+        padding: 5px 25px;
+        text-align: center;
+        font-size: 0.8rem;
+        border-radius: 32px;
+        cursor: pointer;
+    }
+}

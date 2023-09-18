@@ -1,0 +1,15 @@
+.about{
+    margin: 50px 100px 300px 100px;
+    .container{
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+        justify-content: center;
+        align-items: center;
+        span{
+            font-size: 1.6rem;
+            width: 70%;
+            text-align: justify;
+        }
+    }
+}

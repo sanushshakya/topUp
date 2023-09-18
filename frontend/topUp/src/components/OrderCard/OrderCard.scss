@@ -1,0 +1,27 @@
+.orderCard{
+    .container{
+        .card{
+            padding: 50px 35px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            background-color: #ff8c32;
+            span{
+                color: #020618;
+                background-color: #ff8c32;
+                font-size: 1.3rem;
+                font-weight: 700;
+            }
+        }
+        button{
+            background-color: #ff8c32;
+            border: none;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-size: 1rem;
+            border-radius: 15px;
+            cursor: pointer;
+        }
+    }
+}

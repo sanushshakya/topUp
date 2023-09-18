@@ -1,0 +1,22 @@
+.catProduct{
+    margin: 50px 100px;
+    .container{
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+        justify-content: center;
+        align-items: center;
+        .top{
+            h1{
+                font-size: 2rem;
+                font-weight: 700;
+            }
+        }
+        .bottom{
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 50px;
+        }
+    }
+}

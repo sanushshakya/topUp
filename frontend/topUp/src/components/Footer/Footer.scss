@@ -1,0 +1,71 @@
+.footer{
+    margin: 100px 100px 50px 100px;
+    .container{
+        display: flex;
+        justify-content: space-between;
+        .left{
+            .logo{
+                font-size: 2rem;
+                font-weight: 700;
+            }
+        }
+        .center{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            .icons{
+                display: flex;
+                gap: 50px;
+            }
+        }
+        .right{
+            .contact{
+                display: flex;
+                flex-direction: column;
+                gap: 50px;
+            }
+        }
+    }
+}
+
+@media (max-width: 786px){
+
+    .footer {
+        margin: 20px; /* Adjust margin for mobile and tablet devices */
+        padding: 10px; /* Add padding for better spacing */
+        text-align: center; /* Center align text on smaller screens */
+    
+        .container {
+            flex-direction: column; /* Switch to a column layout on smaller screens */
+        
+            .left {
+                .logo {
+                font-size: 1.5rem; /* Reduce font size for smaller screens */
+                margin-bottom: 10px; /* Add spacing below the logo */
+                text-align: center; /* Center align text on smaller screens */
+                }
+            }
+        
+            .center {
+                align-items: center; /* Center content vertically on smaller screens */
+        
+                .icons {
+                display: flex;
+                flex-direction: column; /* Stack icons vertically */
+                gap: 10px; /* Add spacing between icons */
+                }
+            }
+        
+            .right {
+                .contact {
+                display: flex;
+                flex-direction: column; /* Stack contact info vertically */
+                gap: 10px; /* Add spacing between contact info */
+                text-align: center; /* Center align text on smaller screens */
+                }
+            }
+        }
+    }
+}

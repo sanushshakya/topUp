@@ -1,0 +1,32 @@
+.order{
+    margin: 50px 100px;
+    .container{
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+        .detail{
+            display: flex;
+            gap: 200px;
+            .left{
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                button{
+                    background-color: #ff8c32;
+                    border: none;
+                    color: #fff;
+                    padding: 15px 32px;
+                    text-align: center;
+                    font-size: 1rem;
+                    border-radius: 15px;
+                    cursor: pointer;
+                }
+            }
+            .right{
+                display: flex;
+                gap: 50px;
+                flex-wrap: wrap;
+            }
+        }
+    }
+}

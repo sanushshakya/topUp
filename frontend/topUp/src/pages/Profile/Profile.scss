@@ -1,0 +1,186 @@
+.profile{
+    margin: 50px 100px;
+    .container{
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+        .detail{
+            display: flex;
+            justify-content: space-evenly;
+            .left{
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                button {
+                    background-color: #ff8c32;
+                    border: none;
+                    border-radius: 20px;
+                    width: 100%;
+                    padding: 10px 30px;
+                    font-weight: 300;
+                    font-size: 18px;
+                    color: #fff;
+                    cursor: pointer;
+                }
+            }
+            .right{
+                display: flex;
+                flex-direction: column;
+                gap: 50px;
+                .top{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 150px;
+                    .left{
+                        img{
+                            width: 120px;
+                            height: 120px;
+                        }
+                    }
+                    .right{
+                        button{
+                            background-color: #ff8c32;
+                            border: none;
+                            border-radius: 20px;
+                            width: 100%;
+                            padding: 10px 30px;
+                            font-weight: 300;
+                            font-size: 18px;
+                            color: #fff;
+                            cursor: pointer;
+                        }
+                    }
+                }
+                .bottom{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 50px;
+                    span{
+                        display: flex;
+                        flex-direction: column;
+                        gap: 10px;
+                        label{
+                            font-size: 1.2rem;
+                            font-weight: 300;
+                        }
+                        h3{
+                            border: 0.5px solid #ff8c32;
+                            background-color: #fff;
+                            padding: 10px;
+                            font-size: 1.8rem;
+                            color: #ff8c32;
+                            font-weight: 500;
+                        }
+                    }
+                    form{
+                        display: flex;
+                        flex-direction: column;
+                        gap: 50px;
+                        span{
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            border: solid 1px #ff8c32;
+                            border-radius: 20px;
+                            color: #ff8c32;
+                            font-size: x-large;
+                            input{
+                                padding: 10px 0;
+                                border: none;
+                                border-radius: 20px;
+                                width: 100%;
+                                color: #ff8c32;
+                                font-size: large;
+                                text-align: center;
+                            }
+                        }
+                        button{
+                            background-color: #ff8c32;
+                            border: none;
+                            color: #fff;
+                            padding: 15px 32px;
+                            text-align: center;
+                            font-size: 1rem;
+                            border-radius: 15px;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+            .pass{
+                form{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 50px;
+                    input{
+                        padding: 10px 0;
+                        border: 1px solid #ff8c32;
+                        border-radius: 20px;
+                        width: 100%;
+                        color: #ff8c32;
+                        font-size: large;
+                        text-align: center;
+                    }
+                    button{
+                        background-color: #ff8c32;
+                        border: none;
+                        color: #fff;
+                        padding: 15px 32px;
+                        text-align: center;
+                        font-size: 1rem;
+                        border-radius: 15px;
+                        cursor: pointer;
+                    }
+                }
+            }
+            .banner{
+                .top{
+                    button{
+                        background-color: #ff8c32;
+                        border: none;
+                        color: #fff;
+                        padding: 15px 32px;
+                        text-align: center;
+                        font-size: 1rem;
+                        border-radius: 15px;
+                        cursor: pointer;
+                    }
+                }
+                .bans{
+                    span{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 20px;
+                        h3{
+                            font-size: 1rem;
+                        }
+                        button{
+                            background-color: #ff8c32;
+                            border: none;
+                            color: #fff;
+                            padding: 10px;
+                            text-align: center;
+                            font-size: 1rem;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+            .addBan{
+                form{
+                    button{
+                        background-color: #ff8c32;
+                        border: none;
+                        color: #fff;
+                        padding: 10px;
+                        text-align: center;
+                        font-size: 1rem;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}
