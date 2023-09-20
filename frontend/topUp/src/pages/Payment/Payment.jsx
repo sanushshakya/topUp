@@ -1,8 +1,11 @@
-import React from 'react'
+import React,{useState, useEffect} from 'react'
 import './Payment.scss'
 import {Link} from 'react-router-dom'
+import Cookies from 'js-cookie'
 
 const Payment = () => {
+  const accessToken = Cookies.get('accessToken')
+  const [isLoggedIn, setIsLoggedIn] = useState(!!Cookies.get("accessToken"));
   {!isLoggedIn && (
     window.location.href = '/login'
 )}

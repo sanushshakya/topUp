@@ -65,3 +65,38 @@
         }
     }
 }
+
+@media (max-width: 576px) {
+    .productDetail{
+        margin: 20px;
+        .container{
+            .top{
+                justify-content: flex-start;
+                align-items: flex-start;
+                gap: 20px;
+                .left{
+                    img{
+                        height: 120px;
+                    }
+                }
+            }
+        }
+    }
+}
+@media (max-width: 980px) {
+    .productDetail{
+        margin: 20px;
+        .container{
+            .top{
+                justify-content: flex-start;
+                align-items: flex-start;
+                gap: 20px;
+                .left{
+                    img{
+                        height: 300px;
+                    }
+                }
+            }
+        }
+    }
+}

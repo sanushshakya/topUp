@@ -8,6 +8,7 @@ import * as yup from 'yup';
 
 const AddProduct = () => {
     const accessToken = Cookies.get('accessToken')
+    const [isLoggedIn, setIsLoggedIn] = useState(!!Cookies.get("accessToken"));
     const [user, setUser] = useState([]);
     const[productId, setProductId] = useState([])
     useEffect(() => {

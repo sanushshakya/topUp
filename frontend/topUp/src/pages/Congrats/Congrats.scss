@@ -4,13 +4,28 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: center;gap: 100px;
+        align-items: center;
+        gap: 100px;
         span{
             font-size: 2rem;
         }
         .desc{
             width: 50%;
             text-align: center;
+        }
+    }
+}
+@media (max-width: 576px) {
+    .congrats{
+        margin: 50px;
+        .container{
+            gap: 20px;
+            span{
+                font-size: 1rem;
+            }
+            .desc{
+                width: 100%;
+            }
         }
     }
 }

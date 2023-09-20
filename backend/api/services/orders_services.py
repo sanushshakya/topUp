@@ -26,50 +26,26 @@ class OrdersServices:
         except Exception as e:
             raise HTTPException(status_code=500, detail=str(e))
     
-    # @staticmethod
-    # async def create_order(name: str, email: str, game_name: str, player_id: str, product: str, user_id: str ):
-    #     order_doc = Order(
-    #         name = name,
-    #         email = email,
-    #         game_name  = game_name,
-    #         player_id = player_id,
-    #         product = product,
-    #         user_id=user_id,
-    #         status='pending'
-    #     )
-    #     await order_doc.save()
-    #     # Attempt to send the email
-    #     try:
-    #         send_email_awaiting(email)
-    #     except Exception as email_error:
-    #         # Handle the email sending error here (e.g., log the error)
-    #         print(f"Email sending error: {str(email_error)}")
-    #         # Optionally, you can choose to retry sending the email here
-    #     return order_doc
-    
     @staticmethod
-    async def create_order(name: str = None, email: str = None, game_name: str = None, player_id: str = None, product: str = None, user_id: str = None):
-        if name is not None:
-            Order.name = name
-        if email is not None:
-            Order.email = email
-        if game_name is not None:
-            Order.game_name = game_name
-        if player_id is not None:
-            Order.player_id = player_id
-        if product is not None:
-            Order.product = product
-        if user_id is not None:
-            Order.user_id = user_id
-        await Order.save()
-         # Attempt to send the email
+    async def create_order(name: str, email: str, game_name: str, player_id: str, product: str, user_id: str ):
+        order_doc = Order(
+            name = name,
+            email = email,
+            game_name  = game_name,
+            player_id = player_id,
+            product = product,
+            user_id = user_id,
+            status ='pending'
+        )
+        await order_doc.save()
+        # Attempt to send the email
         try:
             send_email_awaiting(email)
         except Exception as email_error:
             # Handle the email sending error here (e.g., log the error)
             print(f"Email sending error: {str(email_error)}")
             # Optionally, you can choose to retry sending the email here
-        return Order
+        return order_doc
     
     @staticmethod
     async def update_order(order_id: str, email: str):

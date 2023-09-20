@@ -30,3 +30,13 @@
         }
     }
 }
+@media (max-width: 980px) {
+    .order{
+        margin: 20px;
+        .container{
+            .detail{
+                gap: 20px;
+            }
+        }
+    }
+}

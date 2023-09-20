@@ -184,3 +184,66 @@
         }
     }
 }
+@media (max-width: 980px) {
+    .profile{
+        margin: 20px;
+        .container{
+            .detail{
+                justify-content: space-between;
+            }
+        }
+    }
+}
+@media (max-width: 576px) {
+    .profile{
+        margin: 20px;
+        .container{
+            .detail{
+                justify-content: space-between;
+                .left{
+                    button{
+                        font-size: 0.8rem;
+                    }
+                }
+                .right{
+                    .top{
+                        gap: 20px;
+                        .left{
+                            img{
+                                width: 50px;
+                                height: 50px;
+                            }
+                        }
+                        .right{
+                            button{
+                                font-size: 0.8rem;
+                            }
+                        }
+                    }
+                    .bottom{
+                        gap: 20px;
+                        span{
+                            display: flex;
+                            flex-direction: column;
+                            gap: 10px;
+                            label{
+                                font-size: 0.8rem;
+                            }
+                            h3{
+                                padding: 10px;
+                                font-size: 1rem;
+                            }
+                        }
+                    }
+                }
+                .pass{
+                   form{
+                    button{
+                        font-size: 0.8rem;
+                    }
+                   }
+                }
+            }
+        }
+    }
+}

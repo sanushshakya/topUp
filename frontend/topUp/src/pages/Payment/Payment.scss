@@ -23,3 +23,14 @@
         }
     }
 }
+@media (max-width: 576px) {
+    .payment{
+        margin: 50px;
+        .container{
+            gap: 20px;
+            .option{
+                flex-direction: column;
+            }
+        }
+    }
+}

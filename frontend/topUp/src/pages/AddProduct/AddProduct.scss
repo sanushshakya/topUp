@@ -50,3 +50,23 @@
         }
     }
 }
+
+@media (max-width: 576px) {
+    .addproduct{
+        margin: 20px;
+        .container{
+            form{
+                .credentials{
+                    span{
+                        width: 300px;
+                    }
+                }
+                button{
+                    width: 50%;
+                    font-size: 15px;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

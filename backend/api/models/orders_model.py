@@ -7,7 +7,7 @@ class Order(Document):
     name: str
     email: str
     game_name: str
-    player_id: str
+    player_id: str 
     product: str
     user_id: str
     status: str

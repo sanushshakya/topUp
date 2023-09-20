@@ -18,8 +18,8 @@ const BuyProduct = () => {
     const [product, setProduct] = useState('')
 
     const schema = yup.object().shape({
-        gname: yup.string().required('InGame Name is required'),
-        playerid: yup.string().required('PlayerId is required'),
+        gname: yup.string(),
+        playerid: yup.string(),
       });
       const {
         register,
@@ -78,7 +78,7 @@ const BuyProduct = () => {
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <h1>{product.product_name}</h1>
                         <h1>Rs. {product.price}</h1>
-                        {product.cat_name==="test" && (
+                        {product.cat_name === "game" && (
                             <div className="credentials">
                                 <span>
                                     <input {...register('gname')} type="text" placeholder='Enter your InGame name'/>
@@ -96,8 +96,8 @@ const BuyProduct = () => {
                                 )}
                             </div>
                         )}
-                        
                         <button type="submit">Order</button>
+                        <p>Please just click one time and wait.</p>
                     </form>
                 </div>
             </div>
