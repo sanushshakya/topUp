@@ -1,0 +1,25 @@
+.payment{
+    margin: 50px 100px;
+    .container{
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+        justify-content: center;
+        align-items: center;
+        .option{
+            display: flex;
+            gap: 50px;
+            font-size: 2rem;
+        }
+        button{
+            background-color: #ff8c32;
+            border: none;
+            color: white;
+            padding: 5px 25px;
+            text-align: center;
+            font-size: 0.8rem;
+            border-radius: 32px;
+            cursor: pointer;
+        }
+    }
+}

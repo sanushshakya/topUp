@@ -1,0 +1,16 @@
+.congrats{
+    margin: 50px 100px 500px 100px;
+    .container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;gap: 100px;
+        span{
+            font-size: 2rem;
+        }
+        .desc{
+            width: 50%;
+            text-align: center;
+        }
+    }
+}

@@ -1,0 +1,169 @@
+.register{
+    margin: 100px;
+    padding-bottom: 200px;
+    .container{
+        display: flex;
+        gap: 300px;
+        .left{
+            display: flex;
+            gap: 120px;
+            flex-direction: column;
+            align-items: center;
+            color: #ff8c32;
+            border: solid 0.5px;
+            padding: 50px;
+            border-radius: 50px;
+            
+            .links{
+                font-weight: 700;
+                font-size: 48px;
+            }
+            h1{
+                font-weight: 600;
+                font-size: 40;
+            }
+            img{
+                width: auto;
+                height: 300px;
+            }
+            h3{
+                font-weight: 300;
+                font-size: 24px;
+            }
+        }
+        .right{
+            display: flex;
+            flex-direction: column;
+            form{
+                align-items: center;
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                gap: 70px;
+                h1{
+                    color: #ff8c32;
+                    font-weight: 500;
+                    font-size: 38px;
+                }
+                .credentials{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 40px;
+                    span{
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        border: solid 1px #ff8c32;
+                        width: 500px;
+                        padding-right: 20px;
+                        border-radius: 20px;
+                        color: #ff8c32;
+                        font-size: x-large;
+                        input{
+                            padding: 15px 30px;
+                            border: none;
+                            border-radius: 20px;
+                            width: 100%;
+                            color: #ff8c32;
+                            font-size: large;
+                        }
+                    }
+                    .error-message{
+                        border: none;
+                        color: #F47174;
+                    }
+                    h4{
+                        color: #ff8c32;
+                    }
+                }
+                button{
+                    background-color: #ff8c32;
+                    border: none;
+                    border-radius: 20px;
+                    width: 100%;
+                    padding: 10px 30px;
+                    font-weight: 300;
+                    font-size: 18px;
+                    color: #fff;
+                    cursor: pointer;
+                }
+                .success-message{
+                    color: #ff8c32;
+                    font-size: 1.5rem;
+                    text-align: center;
+                }
+                .sign{
+                    color: #ff8c32;
+                }
+            }
+        }
+
+    }
+}
+
+@media only screen and (max-width: 600px){
+    .register{
+        .container{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            .left{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                border: none;
+                .links{
+                    font-weight: 700;
+                    font-size: 2rem;
+                }
+                h1{
+                    display: none;
+                }
+                img{
+                    display: none;
+                }
+                h3{
+                    display: none;
+                }
+            }
+            .right{
+                display: flex;
+                flex-direction: column;
+                margin-top: -300px;
+                margin-bottom: 100px;
+                form{
+                    display: flex;
+                    flex-direction: column;
+                    position: relative;
+                    justify-content: center;
+                    align-items: center;
+                    .credentials{
+                        span{
+                            display: flex;
+                            justify-content: space-between;
+                            width: 100%;
+                            padding-right: 20px;
+                            border-radius: 20px;
+                            font-size: 1rem;
+                            input{
+                                width: 100%;
+                                font-size: 0.8rem;
+                            }
+                        }
+                        .error-message{
+                            font-size: 0.8rem;
+                        }
+                    }
+                    button{
+                        font-size: 1rem;
+                    }
+                    .success-message{
+                        font-size: 0.8rem;
+                    }
+                }
+            }
+        }
+    }
+}
