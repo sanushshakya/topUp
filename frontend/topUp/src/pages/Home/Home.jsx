@@ -19,13 +19,13 @@ const Home = () => {
     useEffect(() => {
       const fetchData = async () => {
         try{
-          const resBan = await axios.get(`http://localhost:8000/api/banner/read`);
+          const resBan = await axios.get(`http://54.221.98.143:8000/api/banner/read`);
           setBanner(resBan.data)
-          const resCat= await axios.get(`http://localhost:8000/api/category/read`);
+          const resCat= await axios.get(`http://54.221.98.143:8000/api/category/read`);
           setCat(resCat.data)
-          const resProduct= await axios.get(`http://localhost:8000/api/product/read`);
+          const resProduct= await axios.get(`http://54.221.98.143:8000/api/product/read`);
           setProduct(resProduct.data)
-          const response = await axios.post(`http://localhost:8000/api/auth/test-token/${accessToken}`)
+          const response = await axios.post(`http://54.221.98.143:8000/api/auth/test-token/${accessToken}`)
           setUser(response.data)
         } catch (error){
           console.error(error);

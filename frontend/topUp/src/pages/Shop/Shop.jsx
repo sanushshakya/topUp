@@ -12,9 +12,9 @@ const Shop = () => {
     useEffect(() => {
       const fetchData = async () => {
         try{
-          const resProduct= await axios.get(`http://localhost:8000/api/product/read`);
+          const resProduct= await axios.get(`http://54.221.98.143:8000/api/product/read`);
             setProduct(resProduct.data)
-          const response = await axios.post(`http://localhost:8000/api/auth/test-token/${accessToken}`)
+          const response = await axios.post(`http://54.221.98.143:8000/api/auth/test-token/${accessToken}`)
             setUser(response.data)
         } catch (error){
           console.error(error);

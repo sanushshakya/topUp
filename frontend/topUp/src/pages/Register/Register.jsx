@@ -33,7 +33,7 @@ const Register = () => {
     formData.append('phone', data.phone);
     
     try {
-      const response = await axios.post('http://localhost:8000/api/user/create', formData);
+      const response = await axios.post('http://54.221.98.143:8000/api/user/create', formData);
       setSuccess(true)
       window.location.href = `/login`
       // Handle the response as needed

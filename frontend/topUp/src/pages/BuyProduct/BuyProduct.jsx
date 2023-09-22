@@ -32,10 +32,10 @@ const BuyProduct = () => {
     useEffect(() => {
         const fetchData = async () => {
             try{
-                const resProduct = await axios.get(`http://localhost:8000/api/product/read_by_id/${productId}`)
+                const resProduct = await axios.get(`http://54.221.98.143:8000/api/product/read_by_id/${productId}`)
                     setProduct(resProduct.data)
 
-                const response = await axios.post(`http://localhost:8000/api/auth/test-token/${accessToken}`)
+                const response = await axios.post(`http://54.221.98.143:8000/api/auth/test-token/${accessToken}`)
                     setUser(response.data)
             }
             catch(error){
@@ -55,7 +55,7 @@ const BuyProduct = () => {
         formData.append('product',`${product.product_name}`)
         formData.append('user_id',`${user._id}`)
         try {
-          const response = await axios.post('http://localhost:8000/api/order/create', formData);
+          const response = await axios.post('http://54.221.98.143:8000/api/order/create', formData);
           window.location.href = `/payment`
           // Handle the response as needed
         } catch (error) {

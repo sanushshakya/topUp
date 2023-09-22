@@ -11,7 +11,7 @@ const CatProduct = () => {
     useEffect(() => {
       const fetchData = async () => {
         try{
-          const resProduct= await axios.get(`http://localhost:8000/api/product/read_products_by_cat_name/${catName}`);
+          const resProduct= await axios.get(`http://54.221.98.143:8000/api/product/read_products_by_cat_name/${catName}`);
           setProduct(resProduct.data)
         } catch (error){
           console.error(error);

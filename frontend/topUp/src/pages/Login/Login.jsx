@@ -10,7 +10,7 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 
 const api = axios.create({
-  baseURL: "http://localhost:8000/api",
+  baseURL: "http://54.221.98.143:8000/api",
 });
   
 
@@ -74,7 +74,7 @@ const Login = () => {
     formData.append('password', data.password);
     
     try{
-      const response = await axios.post('http://localhost:8000/api/auth/login', formData);
+      const response = await axios.post('http://54.221.98.143:8000/api/auth/login', formData);
       console.log(response.data.accessToken);
       const { accessToken, refreshToken } = response.data;
       Cookies.set('accessToken', accessToken, { path: '/', expires: 0.01 });

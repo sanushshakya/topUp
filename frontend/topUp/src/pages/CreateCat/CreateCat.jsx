@@ -12,7 +12,7 @@ const CreateCat = () => {
     useEffect(() => {
         const fetchData = async () => {
             try{
-            const response = await axios.post(`http://localhost:8000/api/auth/test-token/${accessToken}`)
+            const response = await axios.post(`http://54.221.98.143:8000/api/auth/test-token/${accessToken}`)
                 setUser(response.data)
             } catch (error){
             console.error(error);
@@ -40,7 +40,7 @@ const CreateCat = () => {
         formData.append('description', data.description);
         formData.append('image_url', data.image_url[0]);
         try {
-        await axios.post('http://localhost:8000/api/category/create', formData);
+        await axios.post('http://54.221.98.143:8000/api/category/create', formData);
         window.location.href = `/`
         // Handle the response as needed
         } catch (error) {

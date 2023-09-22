@@ -10,7 +10,7 @@ const CatCard = ({item}) => {
 
     const handleDelete = async ()=> {
       try {
-      await axios.delete(`http://localhost:8000/api/category/delete/${item._id}`);
+      await axios.delete(`http://54.221.98.143:8000/api/category/delete/${item._id}`);
       window.location.href = `/`
       // Handle the response as needed
       } catch (error) {
@@ -22,7 +22,7 @@ const CatCard = ({item}) => {
     useEffect(() => {
       const fetchData = async () => {
           try{
-          const response = await axios.post(`http://localhost:8000/api/auth/test-token/${accessToken}`)
+          const response = await axios.post(`http://54.221.98.143:8000/api/auth/test-token/${accessToken}`)
               setUser(response.data)
           } catch (error){
           console.error(error);
