@@ -9,7 +9,7 @@ WORKDIR /react-app
 
 # Installing dependencies
 COPY ./package.json /react-app
-RUN npm run build
+RUN npm i
 
 # Copying all the files in our project
 COPY . .

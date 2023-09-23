@@ -3,11 +3,11 @@ import './Congrats.scss'
 import Cookies from 'js-cookie'
 
 const Congrats = () => {
-  const accessToken = Cookies.get('accessToken')
+  const accessToken = Cookies.get('accessToken');
   const [isLoggedIn, setIsLoggedIn] = useState(!!Cookies.get("accessToken"));
   {!isLoggedIn && (
     window.location.href = '/login'
-)}
+  )}
   return (
     <div className='congrats'>
         <div className="container">
