@@ -4,6 +4,7 @@ import axios from 'axios'
 import ProductCard from '../../components/ProductCard/ProductCard'
 import Cookies from 'js-cookie'
 import { Link } from 'react-router-dom'
+import config from '../../config'
 
 const Shop = () => {
     const accessToken = Cookies.get('accessToken')
@@ -12,9 +13,9 @@ const Shop = () => {
     useEffect(() => {
       const fetchData = async () => {
         try{
-          const resProduct= await axios.get(`http://54.221.98.143:8000/api/product/read`);
+          const resProduct= await axios.get(`${config.apiBaseUrl}/api/product/read`);
             setProduct(resProduct.data)
-          const response = await axios.post(`http://54.221.98.143:8000/api/auth/test-token/${accessToken}`)
+          const response = await axios.post(`${config.apiBaseUrl}/api/auth/test-token/${accessToken}`)
             setUser(response.data)
         } catch (error){
           console.error(error);

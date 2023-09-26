@@ -3,6 +3,8 @@ import OrderCard from '../../components/OrderCard/OrderCard';
 import Cookies from 'js-cookie';
 import axios from 'axios';
 import './Order.scss'
+import config from '../../config'
+
 const Order = () => {
     const accessToken = Cookies.get('accessToken')
     const [isLoggedIn, setIsLoggedIn] = useState(!!Cookies.get("accessToken"));
@@ -26,16 +28,16 @@ const Order = () => {
     useEffect(() => {
         const fetchData = async () => {
             try{
-                const response = await axios.post(`http://54.221.98.143:8000/api/auth/test-token/${accessToken}`)
+                const response = await axios.post(`${config.apiBaseUrl}/api/auth/test-token/${accessToken}`)
                     setUser(response.data)
 
-                const resAllOrder = await axios.get(`http://54.221.98.143:8000/api/order/read`)
+                const resAllOrder = await axios.get(`${config.apiBaseUrl}/api/order/read`)
                     setOrder(resAllOrder.data)
 
-                const resOrderStatus = await axios.get(`http://54.221.98.143:8000/api/order/read_order_by_status`)
+                const resOrderStatus = await axios.get(`${config.apiBaseUrl}/api/order/read_order_by_status`)
                     setPending(resOrderStatus.data)
 
-                const resOrderUser = await axios.get(`http://54.221.98.143:8000/api/order/read_order_by_user/${user._id}`)
+                const resOrderUser = await axios.get(`${config.apiBaseUrl}/api/order/read_order_by_user/${user._id}`)
                     setOrderUser(resOrderUser.data)
             }
             catch(error){

@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import "./OrderCard.scss"
 import axios from 'axios'
 import Cookies from 'js-cookie';
+import config from '../../config'
 
 
 const OrderCard = ({item}) => {
@@ -10,7 +11,7 @@ const OrderCard = ({item}) => {
 
     const handleOrderComplete = async () => {
         try{
-            await axios.put(`http://54.221.98.143:8000/api/order/update/${item._id}/${item.email}`);
+            await axios.put(`${config.apiBaseUrl}/api/order/update/${item._id}/${item.email}`);
           } catch (error){
             console.error(error);
           }
@@ -19,7 +20,7 @@ const OrderCard = ({item}) => {
     useEffect(() => {
         const fetchData = async () => {
             try{
-                const response = await axios.post(`http://54.221.98.143:8000/api/auth/test-token/${accessToken}`)
+                const response = await axios.post(`${config.apiBaseUrl}/api/auth/test-token/${accessToken}`)
                     setUser(response.data)
             }
             catch(error){

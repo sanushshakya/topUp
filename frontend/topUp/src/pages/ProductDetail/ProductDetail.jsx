@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom';
 import './ProductDetail.scss'
 import Cookies from 'js-cookie'
+import config from '../../config'
 
 const ProductDetail = () => {
     const {productId} = useParams();
@@ -13,9 +14,9 @@ const ProductDetail = () => {
     useEffect(() => {
         const fetchData = async () => {
             try{
-                const resProduct = await axios.get(`http://54.221.98.143:8000/api/product/read_by_id/${productId}`)
+                const resProduct = await axios.get(`${config.apiBaseUrl}/api/product/read_by_id/${productId}`)
                     setProduct(resProduct.data)
-                const response = await axios.post(`http://54.221.98.143:8000/api/auth/test-token/${accessToken}`)
+                const response = await axios.post(`${config.apiBaseUrl}/api/auth/test-token/${accessToken}`)
                     setUser(response.data)
             }
             catch(error){
@@ -28,7 +29,7 @@ const ProductDetail = () => {
 
     const handleDelete = async() => {
         try{
-          const response = await axios.delete(`http://54.221.98.143:8000/api/product/delete/${productId}`);
+          const response = await axios.delete(`${config.apiBaseUrl}/api/product/delete/${productId}`);
           window.location.href = `/categories`
         }catch (error) {
           console.error(error.response.data);
