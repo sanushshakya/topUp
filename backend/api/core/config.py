@@ -1,4 +1,5 @@
 #import base setting from pydantic
+import os
 from pydantic_settings import BaseSettings
 from pydantic import AnyHttpUrl
 from decouple import config
@@ -26,7 +27,9 @@ class ServerSettings(BaseSettings):
 
 #Define the DatabaseSetting class (inherits from BaseSetting)
 class DatabaseSettings(BaseSettings):
-    DB_URL: str = "mongodb://localhost:27017/?directConnection=true"
+    DB_LOCAL_URL: str = "mongodb://localhost:27017/?directConnection=true"
+    DB_STAGE_URL: str = "mongodb://localhost:27017/?directConnection=true"
+    DB_PROD_URL: str = f"mongodb+srv://topup-backend-user:{os.getenv('MONGODB_PASS', '')}@topup-backend-db.yvqryc0.mongodb.net/?retryWrites=true&w=majority"
     DB_NAME: str = "TopUp"
 
 #MainSetting class that includes all the setting classes
