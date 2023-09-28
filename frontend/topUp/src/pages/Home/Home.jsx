@@ -1,10 +1,10 @@
-import React, {useEffect, useState}from 'react'
+import React, { useEffect, useState } from 'react'
 import './Home.scss'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 import axios from 'axios'
 import Cookies from 'js-cookie'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import Banner from '../../components/Banner/Banner'
 import CatCard from '../../components/CatCard/CatCard';
@@ -17,24 +17,26 @@ const Home = () => {
   const [cats, setCat] = useState([]);
   const [products, setProduct] = useState([]);
   const [user, setUser] = useState([]);
-    useEffect(() => {
-      const fetchData = async () => {
-        try{
-          const resBan = await axios.get(`${config.apiBaseUrl}/api/banner/read`);
-          setBanner(resBan.data)
-          const resCat= await axios.get(`${config.apiBaseUrl}/api/category/read`);
-          setCat(resCat.data)
-          const resProduct= await axios.get(`${config.apiBaseUrl}/api/product/read`);
-          setProduct(resProduct.data)
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const resBan = await axios.get(`${config.apiBaseUrl}/api/banner/read`);
+        setBanner(resBan.data)
+        const resCat = await axios.get(`${config.apiBaseUrl}/api/category/read`);
+        setCat(resCat.data)
+        const resProduct = await axios.get(`${config.apiBaseUrl}/api/product/read`);
+        setProduct(resProduct.data)
+        if (accessToken) {
           const response = await axios.post(`${config.apiBaseUrl}/api/auth/test-token/${accessToken}`)
           setUser(response.data)
-        } catch (error){
-          console.error(error);
         }
+      } catch (error) {
+        console.error(error);
       }
+    }
     fetchData();
-  }, [])
-  
+  }, [accessToken])
+
   return (
     <div className='home'>
       <div className="container">
@@ -47,13 +49,13 @@ const Home = () => {
         </div>
         <div className="cmpTitle cat">
           <h1>Categories</h1>
-          {user.role==='admin' && (
+          {user.role === 'admin' && (
             <Link to='/createcat' className='link'><button>Create New Category</button></Link>
           )}
         </div>
         <div className="slide">
           {cats.slice(0, 4).map(cat => (
-            <CatCard key={cat._id} item={cat}/>
+            <CatCard key={cat._id} item={cat} />
           ))}
         </div>
         <div className="banner">
@@ -68,7 +70,7 @@ const Home = () => {
         </div>
         <div className="slide">
           {products.slice(0, 4).map(pro => (
-            <ProductCard key={pro._id} item={pro}/>
+            <ProductCard key={pro._id} item={pro} />
           ))}
         </div>
       </div>
