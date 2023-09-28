@@ -39,7 +39,7 @@ const Home = () => {
     <div className='home'>
       <div className="container">
         <div className="banner">
-          <Carousel autoPlay>
+          <Carousel autoPlay={true} showThumbs={false}>
             {banners.slice(0, 3).map(ban => (
               <Banner item={ban} key={ban._id} />
             ))}
@@ -57,7 +57,7 @@ const Home = () => {
           ))}
         </div>
         <div className="banner">
-          <Carousel autoPlay>
+          <Carousel autoPlay={true} showThumbs={false}>
             {banners.slice(3, 6).map(ban => (
               <Banner item={ban} key={ban._id} />
             ))}
