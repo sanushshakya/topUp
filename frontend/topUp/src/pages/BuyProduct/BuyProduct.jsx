@@ -60,7 +60,7 @@ const BuyProduct = () => {
         formData.append('product', `${product.product_name}`)
         formData.append('user_id', `${user._id}`)
         try {
-            const response = await axios.post('${config.apiBaseUrl}/api/order/create', formData);
+            const response = await axios.post(`${config.apiBaseUrl}/api/order/create`, formData);
             window.location.href = `/payment`
             // Handle the response as needed
         } catch (error) {
