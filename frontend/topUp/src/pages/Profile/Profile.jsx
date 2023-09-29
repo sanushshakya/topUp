@@ -40,7 +40,7 @@ const Profile = () => {
         formData.append('username', e.target.username.value);
         formData.append('phone', e.target.phone.value);
         try {
-          const response = await axios.put(`http://localhost:8000/api/user/update/${user._id}`, formData, {
+          const response = await axios.put(`http://54.221.98.143:8000/api/user/update/${user._id}`, formData, {
             params: {
               token: accessToken
             }
@@ -64,7 +64,7 @@ const Profile = () => {
         const formData = new FormData();
         formData.append('password', e.target.password.value);
         try {
-          const response = await axios.put(`http://localhost:8000/api/user/update/${user._id}`, formData, {
+          const response = await axios.put(`http://54.221.98.143:8000/api/user/update/${user._id}`, formData, {
             params: {
               token: accessToken
             }
@@ -93,7 +93,7 @@ const Profile = () => {
         const formData = new FormData();
         formData.append('image_url', e.target.elements.image_url.files[0]);
         try {
-            await axios.put(`http://localhost:8000/api/banner/create`, formData, {
+            await axios.put(`http://54.221.98.143:8000/api/banner/create`, formData, {
                 params: {
                   token: accessToken
                 }
@@ -106,7 +106,7 @@ const Profile = () => {
     };
 
     const handleBanDel = async(id) => {
-        await axios.delete(`http://localhost:8000/api/banner/delete/${id}`, {
+        await axios.delete(`http://54.221.98.143:8000/api/banner/delete/${id}`, {
             params: {
               token: accessToken
             }
@@ -116,9 +116,9 @@ const Profile = () => {
     useEffect(()=>{
         const fetchData = async() => {
             try{
-                const response = await axios.post(`http://localhost:8000/api/auth/test-token/${accessToken}`)
+                const response = await axios.post(`http://54.221.98.143:8000/api/auth/test-token/${accessToken}`)
                 setUser(response.data)
-                const resBanner = await axios.get(`http://localhost:8000/api/banner/read`)
+                const resBanner = await axios.get(`http://54.221.98.143:8000/api/banner/read`)
                 setBanner(resBanner.data)
             } catch (error){
                 console.error(error.response?.data || error);

@@ -25,7 +25,7 @@ const UpdateProduct = () => {
         }
         formData.append('status', e.target.status.value);
         try{
-            await axios.put(`http://localhost:8000/api/product/update/${productId}`, formData, {
+            await axios.put(`http://54.221.98.143:8000/api/product/update/${productId}`, formData, {
               params: {
                 token: accessToken
               }
@@ -40,9 +40,9 @@ const UpdateProduct = () => {
     useEffect(() => {
         const fetchData = async () => {
           try{
-            const resProduct = await axios.get(`http://localhost:8000/api/product/read_by_id/${productId}`)
+            const resProduct = await axios.get(`http://54.221.98.143:8000/api/product/read_by_id/${productId}`)
                 setProduct(resProduct.data)
-            const response = await axios.post(`http://localhost:8000/api/auth/test-token/${accessToken}`)
+            const response = await axios.post(`http://54.221.98.143:8000/api/auth/test-token/${accessToken}`)
                 setUser(response.data)
           } catch (error){
             console.error(error);

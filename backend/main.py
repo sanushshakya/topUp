@@ -1,3 +1,4 @@
+import os
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 from fastapi import FastAPI
@@ -20,8 +21,7 @@ app = FastAPI(
 
 # Set up CORS
 origins = [
-    "http://localhost",
-    "http://localhost:5173"
+    "*"
 ]
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
@@ -37,7 +37,15 @@ app.add_middleware(
 #Startup Event
 @app.on_event("startup")
 async def startup_db_client():
-    db_client = AsyncIOMotorClient(settings.DB_URL).topup
+
+    env = os.getenv("ENV", "LOCAL")
+    if env == "STAGE":
+        db_url = settings.DB_STAGE_URL
+    elif env == "PROD":
+        db_url = settings.DB_PROD_URL
+    else:
+        db_url = settings.DB_LOCAL_URL
+    db_client = AsyncIOMotorClient(db_url).topup
 
     await init_beanie(
         database = db_client,

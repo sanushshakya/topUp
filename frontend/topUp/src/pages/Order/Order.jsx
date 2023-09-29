@@ -26,24 +26,24 @@ const Order = () => {
     useEffect(() => {
         const fetchData = async () => {
             try{
-                const response = await axios.post(`http://localhost:8000/api/auth/test-token/${accessToken}`)
+                const response = await axios.post(`http://54.221.98.143:8000/api/auth/test-token/${accessToken}`)
                     setUser(response.data)
 
-                const resAllOrder = await axios.get(`http://localhost:8000/api/order/read`, {
+                const resAllOrder = await axios.get(`http://54.221.98.143:8000/api/order/read`, {
                     params: {
                       token: accessToken
                     }
                   })
                     setOrder(resAllOrder.data)
 
-                const resOrderStatus = await axios.get(`http://localhost:8000/api/order/read_order_by_status`, {
+                const resOrderStatus = await axios.get(`http://54.221.98.143:8000/api/order/read_order_by_status`, {
                     params: {
                       token: accessToken
                     }
                   })
                     setPending(resOrderStatus.data)
 
-                const resOrderUser = await axios.get(`http://localhost:8000/api/order/read_order_by_user/${user._id}`, {
+                const resOrderUser = await axios.get(`http://54.221.98.143:8000/api/order/read_order_by_user/${user._id}`, {
                     params: {
                       token: accessToken
                     }

@@ -1,6 +1,7 @@
 from fastapi import APIRouter
 from api.api.handlers import products, categories, banners, users, orders, tournaments
 from api.api.auth.jwt import auth_router
+from api.api.health.health_check import health_check_router
 
 router =  APIRouter()
 
@@ -11,3 +12,4 @@ router.include_router(users.user_router, prefix="/user", tags=["user"])
 router.include_router(orders.order_router, prefix="/order", tags=["order"])
 router.include_router(tournaments.tournament_router, prefix="/tournament", tags=["tournament"])
 router.include_router(auth_router, prefix="/auth", tags=["auth"])
+router.include_router(health_check_router, prefix="/health",tags=["health"])

@@ -10,7 +10,7 @@ const OrderCard = ({item}) => {
 
     const handleOrderComplete = async () => {
         try{
-            await axios.put(`http://localhost:8000/api/order/update/${item._id}/${item.email}`, {
+            await axios.put(`http://54.221.98.143:8000/api/order/update/${item._id}/${item.email}`, {
                 params: {
                   token: accessToken
                 }
@@ -23,7 +23,7 @@ const OrderCard = ({item}) => {
     useEffect(() => {
         const fetchData = async () => {
             try{
-                const response = await axios.post(`http://localhost:8000/api/auth/test-token/${accessToken}`)
+                const response = await axios.post(`http://54.221.98.143:8000/api/auth/test-token/${accessToken}`)
                     setUser(response.data)
             }
             catch(error){

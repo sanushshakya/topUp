@@ -13,9 +13,9 @@ const ProductDetail = () => {
     useEffect(() => {
         const fetchData = async () => {
             try{
-                const resProduct = await axios.get(`http://localhost:8000/api/product/read_by_id/${productId}`)
+                const resProduct = await axios.get(`http://54.221.98.143:8000/api/product/read_by_id/${productId}`)
                     setProduct(resProduct.data)
-                const response = await axios.post(`http://localhost:8000/api/auth/test-token/${accessToken}`)
+                const response = await axios.post(`http://54.221.98.143:8000/api/auth/test-token/${accessToken}`)
                     setUser(response.data)
             }
             catch(error){
@@ -28,7 +28,7 @@ const ProductDetail = () => {
 
     const handleDelete = async() => {
         try{
-          const response = await axios.delete(`http://localhost:8000/api/product/delete/${productId}`, {
+          const response = await axios.delete(`http://54.221.98.143:8000/api/product/delete/${productId}`, {
             params: {
               token: accessToken
             }
