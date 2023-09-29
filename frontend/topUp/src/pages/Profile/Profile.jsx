@@ -154,7 +154,7 @@ const Profile = () => {
                         <div className="right">
                             <div className="top">
                                 <div className="left">
-                                    <img src='/vite.svg' />
+                                    <img src='/Subject.png' />
                                 </div>
                                 <div className="right">
                                     <button onClick={handleProfile}>Update</button>

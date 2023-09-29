@@ -49,7 +49,7 @@ const Register = () => {
         <div className="left">
           <Link to="/" className='link links'><span>TopUp</span></Link>
           <h1>NAMASTE</h1>
-          <img src="./vite.svg"/>
+          <img src="Subject.png"/>
           <h3>Buy Exciting<br/>Token and Gifts.</h3>
         </div>
         <div className="right">
