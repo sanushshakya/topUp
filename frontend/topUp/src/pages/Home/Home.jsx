@@ -41,9 +41,9 @@ const Home = () => {
     <div className='home'>
       <div className="container">
         <div className="banner">
-          <Carousel autoPlay showArrows={false} showStatus={false} showIndicators={false} interval={1000}>
-            {banners.slice(0, 3).map(ban => (
-              <Banner item={ban} key={ban._id} />
+          <Carousel autoPlay infiniteLoop showThumbs={false} showArrows={false} showStatus={false} showIndicators={true} interval={1000}>
+            {banners.slice(0, 3).map((ban, index) => (
+              <Banner item={ban} key={index} />
             ))}
           </Carousel>
         </div>
@@ -59,7 +59,7 @@ const Home = () => {
           ))}
         </div>
         <div className="banner">
-          <Carousel autoPlay showThumbs={false} showArrows={false} showStatus={false} showIndicators={false} interval={1000}>
+          <Carousel autoPlay infiniteLoop showThumbs={false} showArrows={true} showStatus={false} showIndicators={false} interval={1000}>
             {banners.slice(3, 6).map(ban => (
               <Banner item={ban} key={ban._id} />
             ))}

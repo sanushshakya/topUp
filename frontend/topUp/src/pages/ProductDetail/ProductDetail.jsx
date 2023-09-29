@@ -80,11 +80,13 @@ const ProductDetail = () => {
                     </span>
                     <span className='purchase'>
                         <h3>How to Purchase ?</h3>
-                        <span>Step 1 : Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
-                        <span>Step 2 : Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
-                        <span>Step 3 : Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
-                        <span>Step 4 : Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
-                        <span>Step 5 : Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
+                        <span>Step 1 : Click buy button</span>
+                        <span>Step 2 : Fill in the form if any</span>
+                        <span>Step 3 : Click the order button</span>
+                        <span>Step 4 : Your order will be sent</span>
+                        <span>Step 5 : Scan the payment and pay the due amount</span>
+                        <span>Step 6 : Wait for 5 minutes</span>
+                        <span>Step 7 : Yo'll receive and email</span>
                     </span>
 
                 </div>
