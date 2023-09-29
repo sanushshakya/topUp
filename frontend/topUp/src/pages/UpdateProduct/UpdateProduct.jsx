@@ -25,7 +25,11 @@ const UpdateProduct = () => {
         }
         formData.append('status', e.target.status.value);
         try{
-            await axios.put(`http://localhost:8000/api/product/update/${productId}`, formData);
+            await axios.put(`http://localhost:8000/api/product/update/${productId}`, formData, {
+              params: {
+                token: accessToken
+              }
+            });
             window.location.href = `/productdetail/${productId}`
         }catch (error) {
           console.error(error.response.data);

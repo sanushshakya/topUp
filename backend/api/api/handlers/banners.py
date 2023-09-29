@@ -1,7 +1,8 @@
-from fastapi import APIRouter, Form, HTTPException, status, Request,  File, UploadFile
+from fastapi import APIRouter, Form, HTTPException, status, Request,  File, UploadFile, Depends
 import pymongo
 from api.services.banners_services import BannersServices
 from api.api.helpers.save_picture import save_picture
+from api.api.deps.user_deps import get_current_user, is_admin
 
 banner_router = APIRouter()
 
@@ -16,7 +17,7 @@ async def read_banner():
         )
 
 @banner_router.post("/create", summary="Create new banner")
-async def create_banner(image_url: UploadFile = File(...)):
+async def create_banner(image_url: UploadFile = File(...), current_user = Depends(is_admin)):
     try:
         imageUrl = save_picture(file=image_url, folderName='banners', fileName = "image")
         return await BannersServices.create_banner(imageUrl)
@@ -28,7 +29,8 @@ async def create_banner(image_url: UploadFile = File(...)):
 
 @banner_router.put("/update/{banner_id}", summary="Update banner")
 async def update_banner(banner_id: str,
-                      image_url: UploadFile = File(default=None)):
+                      image_url: UploadFile = File(default=None),
+                      current_user = Depends(is_admin)):
     try:
         imageUrl = save_picture(file=image_url, folderName='banners', fileName = 'image')
         return await BannersServices.create_banner(imageUrl)
@@ -39,7 +41,7 @@ async def update_banner(banner_id: str,
         )
         
 @banner_router.delete("/delete/{banner_id}", summary="Delete banner")
-async def delete_banner(banner_id: str):
+async def delete_banner(banner_id: str, current_user = Depends(is_admin)):
     try:
         return await BannersServices.delete_banner(banner_id)
     except pymongo.errors.DuplicateKeyError:

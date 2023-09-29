@@ -7,6 +7,7 @@ from api.core.config import settings
 from api.models.products_model import Products
 from api.models.categories_model import Categories
 from api.models.banners_model import Banners
+from api.models.tournament_model import Tournaments
 from api.models.users_model import Users
 from api.models.orders_model import Order
 from api.api.routers import router
@@ -45,7 +46,8 @@ async def startup_db_client():
             Categories,
             Banners,
             Users,
-            Order
+            Order,
+            Tournaments
         ]
     )
 

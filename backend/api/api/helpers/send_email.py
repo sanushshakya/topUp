@@ -6,8 +6,8 @@ def send_email(to_email):
     # Email configuration
     smtp_server = 'smtp.gmail.com'
     smtp_port = 587
-    smtp_username = 'sanush.shakya7@gmail.com'
-    smtp_password = 'cmrldzqykegimpdm'
+    smtp_username = 'zonegaming405@gmail.com'
+    smtp_password = 'zaab rllj dtgt cqea'
 
     # Create the email content
     msg = MIMEMultipart()
@@ -33,8 +33,8 @@ def send_email_awaiting(to_email):
     # Email configuration
     smtp_server = 'smtp.gmail.com'
     smtp_port = 587
-    smtp_username = 'sanush.shakya7@gmail.com'
-    smtp_password = 'cmrldzqykegimpdm'
+    smtp_username = 'zonegaming405@gmail.com'
+    smtp_password = 'zaab rllj dtgt cqea'
 
     # Create the email content
     msg = MIMEMultipart()

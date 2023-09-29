@@ -46,7 +46,11 @@ const AddProduct = () => {
         formData.append('price', data.price);
         formData.append('image_url', data.image_url[0]);
         try {
-        const response = await axios.post('http://localhost:8000/api/product/create', formData);
+        const response = await axios.post('http://localhost:8000/api/product/create', formData, {
+            params: {
+              token: accessToken
+            }
+          });
         setProductId(response.data._id)
         window.location.href = `/productdetail/${productId}`
         // Handle the response as needed

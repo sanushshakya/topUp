@@ -4,9 +4,9 @@ import Cookies from 'js-cookie'
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import './CreateCat.scss'
+import './CreateTour.scss'
 
-const CreateCat = () => {
+const CreateTour = () => {
     const accessToken = Cookies.get('accessToken')
     const [user, setUser] = useState([]);
     useEffect(() => {
@@ -22,7 +22,8 @@ const CreateCat = () => {
     }, [])
 
     const schema = yup.object().shape({
-        cat_name: yup.string().required('Category required'),
+        name: yup.string().required('Name required'),
+        price: yup.string().required('Price required'),
         description: yup.string().required('Description is required'),
         image_url: yup.mixed().required('Profile image is required'),
       });
@@ -36,16 +37,17 @@ const CreateCat = () => {
       
     const onSubmit = async (data)=> {
         const formData = new FormData();
-        formData.append('cat_name', data.cat_name);
+        formData.append('name', data.name);
+        formData.append('price', data.price);
         formData.append('description', data.description);
         formData.append('image_url', data.image_url[0]);
         try {
-        await axios.post('http://localhost:8000/api/category/create', formData, {
+        await axios.post('http://localhost:8000/api/tournament/create', formData, {
             params: {
               token: accessToken
             }
           });
-        window.location.href = `/`
+        window.location.href = `/tournament`
         // Handle the response as needed
         } catch (error) {
         console.error(error.response?.data || error);
@@ -53,19 +55,25 @@ const CreateCat = () => {
         }
     }
   return (
-    <div className='cat'>
+    <div className='createTour'>
         <div className="container">
             <form onSubmit={handleSubmit(onSubmit)}>
-                <h1>Add New Category</h1>
+                <h1>Create New Tournament</h1>
                 <div className="credentials">
                     <span>
-                        <input {...register('cat_name')} type="text" placeholder='Enter category name '/>
+                        <input {...register('name')} type="text" placeholder='Enter tournament name '/>
                     </span>
-                    {errors.cat_name && (
-                        <span className="error-message">{errors.cat_name.message}</span>
+                    {errors.name && (
+                        <span className="error-message">{errors.name.message}</span>
                     )}
                     <span>
-                        <input {...register('description')} type="text" placeholder='Enter about this category'/>
+                        <input {...register('price')} type="text" placeholder='Enter tournament price '/>
+                    </span>
+                    {errors.price && (
+                        <span className="error-message">{errors.price.message}</span>
+                    )}
+                    <span>
+                        <input {...register('description')} type="text" placeholder='Enter about this tournament'/>
                     </span>
                     {errors.description && (
                         <span className="error-message">{errors.description.message}</span>
@@ -76,11 +84,11 @@ const CreateCat = () => {
                         <span className="error-message">{errors.image_url.message}</span>
                     )}
                 </div>
-                <button type="submit">Add Category</button>
+                <button type="submit">Add Tournament</button>
             </form>
         </div>
     </div>
   )
 }
 
-export default CreateCat
+export default CreateTour

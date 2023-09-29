@@ -10,7 +10,11 @@ const OrderCard = ({item}) => {
 
     const handleOrderComplete = async () => {
         try{
-            await axios.put(`http://localhost:8000/api/order/update/${item._id}/${item.email}`);
+            await axios.put(`http://localhost:8000/api/order/update/${item._id}/${item.email}`, {
+                params: {
+                  token: accessToken
+                }
+              });
           } catch (error){
             console.error(error);
           }

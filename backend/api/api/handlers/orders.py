@@ -1,11 +1,12 @@
-from fastapi import APIRouter, Form, HTTPException, status, Request
+from fastapi import APIRouter, Form, HTTPException, status, Request, Depends
 import pymongo
 from api.services.orders_services import OrdersServices
+from api.api.deps.user_deps import get_current_user, is_admin
 
 order_router = APIRouter()
 
 @order_router.get("/read")
-async def read_order():
+async def read_order(current_user = Depends(is_admin)):
     try:
         return await OrdersServices.read_order()
     except:
@@ -14,7 +15,8 @@ async def read_order():
             detail = "Orders not found"
         )
 @order_router.get("/read_order_by_user/{user_id}")
-async def read_order_by_user(user_id:str):
+async def read_order_by_user(user_id:str,
+                             current_user = Depends(get_current_user)):
     try:
         return await OrdersServices.read_orders_by_user(user_id)
     except:
@@ -24,7 +26,7 @@ async def read_order_by_user(user_id:str):
         )
         
 @order_router.get("/read_order_by_status")
-async def read_order_by_id():
+async def read_order_by_status(current_user = Depends(is_admin)):
     try:
         return await OrdersServices.read_orders_by_status()
     except:
@@ -39,7 +41,8 @@ async def create_order(name: str = Form(default=None),
                       gname:str = Form(default='None'),
                       playerid:str = Form(default='None'),
                       product: str = Form(default=None),
-                      user_id: str = Form(default=None)):
+                      user_id: str = Form(default=None),
+                      current_user = Depends(get_current_user)):
     try:
         order = await OrdersServices.create_order(name, email, gname, playerid, product, user_id)
         return order  # Return the created order object
@@ -50,7 +53,7 @@ async def create_order(name: str = Form(default=None),
         )
         
 @order_router.put("/update/{order_id}/{email}", summary="Update order")
-async def update_order(order_id: str, email: str):
+async def update_order(order_id: str, email: str, current_user = Depends(get_current_user)):
     try:
         return await OrdersServices.update_order(order_id, email)
     except pymongo.errors.DuplicateKeyError:
@@ -60,7 +63,7 @@ async def update_order(order_id: str, email: str):
         )
         
 @order_router.delete("/delete/{order_id}", summary="Delete order")
-async def delete_order(order_id: str):
+async def delete_order(order_id: str, current_user = Depends(is_admin)):
     try:
         return await OrdersServices.delete_order(order_id)
     except pymongo.errors.DuplicateKeyError:

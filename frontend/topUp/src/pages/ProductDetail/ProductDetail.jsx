@@ -28,7 +28,11 @@ const ProductDetail = () => {
 
     const handleDelete = async() => {
         try{
-          const response = await axios.delete(`http://localhost:8000/api/product/delete/${productId}`);
+          const response = await axios.delete(`http://localhost:8000/api/product/delete/${productId}`, {
+            params: {
+              token: accessToken
+            }
+          });
           window.location.href = `/categories`
         }catch (error) {
           console.error(error.response.data);
@@ -69,13 +73,13 @@ const ProductDetail = () => {
                 </span>
                 <span className='purchase'>
                     <h3>How to Purchase ?</h3>
-                    <span>Step 1 : Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
-                    <span>Step 2 : Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
-                    <span>Step 3 : Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
-                    <span>Step 4 : Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
-                    <span>Step 5 : Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
+                    <span>Step 1 : Click on buy button above</span>
+                    <span>Step 2 : Fill in the form if there's any</span>
+                    <span>Step 3 : Click on the order button and wait a minute</span>
+                    <span>Step 4 : Your order will be success</span>
+                    <span>Step 4 : Scan the payment and contact our admin if necessary</span>
+                    <span>Step 6 : You'll recieve an email.</span>
                 </span>
-
             </div>
         </div>
     </div>

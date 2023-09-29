@@ -90,8 +90,13 @@ const Login = () => {
     <div className='login'>
         <div className="container">
             <div className="right">
+              <Link className='link' to='/'>
+                <div className='logo'>
+                  <img src='Subject.png' />
+                  <p>EsportsCardNepal</p>
+                </div>
+                </Link>
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <Link to='/' className='link links'><span>TopUp</span></Link>
                     <h1>Login</h1>
                     <div className="credentials">
                         <span>

@@ -1,7 +1,8 @@
-from fastapi import APIRouter, Form, HTTPException, status, Request,  File, UploadFile
+from fastapi import APIRouter, Form, HTTPException, status, Request,  File, UploadFile, Depends
 import pymongo
 from api.services.products_services import ProductsServices
 from api.api.helpers.save_picture import save_picture
+from api.api.deps.user_deps import get_current_user, is_admin
 
 product_router = APIRouter()
 
@@ -39,7 +40,8 @@ async def create_product(product_name: str = Form(...),
                       cat_name: str = Form(...),
                       description:str = Form(...), 
                       price: str = Form(...),
-                      image_url: UploadFile = File(...)):
+                      image_url: UploadFile = File(...),
+                      current_user = Depends(is_admin)):
     try:
         imageUrl = save_picture(file=image_url, folderName='products', fileName = product_name)
         return await ProductsServices.create_products(product_name, cat_name, description, price, imageUrl)
@@ -56,7 +58,8 @@ async def update_product(product_id: str,
                       description:str = Form(default=None), 
                       price:str = Form(default=None),
                       image_url: UploadFile = File(default=None),
-                      status: str = Form(default=None)):
+                      status: str = Form(default=None),
+                      current_user = Depends(is_admin)):
     try:
         if image_url is None:
             return await ProductsServices.update_products(product_id, product_name, cat_name, description, price, image_url, status)
@@ -69,7 +72,8 @@ async def update_product(product_id: str,
         )
         
 @product_router.delete("/delete/{product_id}", summary="Delete product")
-async def deleteEvent(product_id: str):
+async def deleteEvent(product_id: str, 
+                      current_user = Depends(is_admin)):
     try:
         return await ProductsServices.delete_product(product_id)
     except pymongo.errors.DuplicateKeyError:

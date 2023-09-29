@@ -14,7 +14,6 @@ reuseableOAuth = OAuth2PasswordBearer(
     scheme_name = "jwt"
 )
 
-
 async def get_current_user(token: str):
     try: 
         payload = jwt.decode(
@@ -42,5 +41,13 @@ async def get_current_user(token: str):
             status_code=status.HTTP_404_NOT_FOUND,
             detail="User not found"
         )
-    
     return user
+
+async def is_admin(current_user: Users = Depends(get_current_user)):
+    user = await UsersServices.read_user_by_email(email=current_user.email)
+    if not user.role == 'admin':
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="You don't have permission to access this resource"
+        )
+    return current_user

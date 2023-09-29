@@ -5,6 +5,20 @@
         justify-content: center;
         align-items: center;
         .right{
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            .logo{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+                img{
+                    width: 120px;
+                    height: 120px;
+                }
+            }
             form{
                 align-items: center;
                 display: flex;

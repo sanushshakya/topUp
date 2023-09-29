@@ -1,0 +1,52 @@
+.tournament{
+    margin: 50px 100px;
+    .container{
+        display: flex;
+        flex-direction: column;
+        gap: 100px;
+        .btns{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            button{
+                background-color: #ff8c32;
+                border: none;
+                color: white;
+                padding: 5px 25px;
+                text-align: center;
+                font-size: 0.8rem;
+                border-radius: 32px;
+                cursor: pointer;
+            }
+        }
+        .bottom{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            h1{
+                font-size: 3rem;
+            }
+            .card{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 20px;
+                img{
+                    width: auto;
+                    height: 400px;
+                }
+                h3{
+                    font-size: 2rem;
+                }
+            }
+        }
+    }
+}
+@media (max-width: 576px) {
+    .createTour{
+        margin: 50px;
+    }
+}

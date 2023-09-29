@@ -10,7 +10,11 @@ const CatCard = ({item}) => {
 
     const handleDelete = async ()=> {
       try {
-      await axios.delete(`http://localhost:8000/api/category/delete/${item._id}`);
+      await axios.delete(`http://localhost:8000/api/category/delete/${item._id}`, {
+        params: {
+          token: accessToken
+        }
+      });
       window.location.href = `/`
       // Handle the response as needed
       } catch (error) {

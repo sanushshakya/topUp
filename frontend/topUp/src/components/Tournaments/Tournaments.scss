@@ -1,0 +1,53 @@
+.tour{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    .banner{
+        display: flex;
+        img{
+            object-fit: cover;
+            width: auto;
+            height: 800px
+        }
+    }
+    .detail{
+        display: flex;
+        flex-direction: column;
+        justify-content: left;
+        h1{
+            font-size: 3rem;
+        }
+        h3{
+            font-size: 2.5rem;
+        }
+        span{
+            font-size: 2rem;
+            width: 80%;
+            text-align: justify;
+        }
+    }
+}
+@media (max-width: 576px){
+    .tour{
+        .banner{
+            img{
+                object-fit: cover;
+                width: auto;
+                height: 200px;
+            }
+        }
+    }
+}
+@media (min-width: 576px) and (max-width:912px){
+    .tour{
+        .banner{
+            img{
+                object-fit: cover;
+                width: auto;
+                height: 400px;
+            }
+        }
+    }
+}

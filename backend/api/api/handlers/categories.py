@@ -1,7 +1,8 @@
-from fastapi import APIRouter, Form, HTTPException, status, Request,  File, UploadFile
+from fastapi import APIRouter, Form, HTTPException, status, Request,  File, UploadFile, Depends
 import pymongo
 from api.services.categories_services import CategoriesServices
 from api.api.helpers.save_picture import save_picture
+from api.api.deps.user_deps import get_current_user, is_admin
 
 cat_router = APIRouter()
 
@@ -18,7 +19,8 @@ async def read_cat():
 @cat_router.post("/create", summary="Create new category")
 async def create_cat(cat_name: str = Form(...), 
                       description:str = Form(...), 
-                      image_url: UploadFile = File(...)):
+                      image_url: UploadFile = File(...),
+                      current_user = Depends(is_admin)):
     try:
         imageUrl = save_picture(file=image_url, folderName='categories', fileName = cat_name)
         return await CategoriesServices.create_category(cat_name, description, imageUrl)
@@ -32,7 +34,8 @@ async def create_cat(cat_name: str = Form(...),
 async def update_cat(cat_id: str,
                       cat_name: str = Form(default=None),   
                       description:str = Form(default=None), 
-                      image_url: UploadFile = File(default=None)):
+                      image_url: UploadFile = File(default=None),
+                      current_user = Depends(is_admin)):
     try:
         if image_url is None:
             return await CategoriesServices.update_category(cat_id, cat_name, description, image_url)
@@ -45,7 +48,7 @@ async def update_cat(cat_id: str,
         )
         
 @cat_router.delete("/delete/{cat_id}", summary="Delete category")
-async def delete_cat(cat_id: str):
+async def delete_cat(cat_id: str, current_user = Depends(is_admin)):
     try:
         return await CategoriesServices.delete_category(cat_id)
     except pymongo.errors.DuplicateKeyError:

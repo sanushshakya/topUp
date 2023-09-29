@@ -40,7 +40,11 @@ const Profile = () => {
         formData.append('username', e.target.username.value);
         formData.append('phone', e.target.phone.value);
         try {
-          const response = await axios.put(`http://localhost:8000/api/user/update/${user._id}`, formData)
+          const response = await axios.put(`http://localhost:8000/api/user/update/${user._id}`, formData, {
+            params: {
+              token: accessToken
+            }
+          })
           setUser(response.data);
           setProfile(false);
         } catch (error) {
@@ -60,7 +64,11 @@ const Profile = () => {
         const formData = new FormData();
         formData.append('password', e.target.password.value);
         try {
-          const response = await axios.put(`http://localhost:8000/api/user/update/${user._id}`, formData)
+          const response = await axios.put(`http://localhost:8000/api/user/update/${user._id}`, formData, {
+            params: {
+              token: accessToken
+            }
+          })
           setPass(false);
           setSettings(true);
           setBanner(false);
@@ -85,7 +93,11 @@ const Profile = () => {
         const formData = new FormData();
         formData.append('image_url', e.target.elements.image_url.files[0]);
         try {
-            await axios.put(`http://localhost:8000/api/banner/create`, formData)
+            await axios.put(`http://localhost:8000/api/banner/create`, formData, {
+                params: {
+                  token: accessToken
+                }
+              })
         } catch (error) {
             console.error(error.response?.data || error);
         }
@@ -94,7 +106,11 @@ const Profile = () => {
     };
 
     const handleBanDel = async(id) => {
-        await axios.delete(`http://localhost:8000/api/banner/delete/${id}`)
+        await axios.delete(`http://localhost:8000/api/banner/delete/${id}`, {
+            params: {
+              token: accessToken
+            }
+          })
     }
 
     useEffect(()=>{

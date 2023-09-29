@@ -28,6 +28,8 @@ import Register from './pages/Register/Register';
 import Profile from './pages/Profile/Profile';
 import Order from './pages/Order/Order';
 import CreateCat from './pages/CreateCat/CreateCat';
+import Tournament from './pages/Tournament/Tournament';
+import CreateTour from './pages/CreateTour/CreateTour';
 
 
 function App() {
@@ -97,6 +99,14 @@ function App() {
         {
           path: '/createcat',
           element: <CreateCat />
+        },
+        {
+          path: '/tournament',
+          element: <Tournament />
+        },
+        {
+          path: '/createtour',
+          element: <CreateTour />
         }
       ]
     },

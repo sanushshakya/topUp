@@ -29,13 +29,17 @@ const Navbar = () => {
         <div className="container">
             <div className="left">
                 <div className="logo">
-                    <Link className='link' to='/'>TopUp</Link>
+                    <Link className='link' to='/'>
+                    <img src='Subject.png' />
+                    <p>EsportsCardNepal</p>
+                    </Link>
                 </div>
             </div>
             <div className="center">
                 <div className="pages">
                     <Link className='link' to='/'>Home</Link>
                     <Link className='link' to='/shop'>Shop</Link>
+                    <Link className='link' to='/tournament'>Tournament</Link>
                     <Link className='link' to='/aboutus'>About Us</Link>
                 </div>
             </div>
