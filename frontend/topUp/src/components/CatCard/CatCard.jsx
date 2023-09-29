@@ -9,19 +9,13 @@ const CatCard = ({ item }) => {
   const accessToken = Cookies.get('accessToken')
   const [user, setUser] = useState([]);
 
-<<<<<<< HEAD
-    const handleDelete = async ()=> {
-      try {
-      await axios.delete(`http://54.221.98.143:8000/api/category/delete/${item._id}`,{
+  const handleDelete = async () => {
+    try {
+      await axios.delete(`${config.apiBaseUrl}/api/category/delete/${item._id}`,{
         params: {
           token: accessToken
         }
       });
-=======
-  const handleDelete = async () => {
-    try {
-      await axios.delete(`${config.apiBaseUrl}/api/category/delete/${item._id}`);
->>>>>>> add/frontend-config
       window.location.href = `/`
       // Handle the response as needed
     } catch (error) {

@@ -27,34 +27,6 @@ const Navbar = () => {
             };
             fetchData();
         }
-<<<<<<< HEAD
-        fetchData()
-    }, [])
-  return (
-    <div className='navbar'>
-        <div className="container">
-            <div className="left">
-                <div className="logo">
-                    <Link className='link' to='/'>
-                    <img src='Subject.png' />
-                    <p>EsportsCardNepal</p>
-                    </Link>
-                </div>
-            </div>
-            <div className="center">
-                <div className="pages">
-                    <Link className='link' to='/'>Home</Link>
-                    <Link className='link' to='/shop'>Shop</Link>
-                    <Link className='link' to='/tournament'>Tournament</Link>
-                    <Link className='link' to='/aboutus'>About Us</Link>
-                </div>
-            </div>
-            <div className="right">
-                {isLoggedIn ? (
-                    <div className="user icons">
-                        <Link to='/order' className='link'><FontAwesomeIcon icon={faCartShopping} style={{color: "#ffffff",}} /></Link>
-                        <Link to={`/profile/${user._id}`} className='link'>{user.username}</Link>
-=======
     }, [accessToken]); // Add isLoggedIn as a dependency
     return (
         <div className='navbar'>
@@ -62,7 +34,6 @@ const Navbar = () => {
                 <div className="left">
                     <div className="logo">
                         <Link className='link' to='/'>TopUp</Link>
->>>>>>> add/frontend-config
                     </div>
                 </div>
                 <div className="center">
