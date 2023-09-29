@@ -32,7 +32,7 @@ const Footer = () => {
                   9860872697
                 </span>
                 <span>
-                  topup@email.com
+                  zonegaming405@gmail.com
                 </span>
                 <span>
                   Sallaghari, Bhaktapur
