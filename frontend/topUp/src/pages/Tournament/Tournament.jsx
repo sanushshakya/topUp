@@ -38,7 +38,7 @@ const Tournament = () => {
             <div className="bottom">
                 <h1>Links</h1>
                 <div className="card">
-                    <img src='esewa.jpg' />
+                    <img src='discord.webp' />
                     <Link className='link' to='/'><h3>Discord</h3></Link>
                 </div>
             </div>

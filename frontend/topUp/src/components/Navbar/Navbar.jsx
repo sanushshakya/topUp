@@ -43,6 +43,7 @@ const Navbar = () => {
                     <div className="pages">
                         <Link className='link' to='/'>Home</Link>
                         <Link className='link' to='/shop'>Shop</Link>
+                        <Link className='link' to='/tournament'>Tournaments</Link>
                         <Link className='link' to='/aboutus'>About Us</Link>
                     </div>
                 </div>
