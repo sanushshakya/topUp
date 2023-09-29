@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom'
 import Cookies from 'js-cookie'
 import axios from 'axios'
 import Tournaments from '../../components/Tournaments/Tournaments'
+import config from '../../config'
 
 const Tournament = () => {
     const accessToken = Cookies.get('accessToken')
@@ -13,9 +14,9 @@ const Tournament = () => {
     useEffect(()=>{
         const fetchData = async() => {
             try{
-                const resTour = await axios.get(`http://localhost:8000/api/tournament/read`)
+                const resTour = await axios.get(`${config.apiBaseUrl}/api/tournament/read`)
                 setTour(resTour.data)
-                const resUser = await axios.post(`http://localhost:8000/api/auth/test-token/${accessToken}`)
+                const resUser = await axios.post(`${config.apiBaseUrl}/api/auth/test-token/${accessToken}`)
                 setUser(resUser.data)
             } catch (error){
                 console.error(error.response?.data || error);

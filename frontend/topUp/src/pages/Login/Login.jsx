@@ -8,9 +8,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faKey } from "@fortawesome/free-solid-svg-icons";
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import config from '../../config'
 
 const api = axios.create({
-  baseURL: "http://54.221.98.143:8000/api",
+  baseURL: `${config.apiBaseUrl}/api`,
 });
   
 
@@ -74,7 +75,7 @@ const Login = () => {
     formData.append('password', data.password);
     
     try{
-      const response = await axios.post('http://54.221.98.143:8000/api/auth/login', formData);
+      const response = await axios.post(`${config.apiBaseUrl}/api/auth/login`, formData);
       console.log(response.data.accessToken);
       const { accessToken, refreshToken } = response.data;
       Cookies.set('accessToken', accessToken, { path: '/', expires: 0.01 });

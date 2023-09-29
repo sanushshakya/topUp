@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import './Tournaments.scss'
 import Cookies from 'js-cookie'
 import axios from 'axios'
+import config from '../../config'
 
 const Tournaments = ({item}) => {
   const accessToken = Cookies.get('accessToken')
@@ -9,7 +10,7 @@ const Tournaments = ({item}) => {
 
   const handleDelete = async(tourId)  => {
       try{
-        const response = await axios.delete(`http://localhost:8000/api/tournament/delete/${tourId}`, {
+        const response = await axios.delete(`${config.apiBaseUrl}/api/tournament/delete/${tourId}`, {
           params: {
             token: accessToken
           }
@@ -23,7 +24,7 @@ const Tournaments = ({item}) => {
   useEffect(()=>{
     const fetchData = async() => {
       try{
-        const resUser = await axios.post(`http://localhost:8000/api/auth/test-token/${accessToken}`)
+        const resUser = await axios.post(`${config.apiBaseUrl}/api/auth/test-token/${accessToken}`)
         setUser(resUser.data)
       } catch (error){
         console.error(error.response?.data || error);

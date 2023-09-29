@@ -7,6 +7,7 @@ import "./Register.scss"
 import axios from 'axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faKey, faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
+import config from '../../config'
 
 const Register = () => {
   const [success, setSuccess] = useState(false);
@@ -33,7 +34,7 @@ const Register = () => {
     formData.append('phone', data.phone);
     
     try {
-      const response = await axios.post('http://54.221.98.143:8000/api/user/create', formData);
+      const response = await axios.post(`${config.apiBaseUrl}/api/user/create`, formData);
       setSuccess(true)
       window.location.href = `/login`
       // Handle the response as needed
