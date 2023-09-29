@@ -12,8 +12,8 @@ const AddProduct = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(!!Cookies.get("accessToken"));
     const [user, setUser] = useState([]);
     const [productId, setProductId] = useState([])
-    useEffect(() => {
 
+    useEffect(() => {
         if (accessToken) {
             const fetchData = async () => {
                 try {
