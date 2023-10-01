@@ -20,6 +20,7 @@ const OrderCard = ({ item }) => {
                 }
             });
             setStatus('completed');
+            window.location.href='/order'
         } catch (error) {
             console.error(error);
         }

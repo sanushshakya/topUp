@@ -101,7 +101,7 @@ const Login = () => {
                     <h1>Login</h1>
                     <div className="credentials">
                         <span>
-                            <input {...register('username')} type="text" placeholder='Enter your Username'/>
+                            <input {...register('username')} type="text" placeholder='Enter your Email'/>
                             <FontAwesomeIcon icon={faUser} />
                         </span>
                         {errors.username && (

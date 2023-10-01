@@ -29,7 +29,7 @@ const Footer = () => {
             <div className="right">
               <div className="contact">
                 <span>
-                  9860872697
+                  9827617730
                 </span>
                 <span>
                   zonegaming405@gmail.com
