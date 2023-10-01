@@ -8,14 +8,18 @@ import config from '../../config'
 const OrderCard = ({ item }) => {
     const accessToken = Cookies.get('accessToken')
     const [user, setUser] = useState([]);
+    const [status, setStatus] = useState(item.status);
 
     const handleOrderComplete = async () => {
         try {
-            await axios.put(`${config.apiBaseUrl}/api/order/update/${item._id}/${item.email}`, {
+
+            const response = await axios.put(`${config.apiBaseUrl}/api/order/update/${item._id}/${item.email}`,
+                null, {
                 params: {
-                  token: accessToken
+                    token: accessToken
                 }
-              });
+            });
+            setStatus('completed');
         } catch (error) {
             console.error(error);
         }
@@ -35,7 +39,8 @@ const OrderCard = ({ item }) => {
             }
             fetchData();
         }
-    }, [])
+    }, []);
+
     return (
         <div className='orderCard'>
             <div className="container">
