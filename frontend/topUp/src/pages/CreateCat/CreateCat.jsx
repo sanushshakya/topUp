@@ -22,7 +22,7 @@ const CreateCat = () => {
             }
             fetchData();
         }
-    }, [accessToken])
+    }, [])
 
     const schema = yup.object().shape({
         cat_name: yup.string().required('Category required'),

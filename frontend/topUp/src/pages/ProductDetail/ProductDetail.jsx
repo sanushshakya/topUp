@@ -31,7 +31,7 @@ const ProductDetail = () => {
         }
         fetchData();
 
-    }, [accessToken, productId])
+    }, [])
 
     const handleDelete = async () => {
         try {

@@ -49,7 +49,7 @@ const BuyProduct = () => {
         }
         fetchData();
     }
-        , [accessToken, productId])
+        , [])
 
     const onSubmit = async (data) => {
         const formData = new FormData();

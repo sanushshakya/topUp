@@ -36,7 +36,7 @@ const CatCard = ({ item }) => {
       }
       fetchData();
     }
-  }, [accessToken])
+  }, [])
   return (
 
     <div className='catCard'>

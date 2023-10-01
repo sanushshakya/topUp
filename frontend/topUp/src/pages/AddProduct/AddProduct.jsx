@@ -25,7 +25,7 @@ const AddProduct = () => {
             }
             fetchData();
         }
-    }, [accessToken])
+    }, [])
 
     const schema = yup.object().shape({
         product_name: yup.string().required('Product name is required'),

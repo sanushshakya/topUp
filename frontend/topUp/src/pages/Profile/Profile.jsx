@@ -129,7 +129,7 @@ const Profile = () => {
             }
         }
         fetchData()
-    }, [accessToken])
+    }, [])
 
     {
         !isLoggedIn && (

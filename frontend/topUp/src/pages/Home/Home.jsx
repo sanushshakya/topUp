@@ -35,7 +35,7 @@ const Home = () => {
       }
     }
     fetchData();
-  }, [accessToken])
+  }, [])
 
   return (
     <div className='home'>

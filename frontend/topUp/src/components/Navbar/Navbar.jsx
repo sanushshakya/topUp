@@ -27,7 +27,7 @@ const Navbar = () => {
             };
             fetchData();
         }
-    }, [accessToken]); // Add isLoggedIn as a dependency
+    }, []);
     return (
         <div className='navbar'>
             <div className="container">

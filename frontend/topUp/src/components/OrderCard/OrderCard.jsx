@@ -35,7 +35,7 @@ const OrderCard = ({ item }) => {
             }
             fetchData();
         }
-    }, [accessToken])
+    }, [])
     return (
         <div className='orderCard'>
             <div className="container">

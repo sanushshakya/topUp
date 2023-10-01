@@ -26,7 +26,7 @@ const Shop = () => {
     }
     fetchData();
 
-  }, [accessToken])
+  }, [])
   return (
     <div className='shop'>
       <div className="container">

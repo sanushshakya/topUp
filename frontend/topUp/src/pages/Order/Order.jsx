@@ -61,7 +61,7 @@ const Order = () => {
         }
         fetchData();
 
-    }, [accessToken, user])
+    }, [])
 
     {
         !isLoggedIn && (

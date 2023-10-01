@@ -56,7 +56,7 @@ const UpdateProduct = () => {
       }
     }
     fetchData();
-  }, [accessToken, productId])
+  }, [])
   {
     !isLoggedIn && (
       window.location.href = '/login'
