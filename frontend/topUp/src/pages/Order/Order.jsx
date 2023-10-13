@@ -17,6 +17,14 @@ const Order = () => {
   const [search, setSearch] = useState(false);
   const [range, setRange] = useState([])
 
+  const getCurrentDate = () => {
+    const today = new Date();
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+    const yyyy = today.getFullYear();
+    return `${yyyy}-${mm}-${dd}`;
+  };
+
   const handleAll = () => {
     setAll(true);
     setStatus(false);
@@ -153,11 +161,11 @@ const Order = () => {
               <form onSubmit={handleSearchRange}>
                 <span className="date">
                   <label>From:</label>
-                  <input type='date' name='from' placeholder='place date'/>
+                  <input type='date' name='from' placeholder='place date' max={getCurrentDate()}/>
                 </span>
                 <span className="date">
                   <label>To:</label>
-                  <input type='date' name='to' placeholder='place date'/>
+                  <input type='date' name='to' placeholder='place date' max={getCurrentDate()}/>
                 </span>
                 <button type='submit'>Search</button>
               </form>
