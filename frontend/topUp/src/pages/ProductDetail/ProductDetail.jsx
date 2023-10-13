@@ -86,7 +86,7 @@ const ProductDetail = () => {
                         <span>Step 4 : Your order will be sent</span>
                         <span>Step 5 : Scan the payment and pay the due amount</span>
                         <span>Step 6 : Wait for 5 minutes</span>
-                        <span>Step 7 : Yo'll receive and email</span>
+                        <span>Step 7 : You'll receive and email</span>
                     </span>
 
                 </div>

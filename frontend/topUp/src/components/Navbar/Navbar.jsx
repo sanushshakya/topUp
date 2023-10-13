@@ -15,7 +15,6 @@ const Navbar = () => {
     const [user, setUser] = useState([]);
 
     useEffect(() => {
-
         if (accessToken) {
             const fetchData = async () => {
                 try {
@@ -35,7 +34,7 @@ const Navbar = () => {
                     <div className="logo">
                         <Link className='link' to='/'>
                             <img src='Subject.png' />
-                            <h3>esportsNepal</h3> 
+                            <h3>eSportsNepal</h3> 
                         </Link>
                     </div>
                 </div>

@@ -26,6 +26,61 @@
                 display: flex;
                 gap: 50px;
                 flex-wrap: wrap;
+                form{
+                    display: flex;
+                    gap: 100px;
+                    .date{
+                        display: flex;
+                        flex-direction: column;
+                        gap: 10px;
+                        label{
+                            font-size: 2rem;
+                        }
+                        input{
+                            border: 1px solid #fff;
+                            padding: 15px 32px;
+                            border-radius: 30px;
+                            font-size: 1.5rem;
+                        }
+                    }
+                    button{
+                        background-color: #ff8c32;
+                        border: none;
+                        color: white;
+                        padding: 5px 25px;
+                        text-align: center;
+                        font-size: 0.8rem;
+                        border-radius: 32px;
+                        cursor: pointer;
+                    }
+                }
+                .data {
+                    display: flex;
+                    justify-content: center; /* Center the table horizontally */
+                    margin-top: 20px; /* Add some space at the top */
+                  }
+                  
+                  table {
+                    border-collapse: collapse;
+                    width: 500px;
+                  }
+                  
+                  thead {
+                    background-color: #ff8c32;
+                    color: white;
+                  }
+                  
+                  th, td {
+                    border: 1px solid #ff8c32;
+                    padding: 10px;
+                    text-align: center;
+                  }
+                  
+                  tbody tr:nth-child(even) {
+                    background-color: #f2f2f2;
+                  }
+                  
+                  
             }
         }
     }

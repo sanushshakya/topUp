@@ -16,7 +16,7 @@ const Register = () => {
     username: yup.string().required('Username is required'),
     email: yup.string().email('Invalid email').required('Email is required'),
     password: yup.string().required('Password is required'),
-    phone: yup.string().required('Phone number is required'),
+    phone: yup.string().required('Phone number is required').matches(/^\d{10}$/, 'Phone number must be exactly 10 digits'),
   });
   const {
     register,
@@ -47,7 +47,7 @@ const Register = () => {
     <div className='register'>
       <div className="container">
         <div className="left">
-          <Link to="/" className='link links'><span>TopUp</span></Link>
+          <Link to="/" className='link links'><span>eSportsCardNepal</span></Link>
           <h1>NAMASTE</h1>
           <img src="Subject.png"/>
           <h3>Buy Exciting<br/>Token and Gifts.</h3>

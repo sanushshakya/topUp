@@ -14,16 +14,52 @@ const Order = () => {
   const [orderUsers, setOrderUser] = useState([]);
   const [all, setAll] = useState(true);
   const [status, setStatus] = useState(false);
+  const [search, setSearch] = useState(false);
+  const [range, setRange] = useState([])
 
   const handleAll = () => {
     setAll(true);
     setStatus(false);
+    setSearch(false);
+    setRange(false);
   };
 
   const handleStatus = () => {
     setAll(false);
     setStatus(true);
+    setSearch(false);
+    setRange(false);
   };
+
+  const handleSearch = () => {
+    setAll(false);
+    setStatus(false);
+    setSearch(true);
+  };
+
+  const handleSearchRange = async (e) => {
+    e.preventDefault(); 
+    const formData = new FormData();
+    formData.append('from_date', e.target.elements.from.value);
+    formData.append('to_date', e.target.elements.to.value);
+  
+    try {
+      const response = await axios.post(
+        `${config.apiBaseUrl}/api/order/read_by_date_range`,
+        formData,
+        {
+          params: {
+            token: accessToken
+          }
+        }
+      );
+      console.log(response.data)
+      setRange(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -88,7 +124,10 @@ const Order = () => {
           <div className="left">
             <button onClick={handleAll}>All Orders</button>
             {user.role === 'admin' && (
-              <button onClick={handleStatus}>Pending</button>
+              <>
+                <button onClick={handleStatus}>Pending</button>
+                <button onClick={handleSearch}>Report</button>
+              </>
             )}
           </div>
           {all && user.role === 'admin' && (
@@ -110,6 +149,44 @@ const Order = () => {
               {orderUsers.map(ordUser => (
                 <OrderCard key={ordUser._id} item={ordUser} />
               ))}
+            </div>
+          )}
+          {search && (
+            <div className="right">
+              <form onSubmit={handleSearchRange}>
+                <span className="date">
+                  <label>From:</label>
+                  <input type='date' name='from' placeholder='place date'/>
+                </span>
+                <span className="date">
+                  <label>To:</label>
+                  <input type='date' name='to' placeholder='place date'/>
+                </span>
+                <button type='submit'>Search</button>
+              </form>
+              <div className="data">
+              {range && (
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Username</th>
+                      <th>Product</th>
+                      <th>Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {range.map((r, index) => (
+                      <tr key={index}>
+                        <td>{r.name}</td>
+                        <td>{r.product}</td>
+                        <td>{r.created_at}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              )}
+
+              </div>
             </div>
           )}
         </div>

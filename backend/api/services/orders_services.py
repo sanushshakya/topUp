@@ -1,8 +1,11 @@
-from typing import Optional
+from typing import Optional, List
 from api.models.orders_model import Order
 from fastapi import HTTPException, status
 from bson import ObjectId
 from api.api.helpers.send_email import send_email, send_email_awaiting
+from datetime import datetime, timezone, timedelta
+from beanie import Document
+
 
 class OrdersServices:
     @staticmethod
@@ -27,6 +30,27 @@ class OrdersServices:
             raise HTTPException(status_code=500, detail=str(e))
     
     @staticmethod
+    async def read_by_date_range(from_date: Optional[str], to_date: Optional[str]) -> List[Document]:
+        try:
+            date_range_query = {}
+            
+            if from_date:
+                from_date_dt = datetime.fromisoformat(f"{from_date}T00:00:00+00:00")
+                date_range_query["$gte"] = from_date_dt
+            
+            if to_date:
+                to_date_dt = datetime.fromisoformat(f"{to_date}T23:59:59+00:00")
+                date_range_query["$lte"] = to_date_dt
+
+            query = {"created_at": date_range_query}
+
+            order_docs = await Order.find(query).to_list()
+
+            return order_docs
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=str(e))
+        
+    @staticmethod
     async def create_order(name: str, email: str, game_name: str, player_id: str, product: str, user_id: str ):
         order_doc = Order(
             name = name,
@@ -35,7 +59,8 @@ class OrdersServices:
             player_id = player_id,
             product = product,
             user_id = user_id,
-            status ='pending'
+            status ='pending',
+            created_at=datetime.utcnow()
         )
         await order_doc.save()
         # Attempt to send the email

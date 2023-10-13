@@ -11,6 +11,7 @@ class Order(Document):
     product: str
     user_id: str
     status: str
+    created_at: Optional[datetime] = None
 
     @property
     def create(self) -> datetime:

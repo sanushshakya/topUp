@@ -24,7 +24,7 @@ const Footer = () => {
                 <Link className='link' to='https://www.tiktok.com/@_deepak_tamang'><FontAwesomeIcon icon={faTiktok} style={{color: "#ffffff",}} /></Link>
                 <Link className='link' to='https://wa.me/9827617730' target='_blank' rel='noopener noreferrer'><FontAwesomeIcon icon={faWhatsapp} style={{color: "#ffffff",}} /></Link>
               </div>
-              <p>Copyright © 2023 EsportsCardNepal | Powered by Muffin</p>
+              <p>Copyright © 2023 eSportsCardNepal | Powered by Muffin</p>
             </div>
             <div className="right">
               <div className="contact">

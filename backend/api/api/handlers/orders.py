@@ -2,6 +2,9 @@ from fastapi import APIRouter, Form, HTTPException, status, Request, Depends
 import pymongo
 from api.services.orders_services import OrdersServices
 from api.api.deps.user_deps import get_current_user, is_admin
+from fastapi import Query
+from typing import Optional
+from datetime import datetime
 
 order_router = APIRouter()
 
@@ -34,6 +37,24 @@ async def read_order_by_status(current_user = Depends(get_current_user)):
             status_code = status.HTTP_404_NOT_FOUND,
             detail = "Orders not found"
         )
+        
+@order_router.post("/read_by_date_range")
+async def read_orders_by_date_range(
+    from_date: Optional[str] = Form(...),
+    to_date: Optional[str] = Form(...),
+    token: str = Depends(get_current_user)
+):
+    try:
+        return await OrdersServices.read_by_date_range(from_date, to_date)
+    except Exception as e:
+        print(f"Error: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Orders not found"
+        )
+
+
+
 
 @order_router.post("/create", summary="Create new order")
 async def create_order(name: str = Form(default=None), 

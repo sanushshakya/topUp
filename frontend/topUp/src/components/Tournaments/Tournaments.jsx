@@ -21,17 +21,21 @@ const Tournaments = ({item}) => {
       }
   }
 
-  useEffect(()=>{
-    const fetchData = async() => {
-      try{
-        const resUser = await axios.post(`${config.apiBaseUrl}/api/auth/test-token/${accessToken}`)
-        setUser(resUser.data)
-      } catch (error){
-        console.error(error.response?.data || error);
-      }
+  useEffect(() => {
+    if (accessToken) {
+      const fetchData = async () => {
+        try {
+          const resUser = await axios.post(`${config.apiBaseUrl}/api/auth/test-token/${accessToken}`)
+          setUser(resUser.data)
+        } catch (error) {
+          console.error(error.response?.data || error);
+        }
+      };
+      fetchData();
     }
-    fetchData()
-  }, []);
+  }, [accessToken]);
+  
+  
   return (
     <div className='tour'>
       <div className="banner">
@@ -44,7 +48,7 @@ const Tournaments = ({item}) => {
           {item.description}
         </span>
       </div>
-      {user.role==='admin' && (
+      {user?.role==='admin' && (
         <div className="btns">
           <button onClick={() => handleDelete(item._id)}>Delete</button>
         </div>

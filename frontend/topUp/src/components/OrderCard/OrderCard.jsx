@@ -36,7 +36,6 @@ const OrderCard = ({ item }) => {
                 catch (error) {
                     console.error(error);
                 }
-
             }
             fetchData();
         }
@@ -52,7 +51,7 @@ const OrderCard = ({ item }) => {
                     <span className='player'>Username: {item.name}</span>
                 </div>
                 {item.status === 'pending' && user.role === 'admin' && (
-                    <button onClick={handleOrderComplete}>Complete</button>
+                    <button onClick={handleOrderComplete}>Pending</button>
                 )}
             </div>
         </div>
