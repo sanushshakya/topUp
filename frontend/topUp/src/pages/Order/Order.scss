@@ -58,29 +58,26 @@
                     display: flex;
                     justify-content: center; /* Center the table horizontally */
                     margin-top: 20px; /* Add some space at the top */
-                  }
-                  
-                  table {
-                    border-collapse: collapse;
-                    width: 500px;
-                  }
-                  
-                  thead {
-                    background-color: #ff8c32;
-                    color: white;
-                  }
-                  
-                  th, td {
-                    border: 1px solid #ff8c32;
-                    padding: 10px;
-                    text-align: center;
-                  }
-                  
-                  tbody tr:nth-child(even) {
-                    background-color: #f2f2f2;
-                  }
-                  
-                  
+                }
+                table {
+                border-collapse: collapse;
+                width: 500px;
+                }
+                
+                thead {
+                background-color: #ff8c32;
+                color: white;
+                }
+                
+                th, td {
+                border: 1px solid #ff8c32;
+                padding: 10px;
+                text-align: center;
+                }
+                
+                tbody tr:nth-child(even) {
+                background-color: #f2f2f2;
+                }
             }
         }
     }

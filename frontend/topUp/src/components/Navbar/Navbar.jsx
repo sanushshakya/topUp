@@ -34,7 +34,7 @@ const Navbar = () => {
                     <div className="logo">
                         <Link className='link' to='/'>
                             <img src='Subject.png' />
-                            <h3>eSportsNepal</h3> 
+                            <h3>eSportsCardNepal</h3> 
                         </Link>
                     </div>
                 </div>

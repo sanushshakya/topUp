@@ -59,8 +59,6 @@ const Order = () => {
       console.error(error);
     }
   }
-  
-
   useEffect(() => {
     const fetchData = async () => {
       try {
