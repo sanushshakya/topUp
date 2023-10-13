@@ -53,7 +53,6 @@ const Order = () => {
           }
         }
       );
-      console.log(response.data)
       setRange(response.data);
     } catch (error) {
       console.error(error);
