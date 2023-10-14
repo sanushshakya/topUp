@@ -50,7 +50,7 @@ const AddProduct = () => {
         formData.append('price', data.price);
         formData.append('image_url', data.image_url[0]);
         try {
-            const response = await axios.post('${config.apiBaseUrl}/api/product/create', formData, {
+            const response = await axios.post(`${config.apiBaseUrl}/api/product/create`, formData, {
                 params: {
                   token: accessToken
                 }

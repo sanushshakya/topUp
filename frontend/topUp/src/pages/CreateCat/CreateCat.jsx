@@ -43,7 +43,7 @@ const CreateCat = () => {
         formData.append('description', data.description);
         formData.append('image_url', data.image_url[0]);
         try {
-            await axios.post('${config.apiBaseUrl}/api/category/create', formData, {
+            await axios.post(`${config.apiBaseUrl}/api/category/create`, formData, {
                 params: {
                   token: accessToken
                 }
