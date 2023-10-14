@@ -55,8 +55,10 @@ const AddProduct = () => {
                   token: accessToken
                 }
               });
-            setProductId(response.data._id)
-            window.location.href = `/productdetail/${productId}`
+            
+	    const newProductId = response.data._id;
+	    setProductId(newProductId)
+            window.location.href = `/productdetail/${newProductId}`
             // Handle the response as needed
         } catch (error) {
             console.error(error.response?.data || error);
