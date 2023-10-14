@@ -40,7 +40,7 @@ const ProductDetail = () => {
                   token: accessToken
                 }
               });
-            window.location.href = `/categories`
+            window.location.href = `/shop`
         } catch (error) {
             console.error(error.response.data);
         }
