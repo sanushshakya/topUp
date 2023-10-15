@@ -94,7 +94,7 @@ const Profile = () => {
         const formData = new FormData();
         formData.append('image_url', e.target.elements.image_url.files[0]);
         try {
-            await axios.put(`${config.apiBaseUrl}/api/banner/create`, formData, {
+            await axios.post(`${config.apiBaseUrl}/api/banner/create`, formData, {
                 params: {
                   token: accessToken
                 }
