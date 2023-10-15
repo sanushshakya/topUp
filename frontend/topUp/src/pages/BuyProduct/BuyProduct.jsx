@@ -89,7 +89,7 @@ const BuyProduct = () => {
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <h1>{product.product_name}</h1>
                             <h1>Rs. {product.price}</h1>
-                            {product.cat_name === "game" && (
+                            {product.cat_name === "Game" && (
                                 <div className="credentials">
                                     <span>
                                         <input {...register('gname')} type="text" placeholder='Enter your InGame name' />
