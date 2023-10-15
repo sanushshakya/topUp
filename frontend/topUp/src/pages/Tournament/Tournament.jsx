@@ -39,7 +39,7 @@ const Tournament = () => {
                 <h1>Links</h1>
                 <div className="card">
                     <img src='discord.webp' />
-                    <Link className='link' to='/'><h3>Discord</h3></Link>
+                    <Link className='link' to='https://discord.com/invite/cFXFu63Mh7'><h3>Discord</h3></Link>
                 </div>
             </div>
         </div>
