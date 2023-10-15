@@ -5,14 +5,14 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import './CreateTour.scss'
-
+import config from '../../config';
 const CreateTour = () => {
     const accessToken = Cookies.get('accessToken')
     const [user, setUser] = useState([]);
     useEffect(() => {
         const fetchData = async () => {
             try{
-            const response = await axios.post(`http://localhost:8000/api/auth/test-token/${accessToken}`)
+            const response = await axios.post(`${config.apiBaseUrl}/api/auth/test-token/${accessToken}`)
                 setUser(response.data)
             } catch (error){
             console.error(error);
@@ -42,7 +42,7 @@ const CreateTour = () => {
         formData.append('description', data.description);
         formData.append('image_url', data.image_url[0]);
         try {
-        await axios.post('http://localhost:8000/api/tournament/create', formData, {
+        await axios.post(`${config.apiBaseUrl}/api/tournament/create`, formData, {
             params: {
               token: accessToken
             }
