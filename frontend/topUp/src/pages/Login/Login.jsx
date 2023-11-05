@@ -115,7 +115,7 @@ const Login = () => {
                           <span className="error-message">{errors.password.message}</span>
                         )}
                         <div className='remember'>
-                            <Link to="#">Forgot Password?</Link>
+                            <Link to="/resetpassword">Forgot Password?</Link>
                         </div>
                     </div>
                     <button type="submit">Login</button>

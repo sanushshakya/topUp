@@ -30,6 +30,7 @@ import Order from './pages/Order/Order';
 import CreateCat from './pages/CreateCat/CreateCat';
 import Tournament from './pages/Tournament/Tournament';
 import CreateTour from './pages/CreateTour/CreateTour';
+import ResetPassword from './pages/Login/ResetPassword';
 
 
 function App() {
@@ -117,6 +118,10 @@ function App() {
     {
       path: '/register',
       element: <Register />
+    },
+    {
+      path: '/resetpassword',
+      element: <ResetPassword/>
     }
   ])
 
