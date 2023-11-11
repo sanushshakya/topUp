@@ -49,7 +49,7 @@ const ResetPassword = () => {
                     </div>
                 </Link>
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <h1>Reset Password</h1>
+                    <h1>Reset Password (Coming soon)</h1>
                     <div className="credentials">
                     <span>
                         <input {...register('username')} type="text" placeholder="Enter your Email" />
