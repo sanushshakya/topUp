@@ -1,5 +1,5 @@
 const config = {
-	apiBaseUrl: "http://localhost:8000"
+	apiBaseUrl: "https://esportscardnepal.com"
 }
 
 export default config;
