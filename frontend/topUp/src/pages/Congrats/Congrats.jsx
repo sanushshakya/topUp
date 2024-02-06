@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from 'react'
+import { useParams } from 'react-router-dom';
 import './Congrats.scss'
 import Cookies from 'js-cookie'
 
 const Congrats = () => {
   const accessToken = Cookies.get('accessToken');
+  const { token } = useParams();
   const [isLoggedIn, setIsLoggedIn] = useState(!!Cookies.get("accessToken"));
   {!isLoggedIn && (
     window.location.href = '/login'
@@ -15,8 +17,8 @@ const Congrats = () => {
                 Congratulations!
             </span>
             <span className='desc'>
-                Your order has been received. Our team will be looking toward your detail
-                and payments and will shortly add-ons your ordered token.
+              Your redeemable token: {token}<br/>
+              We've also sent you this token in your email.
             </span>
         </div>
     </div>

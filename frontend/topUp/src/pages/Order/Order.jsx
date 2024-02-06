@@ -10,7 +10,6 @@ const Order = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(!!Cookies.get('accessToken'));
   const [user, setUser] = useState([]);
   const [orders, setOrder] = useState([]);
-  const [pendings, setPending] = useState([]);
   const [orderUsers, setOrderUser] = useState([]);
   const [all, setAll] = useState(true);
   const [status, setStatus] = useState(false);
@@ -92,13 +91,6 @@ const Order = () => {
           });
           setOrder(resAllOrder.data);
 
-          const resOrderStatus = await axios.get(`${config.apiBaseUrl}/api/order/read_order_by_status`, {
-            params: {
-              token: accessToken,
-            },
-          });
-          setPending(resOrderStatus.data);
-
           if (user.role === 'user') {
             const resOrderUser = await axios.get(`${config.apiBaseUrl}/api/order/read_order_by_user/${user._id}`, {
               params: {
@@ -130,7 +122,6 @@ const Order = () => {
             <button onClick={handleAll}>All Orders</button>
             {user.role === 'admin' && (
               <>
-                <button onClick={handleStatus}>Pending</button>
                 <button onClick={handleSearch}>Report</button>
               </>
             )}
@@ -142,13 +133,7 @@ const Order = () => {
               ))}
             </div>
           )}
-          {status && user.role === 'admin' && (
-            <div className="right">
-              {pendings.map(ord => (
-                <OrderCard key={ord._id} item={ord} />
-              ))}
-            </div>
-          )}
+    
           {user.role === 'user' && (
             <div className="right">
               {orderUsers.map(ordUser => (
@@ -190,7 +175,6 @@ const Order = () => {
                   </tbody>
                 </table>
               )}
-
               </div>
             </div>
           )}

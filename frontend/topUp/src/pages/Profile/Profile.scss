@@ -108,6 +108,7 @@
                     }
                 }
             }
+            
             .pass{
                 form{
                     display: flex;
@@ -152,7 +153,7 @@
                         display: flex;
                         justify-content: center;
                         align-items: center;
-                        gap: 20px;
+                        gap: 50px;
                         h3{
                             font-size: 1rem;
                         }
@@ -170,6 +171,15 @@
             }
             .addBan{
                 form{
+                    display: flex;
+
+                    gap: 20px;
+                    input{
+                        padding: 15px 10px;
+                        color: #fff;
+                        gap: 20px;
+                        font-size: 1.2rem;
+                    }
                     button{
                         background-color: #ff8c32;
                         border: none;
@@ -242,6 +252,20 @@
                         font-size: 0.8rem;
                     }
                    }
+                }
+                .wallet{
+                    .top{
+                        flex-direction: column;
+                        .left{
+                            flex-direction: row;
+                            h3{
+                                font-size: 1rem;
+                            }
+                            h1{
+                                font-size: 1.5rem;
+                            }
+                        }
+                    }
                 }
             }
         }

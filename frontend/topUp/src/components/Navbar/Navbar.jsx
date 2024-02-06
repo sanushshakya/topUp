@@ -13,6 +13,24 @@ const Navbar = () => {
     const accessToken = Cookies.get('accessToken');
     const [isLoggedIn, setIsLoggedIn] = useState(!!Cookies.get("accessToken"));
     const [user, setUser] = useState([]);
+    const [wallet, setWallet] = useState(null);
+
+    const handleWallet = async () => {
+        try{
+            await axios.post(`${config.apiBaseUrl}/api/wallet/create`,null,
+            {
+                params: {
+                  token: accessToken
+                }
+            });
+            window.location.reload();
+        }catch (error) {
+            console.error(error.response?.data || error);
+        }
+       
+    };
+    
+    
 
     useEffect(() => {
         if (accessToken) {
@@ -20,6 +38,12 @@ const Navbar = () => {
                 try {
                     const response = await axios.post(`${config.apiBaseUrl}/api/auth/test-token/${accessToken}`);
                     setUser(response.data);
+                    const resWallet = await axios.get(`${config.apiBaseUrl}/api/wallet/read`, {
+                        params: {
+                          token: accessToken,
+                        },
+                      });
+                      setWallet(resWallet.data);
                 } catch (error) {
                     console.error(error.response?.data || error);
                 }
@@ -49,6 +73,11 @@ const Navbar = () => {
                 <div className="right">
                     {isLoggedIn ? (
                         <div className="user icons">
+                            {wallet===null ? (
+                                <button onClick={handleWallet}>Create Wallet</button>
+                            ) : (
+                            <Link to={`/profile/${user._id}`} className='link'><button>Wallet</button></Link>
+                            )}
                             <Link to='/order' className='link'><FontAwesomeIcon icon={faCartShopping} style={{ color: "#ffffff", }} /></Link>
                             <Link to={`/profile/${user._id}`} className='link'>{user.username}</Link>
                         </div>
