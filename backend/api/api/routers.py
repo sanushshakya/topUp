@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from api.api.handlers import products, categories, banners, users, orders, tournaments, wallets, gifts
+from api.api.handlers import products, categories, banners, users, orders, tournaments, wallets, gifts, transactions
 from api.api.auth.jwt import auth_router
 from api.api.health.health_check import health_check_router
 
@@ -13,5 +13,6 @@ router.include_router(orders.order_router, prefix="/order", tags=["order"])
 router.include_router(tournaments.tournament_router, prefix="/tournament", tags=["tournament"])
 router.include_router(wallets.wallet_router, prefix="/wallet", tags=["wallet"])
 router.include_router(gifts.gift_router, prefix="/gift", tags=["gift"])
+router.include_router(transactions.transaction_router, prefix="/transaction", tags=["transaction"])
 router.include_router(auth_router, prefix="/auth", tags=["auth"])
 router.include_router(health_check_router, prefix="/health",tags=["health"])

@@ -62,7 +62,6 @@ async def delete_gift(product_name: str, current_user = Depends(is_admin)):
 
 @gift_router.post("/buy/{product_name}", summary="Buy gift token")
 async def buy_gift_token(product_name: str, current_user = Depends(get_current_user)):
-    print(product_name)
     try:
         result = await GiftServices.buy_gift_token(product_name, current_user.email)
         if result:

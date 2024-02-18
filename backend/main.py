@@ -13,6 +13,7 @@ from api.models.users_model import Users
 from api.models.orders_model import Order
 from api.models.wallets_model import Wallets
 from api.models.gifts_model import Gifts
+from api.models.transactions_model import Transactions
 from api.api.routers import router
 from fastapi.staticfiles import StaticFiles
 
@@ -23,7 +24,8 @@ app = FastAPI(
 
 # Set up CORS
 origins = [
-    "*"
+    "*",
+    "http://localhost:5173"
 ]
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
@@ -58,7 +60,8 @@ async def startup_db_client():
             Order,
             Tournaments,
             Wallets,
-            Gifts
+            Gifts,
+            Transactions
         ]
     )
 
