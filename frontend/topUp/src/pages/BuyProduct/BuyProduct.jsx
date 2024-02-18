@@ -44,7 +44,7 @@ const BuyProduct = () => {
         }
         fetchData();
     }
-        , [])
+        , [accessToken])
 
     const handleSubmit = async () => {
         const formData = new FormData();
@@ -52,6 +52,8 @@ const BuyProduct = () => {
         formData.append('email', `${user.email}`);
         formData.append('product', `${product.product_name}`)
         formData.append('user_id', `${user._id}`)
+        formData.append('transaction_type', 'Purchase Token')
+        formData.append('amount', `${product.price}`)
         try {
             const resOrder = await axios.post(`${config.apiBaseUrl}/api/order/create`, formData, {
                 params: {
@@ -64,8 +66,14 @@ const BuyProduct = () => {
                   token: accessToken
                 }
             });
-            
+
             await axios.put(`${config.apiBaseUrl}/api/wallet/update_subtract/${product.price}`, null, {
+                params: {
+                  token: accessToken
+                }
+            });
+
+            await axios.post(`${config.apiBaseUrl}/api/transaction/create`, formData, {
                 params: {
                   token: accessToken
                 }

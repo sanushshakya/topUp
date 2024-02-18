@@ -169,6 +169,15 @@
                     }
                 }
             }
+            .transaction{
+                .transac{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    border: 1px solid #ff8c32;
+                    padding: 10px;
+                }
+            }
             .addBan{
                 form{
                     display: flex;

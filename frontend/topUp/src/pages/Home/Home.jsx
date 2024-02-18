@@ -58,13 +58,6 @@ const Home = () => {
             <CatCard key={cat._id} item={cat} />
           ))}
         </div>
-        <div className="banner">
-          <Carousel autoPlay infiniteLoop showThumbs={false} showArrows={true} showStatus={false} showIndicators={false} interval={5000}>
-            {banners.slice(3, 6).map(ban => (
-              <Banner item={ban} key={ban._id} />
-            ))}
-          </Carousel>
-        </div>
         <div className="cmpTitle">
           <h1>Products</h1>
         </div>
