@@ -14,21 +14,10 @@ const BuyProduct = () => {
     const accessToken = Cookies.get('accessToken')
     const [isLoggedIn, setIsLoggedIn] = useState(!!Cookies.get("accessToken"));
     const [user, setUser] = useState([]);
+    const [balance, setBalance] = useState([]);
 
     const { productId } = useParams();
     const [product, setProduct] = useState('')
-
-    const schema = yup.object().shape({
-        gname: yup.string(),
-        playerid: yup.string(),
-    });
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm({
-        resolver: yupResolver(schema),
-    });
 
     useEffect(() => {
         const fetchData = async () => {
@@ -40,6 +29,12 @@ const BuyProduct = () => {
                 if (accessToken) {
                     const response = await axios.post(`${config.apiBaseUrl}/api/auth/test-token/${accessToken}`)
                     setUser(response.data)
+                    const resBalance = await axios.get(`${config.apiBaseUrl}/api/wallet/read`, {
+                        params: {
+                          token: accessToken,
+                        },
+                      });
+                    setBalance(resBalance.data);
                 }
             }
             catch (error) {
@@ -49,23 +44,43 @@ const BuyProduct = () => {
         }
         fetchData();
     }
-        , [])
+        , [accessToken])
 
-    const onSubmit = async (data) => {
+    const handleSubmit = async () => {
         const formData = new FormData();
         formData.append('name', `${user.username}`);
         formData.append('email', `${user.email}`);
-        formData.append('gname', data.gname);
-        formData.append('playerid', data.playerid);
         formData.append('product', `${product.product_name}`)
         formData.append('user_id', `${user._id}`)
+        formData.append('transaction_type', 'Purchase Token')
+        formData.append('amount', `${product.price}`)
         try {
-            const response = await axios.post(`${config.apiBaseUrl}/api/order/create`, formData, {
+            const resOrder = await axios.post(`${config.apiBaseUrl}/api/order/create`, formData, {
                 params: {
                   token: accessToken
                 }
-              });
-            window.location.href = `/payment`
+            });
+
+            const resPurchase = await axios.post(`${config.apiBaseUrl}/api/gift/buy/${product.product_name}`, null, {
+                params: {
+                  token: accessToken
+                }
+            });
+
+            await axios.put(`${config.apiBaseUrl}/api/wallet/update_subtract/${product.price}`, null, {
+                params: {
+                  token: accessToken
+                }
+            });
+
+            await axios.post(`${config.apiBaseUrl}/api/transaction/create`, formData, {
+                params: {
+                  token: accessToken
+                }
+            });
+
+            window.location.href = `/congrats/${resPurchase.data.token}`
+            
             // Handle the response as needed
         } catch (error) {
             console.error(error.response?.data || error);
@@ -85,31 +100,23 @@ const BuyProduct = () => {
                     <div className="left">
                         <img src={`/${product.image_url}`} />
                     </div>
-                    <div className="right">
-                        <form onSubmit={handleSubmit(onSubmit)}>
-                            <h1>{product.product_name}</h1>
-                            <h1>Rs. {product.price}</h1>
-                            {product.cat_name === "Game" && (
-                                <div className="credentials">
-                                    <span>
-                                        <input {...register('gname')} type="text" placeholder='Enter your InGame name' />
-                                        <FontAwesomeIcon icon={faUser} />
-                                    </span>
-                                    {errors.gname && (
-                                        <span className="error-message">{errors.gname.message}</span>
-                                    )}
-                                    <span>
-                                        <input {...register('playerid')} type="text" placeholder='Enter your played id' />
-                                        <FontAwesomeIcon icon={faUser} />
-                                    </span>
-                                    {errors.playerid && (
-                                        <span className="error-message">{errors.playerid.message}</span>
-                                    )}
-                                </div>
+                    <div className="center">
+                        <h1>{product.product_name}</h1>
+                        <h1>Rs. {product.price}</h1>
+                        {product.cat_name === "Game" && (
+                            <>
+                            {product.price < balance.balance ? (
+                                <button onClick={handleSubmit}>Order</button>
+                            ):(
+                                <h1>Not Enough Balance.</h1>
                             )}
-                            <button type="submit">Order</button>
-                            <p>Please just click one time and wait.</p>
-                        </form>
+                            </>
+                        )}
+                        <p>Please just click one time and wait.</p>
+                    </div>
+                    <div className="right">
+                        <h1>Your Balance:</h1>
+                        <h1>Rs. {balance.balance}</h1>
                     </div>
                 </div>
             </div>

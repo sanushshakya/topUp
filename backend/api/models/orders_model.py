@@ -6,11 +6,8 @@ from typing import Optional
 class Order(Document):
     name: str
     email: str
-    game_name: str
-    player_id: str 
     product: str
     user_id: str
-    status: str
     created_at: Optional[datetime] = None
 
     @property

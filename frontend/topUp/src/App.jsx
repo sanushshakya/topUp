@@ -78,7 +78,7 @@ function App() {
           element: <About />
         },
         {
-          path: '/congrats',
+          path: '/congrats/:token',
           element: <Congrats />
         },
         {

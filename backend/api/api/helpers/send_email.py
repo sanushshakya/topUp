@@ -29,7 +29,7 @@ def send_email(to_email):
     # Close the SMTP server connection
     server.quit()
     
-def send_email_awaiting(to_email):
+def send_email_awaiting(to_email, tok):
     # Email configuration
     smtp_server = 'smtp.gmail.com'
     smtp_port = 587
@@ -43,7 +43,7 @@ def send_email_awaiting(to_email):
     msg['Subject'] = 'Order Received'
 
     # Attach the message to the email
-    msg.attach(MIMEText('We have received your order. Our team will update your tokens in 20-25 minutes after checking your payment. Thank you!', 'plain'))
+    msg.attach(MIMEText('Your token to be redeem is:', tok))
 
     # Connect to the SMTP server
     server = smtplib.SMTP(smtp_server, smtp_port)

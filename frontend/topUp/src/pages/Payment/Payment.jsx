@@ -13,7 +13,7 @@ const Payment = () => {
     <div className='payment'>
       <div className="container">
         <h1>Payment Options</h1>
-        <p>Scan payment and click continue below.</p>
+        <p>Please contact with our admin and recharge your wallet with required amount.</p>
         <div className="option">
             <span>
                 <p>Esewa</p>
@@ -32,7 +32,6 @@ const Payment = () => {
                 <img src='imepay.jpg' />
             </span>
         </div>
-        <Link to='/congrats' className='link'><button>Continue</button></Link>
       </div>
     </div>
   )

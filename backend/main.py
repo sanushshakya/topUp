@@ -11,6 +11,9 @@ from api.models.banners_model import Banners
 from api.models.tournament_model import Tournaments
 from api.models.users_model import Users
 from api.models.orders_model import Order
+from api.models.wallets_model import Wallets
+from api.models.gifts_model import Gifts
+from api.models.transactions_model import Transactions
 from api.api.routers import router
 from fastapi.staticfiles import StaticFiles
 
@@ -21,7 +24,8 @@ app = FastAPI(
 
 # Set up CORS
 origins = [
-    "*"
+    "*",
+    "http://localhost:5173"
 ]
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
@@ -37,7 +41,6 @@ app.add_middleware(
 #Startup Event
 @app.on_event("startup")
 async def startup_db_client():
-
     env = os.getenv("ENV", "LOCAL")
     if env == "STAGE":
         db_url = settings.DB_STAGE_URL
@@ -55,7 +58,10 @@ async def startup_db_client():
             Banners,
             Users,
             Order,
-            Tournaments
+            Tournaments,
+            Wallets,
+            Gifts,
+            Transactions
         ]
     )
 

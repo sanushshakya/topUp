@@ -10,53 +10,23 @@
                     height: 400px;
                 }
             }
-            .right{
-                form{
-                    display: flex;
-                    flex-direction: column;
-                    gap: 20px;
-                    h1{
-                        color: #FF8C32;
-                    }
-                    .credentials{
-                        display: flex;
-                        flex-direction: column;
-                        gap: 50px;
-                        span{
-                            display: flex;
-                            align-items: center;
-                            justify-content: space-between;
-                            border: solid 1px #FF8C32;
-                            width: 500px;
-                            padding-right: 20px;
-                            border-radius: 20px;
-                            color: #138E9A;
-                            font-size: x-large;
-                            input{
-                                padding: 15px 30px;
-                                border: none;
-                                border-radius: 20px;
-                                width: 100%;
-                                color: #138E9A;
-                                font-size: large;
-                            }
-                        }
-                        .error-message{
-                            border: none;
-                            color: #FF8C32;
-                        }
-                    }
-                    button{
-                        background-color: #FF8C32;
-                        border: none;
-                        border-radius: 20px;
-                        width: 100%;
-                        padding: 10px 30px;
-                        font-weight: 300;
-                        font-size: 18px;
-                        color: #fff;
-                        cursor: pointer;
-                    }
+            .center{
+                display: flex;
+                flex-direction: column;
+                gap: 50px;
+                h1{
+                    color: #FF8C32;
+                }
+                button{
+                    background-color: #FF8C32;
+                    border: none;
+                    border-radius: 20px;
+                    width: 100%;
+                    padding: 10px 30px;
+                    font-weight: 300;
+                    font-size: 18px;
+                    color: #fff;
+                    cursor: pointer;
                 }
             }
         }
@@ -74,19 +44,15 @@
                         height: 120px;
                     }
                 }
-                .right{
-                    form{
-                        .credentials{
-                            span{
-                                width: 300px;
-                            }
-                        }
-                        button{
-                            font-weight: 300;
-                            font-size: 15px;
-                        }
+                .center{
+                    gap: 20px;
+                    button{
+                        width: 50%;
+                        font-weight: 300;
+                        font-size: 15px;
                     }
                 }
+                
             }
         }
     }
@@ -102,17 +68,11 @@
                         height: 300px;
                     }
                 }
-                .right{
-                    form{
-                        .credentials{
-                            span{
-                                width: 300px;
-                            }
-                        }
-                        button{
-                            font-weight: 300;
-                            font-size: 15px;
-                        }
+                .center{
+                    gap: 30px;
+                    button{
+                        font-weight: 300;
+                        font-size: 15px;
                     }
                 }
             }
