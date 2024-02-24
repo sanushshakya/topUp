@@ -57,7 +57,7 @@ const Navbar = () => {
                 <div className="left">
                     <div className="logo">
                         <Link className='link' to='/'>
-                            <img src='Subject.png' />
+                            <img src='/Subject.png' />
                             <h3>eSportsCardNepal</h3> 
                         </Link>
                     </div>
