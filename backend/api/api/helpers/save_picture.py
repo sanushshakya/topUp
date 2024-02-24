@@ -9,10 +9,10 @@ BASE_DIR = Path(__file__).parents[4].resolve()
 print(BASE_DIR)
 static = f"{BASE_DIR}/frontend/topUp/static"
 
-# set imgur client
-client_id = os.getenv("IMGUR_CLIENT_ID")
-client_secret = os.getenv("IMGUR_CLIENT_SECRET")
-imgur_client = ImgurClient(client_id, client_secret)
+# # set imgur client
+# client_id = os.getenv("IMGUR_CLIENT_ID", "NOT_SET")
+# client_secret = os.getenv("IMGUR_CLIENT_SECRET", "NOT_SET")
+# imgur_client = ImgurClient(client_id, client_secret)
 
 def save_picture(file, folderName: str = '',
                  fileName: str = None):
@@ -40,8 +40,11 @@ def save_picture(file, folderName: str = '',
     but if imgur is being used then the path of uploaded image can be returned
     """
 
-    if os.getenv("USE_IMGUR_FOR_IMAGE_STORAGE", default="False").lower() in ['true', 'yes', '1', 'on']:
-        uploaded_image = imgur_client.upload_from_path(picture_path)
-        return uploaded_image['link']
-    else:
-        return f'static/{folderName}/{picture_name}'
+    # if os.getenv("USE_IMGUR_FOR_IMAGE_STORAGE", default="False").lower() in ['true', 'yes', '1', 'on']:
+    #     uploaded_image = imgur_client.upload_from_path(picture_path)
+    #     return uploaded_image['link']
+    # else:
+    #     return f'static/{folderName}/{picture_name}'
+
+    return f'static/{folderName}/{picture_name}'
+
