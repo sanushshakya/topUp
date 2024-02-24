@@ -46,5 +46,5 @@ def save_picture(file, folderName: str = '',
     # else:
     #     return f'static/{folderName}/{picture_name}'
 
-    return f'static/{folderName}/{picture_name}'
+    return f'{static}/{folderName}/{picture_name}'
 
