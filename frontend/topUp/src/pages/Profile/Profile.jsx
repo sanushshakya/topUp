@@ -184,7 +184,7 @@ const Profile = () => {
             });
             await axios.post(`${config.apiBaseUrl}/api/transaction/create`, formData, {
                 params: {
-                  token: accessToken
+                    token: accessToken
                 }
             });
         } catch (error) {
@@ -325,13 +325,6 @@ const Profile = () => {
                     const resBanner = await axios.get(`${config.apiBaseUrl}/api/banner/read`)
                     setBanner(resBanner.data)
 
-                    const resGift = await axios.get(`${config.apiBaseUrl}/api/gift/read`, {
-                        params: {
-                            token: accessToken,
-                        },
-                    });
-                    setGifts(resGift.data)
-
                     const resTransaction = await axios.get(`${config.apiBaseUrl}/api/transaction/read`, {
                         params: {
                             token: accessToken,
@@ -347,6 +340,24 @@ const Profile = () => {
         }
         fetchData()
     }, [accessToken]);
+
+    useEffect(() => {
+        if (user && user.role === 'admin') {
+            const fetchAdminData = async () => {
+                try {
+                    const resGift = await axios.get(`${config.apiBaseUrl}/api/gift/read`, {
+                        params: {
+                            token: accessToken,
+                        },
+                    });
+                    setGifts(resGift.data);
+                } catch (error) {
+                    console.error(error.response?.data || error);
+                }
+            };
+            fetchAdminData();
+        }
+    }, [user, accessToken]);
 
     {
         !isLoggedIn && (
