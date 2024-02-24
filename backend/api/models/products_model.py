@@ -4,7 +4,7 @@ from datetime import datetime
 from typing import Optional
 
 class Products(Document):
-    product_name: str
+    product_name: Indexed(str, unique=True)
     cat_name: str
     description: str
     price: str
