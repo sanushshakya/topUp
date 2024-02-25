@@ -74,21 +74,29 @@ const ProductDetail = () => {
                     </div>
                 </div>
                 <div className="bottom">
-                    <span className='desc'>
-                        <h3>Product Description:</h3>
-                        {product.description}
-                    </span>
-                    <span className='purchase'>
-                        <h3>How to Purchase ?</h3>
-                        <span>Step 1 : Click buy button</span>
-                        <span>Step 2 : Fill in the form if any</span>
-                        <span>Step 3 : Click the order button</span>
-                        <span>Step 4 : Your order will be sent</span>
-                        <span>Step 5 : Scan the payment and pay the due amount</span>
-                        <span>Step 6 : Wait for 5 minutes</span>
-                        <span>Step 7 : You'll receive and email</span>
-                    </span>
-
+                    <div className="left">
+                        <span className='desc'>
+                            <h3>Product Description:</h3>
+                            {product.description}
+                        </span>
+                        <span className='purchase'>
+                            <h3>How to Purchase ?</h3>
+                            <span>Step 1 : Click buy button</span>
+                            <span>Step 3 : Click the order button</span>
+                            <span>Step 4 : Your order will be sent</span>
+                            <span>Re-check if you have enough balance in your wallet for the purchase.</span>
+                        </span>
+                    </div>
+                    <div className="right">
+                        <span className='purchase'>
+                            <h3>How to redeem Pubg Mobile UC Pins?</h3>
+                            <span>Step 1 : Log in to your account.</span>
+                            <span>Step 2 : Access the "PUBG Mobile game credit top-up" page.</span>
+                            <span>Step 3 : Access the "Order" button, enter the redemption code provided from there.</span>
+                            <span>Step 4 : You can then redeem this code value as PUBG Mobile Unknown Cash.</span>
+                        </span>
+                    </div>
+                
                 </div>
             </div>
         </div>

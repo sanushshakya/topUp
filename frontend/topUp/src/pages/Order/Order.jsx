@@ -161,6 +161,7 @@ const Order = () => {
                     <tr>
                       <th>Username</th>
                       <th>Product</th>
+                      <th>Token</th>
                       <th>Date</th>
                     </tr>
                   </thead>
@@ -169,6 +170,7 @@ const Order = () => {
                       <tr key={index}>
                         <td>{r.name}</td>
                         <td>{r.product}</td>
+                        <td>{r.token}</td>
                         <td>{r.created_at}</td>
                       </tr>
                     ))}

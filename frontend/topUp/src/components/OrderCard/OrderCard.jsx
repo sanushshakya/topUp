@@ -29,6 +29,7 @@ const OrderCard = ({ item }) => {
             <div className="container">
                 <div className="card">
                     <span className='title'>Product: {item.product}</span>
+                    <span className='tok'>Token: {item.token}</span>
                     <span className='player'>Username: {item.name}</span>
                 </div>
             </div>
