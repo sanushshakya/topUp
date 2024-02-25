@@ -46,5 +46,6 @@ def save_picture(file, folderName: str = '',
     # else:
     #     return f'static/{folderName}/{picture_name}'
 
-    return f'{static}/{folderName}/{picture_name}'
+    # the image gets saved in the frontend folder but we only need to provide the path starting from static folder, the prefix upto frontend folder is not required
+    return f'static/{folderName}/{picture_name}'
 
