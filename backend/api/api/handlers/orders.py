@@ -43,14 +43,15 @@ async def read_orders_by_date_range(
             detail="Orders not found"
         )
 
-@order_router.post("/create", summary="Create new order")
-async def create_order(name: str = Form(default=None), 
-                      email:str = Form(default=None), 
-                      product: str = Form(default=None),
-                      user_id: str = Form(default=None),
-                      current_user = Depends(get_current_user)):
+@order_router.post("/create/{tok}", summary="Create new order")
+async def create_order(tok:str,
+                        name: str = Form(default=None), 
+                        email:str = Form(default=None), 
+                        product: str = Form(default=None),
+                        user_id: str = Form(default=None),
+                        current_user = Depends(get_current_user)):
     try:
-        order = await OrdersServices.create_order(name, email, product, user_id)
+        order = await OrdersServices.create_order(name, email, product, user_id, tok)
         return order  # Return the created order object
     except pymongo.errors.DuplicateKeyError:
         raise HTTPException(

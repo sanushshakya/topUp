@@ -8,6 +8,7 @@ class Order(Document):
     email: str
     product: str
     user_id: str
+    token: str
     created_at: Optional[datetime] = None
 
     @property

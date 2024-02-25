@@ -43,12 +43,13 @@ class OrdersServices:
             raise HTTPException(status_code=500, detail=str(e))
         
     @staticmethod
-    async def create_order(name: str, email: str, product: str, user_id: str ):
+    async def create_order(name: str, email: str, product: str, user_id: str, tok:str ):
         order_doc = Order(
             name = name,
             email = email,
             product = product,
             user_id = user_id,
+            token = tok,
             created_at=datetime.utcnow()
         )
         await order_doc.save()

@@ -39,19 +39,19 @@ class GiftServices:
             return "Gift Deleted Successfully"
 
     @staticmethod
-    async def buy_gift_token(product_name: str, email):
+    async def buy_gift_token(product_name: str, email: str):
         gift = await Gifts.find_one(Gifts.product_name ==  product_name)
         if gift:
             tok = gift.tokens[0]
             gift.tokens.remove(tok)  # Remove purchased token
             await gift.save()
-            # Attempt to send the email
-            try:
-                send_email_awaiting(email, tok)
-            except Exception as email_error:
-                # Handle the email sending error here (e.g., log the error)
-                print(f"Email sending error: {str(email_error)}")
-                # Optionally, you can choose to retry sending the email here
+            # # Attempt to send the email
+            # try:
+            #     send_email_awaiting(email, tok)
+            # except Exception as email_error:
+            #     # Handle the email sending error here (e.g., log the error)
+            #     print(f"Email sending error: {str(email_error)}")
+            #     # Optionally, you can choose to retry sending the email here
             return tok
             
     @staticmethod
