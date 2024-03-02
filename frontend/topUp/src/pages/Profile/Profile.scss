@@ -170,6 +170,7 @@
                 }
             }
             .transaction{
+                flex-direction: column-reverse;
                 .transac{
                     display: flex;
                     flex-direction: column;

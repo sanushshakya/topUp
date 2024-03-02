@@ -24,6 +24,7 @@
             }
             .right{
                 display: flex;
+                flex-direction: row-reverse;
                 gap: 50px;
                 flex-wrap: wrap;
                 form{

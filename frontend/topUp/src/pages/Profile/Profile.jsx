@@ -46,6 +46,7 @@ const Profile = () => {
         setSettings(true);
         setPass(false);
         setAddBan(false);
+        setTransaction(false);
     }
 
     const handleProfile = () => {
@@ -80,6 +81,7 @@ const Profile = () => {
         setSettings(false);
         setPass(true);
         setAddBan(false);
+        setTransaction(false);
     }
 
     const handlePassUpdate = async (e) => {
@@ -101,6 +103,7 @@ const Profile = () => {
             setSettings(true);
             setPass(false);
             setAddBan(false);
+            setTransaction(false);
         } catch (error) {
             console.error(error.response?.data || error);
         }
@@ -116,10 +119,12 @@ const Profile = () => {
         setSettings(false);
         setPass(false);
         setAddBan(false);
+        setTransaction(false);
     }
     const handleBanUpdate = () => {
         setBan(false);
         setAddBan(true);
+        setTransaction(false);
     }
 
     const handleBanAdd = async (e) => {
@@ -156,6 +161,7 @@ const Profile = () => {
         setSettings(false);
         setPass(false);
         setAddBan(false);
+        setTransaction(false);
     }
     const handleRecharge = () => {
         setUpdateToken(false)
@@ -167,6 +173,7 @@ const Profile = () => {
         setSettings(false);
         setPass(false);
         setAddBan(false);
+        setTransaction(false);
     }
 
     const handleRechargeBalance = async (e) => {
@@ -203,6 +210,7 @@ const Profile = () => {
         setSettings(false);
         setPass(false);
         setAddBan(false);
+        setTransaction(false);
     }
 
     const handleGiftAdd = () => {
@@ -215,6 +223,7 @@ const Profile = () => {
         setSettings(false);
         setPass(false);
         setAddBan(false);
+        setTransaction(false);
     }
 
     const handleTokenChange = (index, value) => {
@@ -253,6 +262,7 @@ const Profile = () => {
         window.location.reload();
         console.log('hello')
         setGList(false);
+        setTransaction(false);
     };
 
     const handleTokenDelete = async (product_name) => {
@@ -275,6 +285,7 @@ const Profile = () => {
         setSettings(false);
         setPass(false);
         setAddBan(false);
+        setTransaction(false);
     }
     const handleTransaction = () => {
         setTransaction(true)
@@ -512,20 +523,21 @@ const Profile = () => {
                         )}
                         {transaction && (
                             <div className="right transaction">
-                                <div className="top">
-                                    <h1>Transaction History</h1>
-                                </div>
                                 {tarnsactionHistory && tarnsactionHistory.length > 0 ? (
                                     tarnsactionHistory.map((transac, index) => (
                                         <div className="transac" key={index}>
                                             <span>Amount: {transac.amount}</span>
                                             <span>Type: {transac.transaction_type}</span>
+                                            <span>Email: {transac.email}</span>
                                             <span>Date:{transac.created_at}</span>
                                         </div>
                                     ))
                                 ) : (
                                     <p>No transactions done.</p>
                                 )}
+                                <div className="top">
+                                    <h1>Transaction History</h1>
+                                </div>
                             </div>
                         )}
                         {ban && (
