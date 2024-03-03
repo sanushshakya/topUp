@@ -20,6 +20,7 @@ async def read_transaction(current_user = Depends(get_current_user)):
 async def create_transaction(
     transaction_type: str = Form(...),
     amount: str = Form(...),
+    email: str = Form(...),
     current_user = Depends(get_current_user)
 ):
     try:
@@ -32,7 +33,7 @@ async def create_transaction(
         )
 
     try:
-        return await TransactionsServices.create_transaction(str(current_user.id), current_user.email, transaction_type, amount_float)
+        return await TransactionsServices.create_transaction(str(current_user.id), email, transaction_type, amount_float)
     except DuplicateKeyError:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
