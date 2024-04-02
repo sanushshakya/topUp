@@ -231,6 +231,7 @@ const Profile = () => {
         updatedTokens[index] = value;
         setTokens(updatedTokens);
     };
+
     const renderTokenInputs = () => {
         return tokens.map((token, index) => (
             <input
@@ -244,7 +245,6 @@ const Profile = () => {
 
     const handleGiftsAdd = async (e) => {
         e.preventDefault();
-
         const formData = new FormData();
         formData.append('product_name', e.target.product_name.value);
         formData.append('tokens', `${tokens}`);
@@ -260,7 +260,6 @@ const Profile = () => {
         }
 
         window.location.reload();
-        console.log('hello')
         setGList(false);
         setTransaction(false);
     };
@@ -304,7 +303,7 @@ const Profile = () => {
         e.preventDefault();
         const formData = new FormData();
         formData.append('product_name', product);
-        formData.append('tokens', e.target.tokens.value);
+        formData.append('tokens', `${tokens}`);
 
         try {
             await axios.put(`${config.apiBaseUrl}/api/gift/update`, formData, {
@@ -508,7 +507,10 @@ const Profile = () => {
                             <div className="right">
                                 <form onSubmit={handleTokenAddition}>
                                     <input name='product_name' type="text" value={product} />
-                                    <input name='tokens' type="text" placeholder='Enter New Token' />
+                                    {renderTokenInputs()}
+                                    <button type="button" onClick={() => setTokens([...tokens, ''])}>
+                                        Add Tokens
+                                    </button>
                                     <button type='submit'>Update</button>
                                 </form>
                             </div>
@@ -517,6 +519,7 @@ const Profile = () => {
                             <div className="right pass">
                                 <form onSubmit={handlePassUpdate}>
                                     <input name="password" type="password" placeholder='Enter new password' />
+                                    
                                     <button type='submit'>Change Password</button>
                                 </form>
                             </div>
