@@ -42,6 +42,7 @@ async def read_gift_by_id(gift_id: str, current_user = Depends(get_current_user)
 async def update_gift_tokens(product_name: str = Form(default=None),
                             tokens: str = Form(default=None), 
                             current_user = Depends(is_admin)):
+    tokens = tokens.split(",") if tokens else None
     try:
         return await GiftServices.update_gift_tokens(product_name, tokens)
     except Exception as e:

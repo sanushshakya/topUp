@@ -23,11 +23,11 @@ class GiftServices:
         return await Gifts.find_one(Gifts.id == gift_id)
 
     @staticmethod
-    async def update_gift_tokens(product_name: str, tokens: str):
+    async def update_gift_tokens(product_name: str, tokens: list[str]):
         gift = await Gifts.find_one(Gifts.product_name == product_name)
         if gift:
             gift.product_name = product_name
-            gift.tokens.append(tokens)
+            gift.tokens.extend(tokens)
             await gift.save()
             return gift
 
