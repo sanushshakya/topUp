@@ -538,9 +538,6 @@ const Profile = () => {
                                 ) : (
                                     <p>No transactions done.</p>
                                 )}
-                                <div className="top">
-                                    <h1>Transaction History</h1>
-                                </div>
                             </div>
                         )}
                         {ban && (
