@@ -10,6 +10,9 @@ import Banner from '../../components/Banner/Banner'
 import CatCard from '../../components/CatCard/CatCard';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import config from '../../config'
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const Home = () => {
   const accessToken = Cookies.get('accessToken')
@@ -17,6 +20,23 @@ const Home = () => {
   const [cats, setCat] = useState([]);
   const [products, setProduct] = useState([]);
   const [user, setUser] = useState([]);
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 1000,
+  };
+  const cardSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+  };
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -41,11 +61,11 @@ const Home = () => {
     <div className='home'>
       <div className="container">
         <div className="banner">
-          <Carousel autoPlay infiniteLoop showThumbs={false} showArrows={false} showStatus={false} showIndicators={true} interval={5000}>
-            {banners.slice(0, 3).map((ban, index) => (
-              <Banner item={ban} key={index} />
-            ))}
-          </Carousel>
+          <Slider {...settings} className='hide-arrows'>
+            {banners.map((ban, index) => (
+                <Banner item={ban} key={index} />
+              ))}
+          </Slider>
         </div>
         <div className="cmpTitle cat">
           <h1>Categories</h1>
@@ -54,17 +74,21 @@ const Home = () => {
           )}
         </div>
         <div className="slide">
-          {cats.slice(0, 4).map(cat => (
-            <CatCard key={cat._id} item={cat} />
-          ))}
+          <Slider {...cardSettings}>
+            {cats.map(cat => (
+              <CatCard key={cat._id} item={cat} />
+            ))}
+          </Slider>
         </div>
         <div className="cmpTitle">
           <h1>Products</h1>
         </div>
         <div className="slide">
-          {products.slice(0, 4).map(pro => (
-            <ProductCard key={pro._id} item={pro} />
-          ))}
+          <Slider {...cardSettings}>
+            {products.map(pro => (
+              <ProductCard key={pro._id} item={pro} />
+            ))}
+          </Slider>
         </div>
       </div>
     </div>

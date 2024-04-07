@@ -1,39 +1,62 @@
 .catCard{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    border: none;
-    cursor: pointer;
-    img{
-        margin-top: 20px;
-        width: 335px;
-        height: 400px;
-        object-fit: cover;
-        border: 1px solid #ff8c32;
-        border-radius: 10px;
-    }
-    .title{
-        font-weight: 700;
-        font-size: 30px;
-    }
-    .desc{
-        font-weight: 300;
-        height: 40px;
-        overflow: hidden;
-        text-align: justify;
-    }
-    button{
-        background-color: #ff8c32;
+    .container{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
         border: none;
-        border-radius: 20px;
-        width: 100%;
-        padding: 10px 30px;
-        font-weight: 300;
-        font-size: 18px;
-        color: #fff;
         cursor: pointer;
+        img{
+            margin-top: 20px;
+            width: 335px;
+            height: 400px;
+            object-fit: cover;
+            border: 1px solid #ff8c32;
+            border-radius: 10px;
+        }
+        .title{
+            font-weight: 700;
+            font-size: 30px;
+        }
+        .desc{
+            font-weight: 300;
+            height: 40px;
+            overflow: hidden;
+            text-align: justify;
+        }
+        button{
+            background-color: #ff8c32;
+            border: none;
+            border-radius: 20px;
+            width: 100%;
+            padding: 10px 30px;
+            font-weight: 300;
+            font-size: 18px;
+            color: #fff;
+            cursor: pointer;
+        }
     }
-
+}
+@media (max-width: 576px){
+    .catCard{
+        .container{
+            img{
+                width: 80px;
+                height: 100px;
+            }
+            .title{
+                font-size: 1rem;
+            }
+            .desc{
+                display: none;
+            }
+            button{
+                border-radius: 5px;
+                padding: 10px 15px;
+                font-size: 1rem;
+              
+            }
+        }
+    }
 }

@@ -1,6 +1,8 @@
 .productCard{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 10px;
     color: #138E9A;
     font-size: 1.5rem;
@@ -32,5 +34,26 @@
         font-size: 0.8rem;
         border-radius: 32px;
         cursor: pointer;
+    }
+}
+@media (max-width: 728px){
+    .productCard{
+        img{
+            width: 80px;
+            height: 100px;
+        }
+        .status{
+            display: none;
+        }
+        .details{
+
+            gap: 5px;
+            .price{
+                font-size: 0.8rem;
+            }
+        }
+        button{
+            display: none;
+        }
     }
 }

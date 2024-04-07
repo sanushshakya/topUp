@@ -7,10 +7,7 @@
             .logo{
                 font-size: 1.2rem;
                 text-align: center;
-                img{
-                    width: auto;
-                    height: 100px;
-                }
+              
             }
         }
         .center{
@@ -35,26 +32,29 @@
 }
 
 @media (max-width: 768px){
-
     .footer {
         margin: 20px; /* Adjust margin for mobile and tablet devices */
         padding: 10px; /* Add padding for better spacing */
         text-align: center; /* Center align text on smaller screens */
     
         .container {
-            flex-direction: column; /* Switch to a column layout on smaller screens */
-        
+            flex-direction: column-reverse; /* Switch to a column layout on smaller screens */
+            gap: 20px;
             .left {
                 .logo {
                 font-size: 1.5rem; /* Reduce font size for smaller screens */
                 margin-bottom: 10px; /* Add spacing below the logo */
                 text-align: center; /* Center align text on smaller screens */
                 }
+                img{
+                    width: auto;
+                    height: 50px;
+                }
             }
         
             .center {
                 align-items: center; /* Center content vertically on smaller screens */
-        
+                gap: 10px;
                 .icons {
                 display: flex;
                 flex-direction: column; /* Stack icons vertically */

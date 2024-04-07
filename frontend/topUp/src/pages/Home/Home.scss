@@ -3,7 +3,13 @@
     .container{
         display: flex;
         flex-direction: column;
-        gap: 150px;
+        gap: 100px;
+        .banner{
+            .hide-arrows .slick-arrow {
+                display: none !important;
+            }
+        }
+        
         .cmpTitle{
             display: flex;
             justify-content: center;
@@ -24,17 +30,26 @@
             }
         }
         .slide{
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            @media (max-width: 576px){
-                gap: 50px;
-            }
+           margin: 0px 10px;
+
+           
         }
     }
 }
 @media (max-width: 912px) {
     .home{
         margin: 20px 0px;
+        .container{
+            gap: 20px;
+            .cat{
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+            .slide{
+                margin: 0px 40px;
+            }
+        }
+
     }
 }

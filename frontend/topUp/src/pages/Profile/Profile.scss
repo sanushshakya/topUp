@@ -277,6 +277,22 @@
                         }
                     }
                 }
+                .banner{
+                    .bans{
+                        h3{
+                            width: 200px;
+                            height: 50px;
+                            overflow:hidden;
+                        }
+                        span{
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: center;
+                            gap: 10px;
+                        }
+                    }
+                }
             }
         }
     }

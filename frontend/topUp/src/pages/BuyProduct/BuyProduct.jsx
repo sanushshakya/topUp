@@ -46,50 +46,50 @@ const BuyProduct = () => {
         fetchData();
     }, [accessToken])
 
-        const handleSubmit =  async () => {
-            setLoading(true);
-            const formData = new FormData();
-            formData.append('name', `${user.username}`);
-            formData.append('email', `${user.email}`);
-            formData.append('product', `${product.product_name}`)
-            formData.append('user_id', `${user._id}`)
-            formData.append('transaction_type', 'Purchase Token')
-            formData.append('amount', `${product.price}`)
-            try {
-                
-                const resPurchase =  await axios.post(`${config.apiBaseUrl}/api/gift/buy/${product.product_name}`, null, {
-                    params: {
-                      token: accessToken
-                    }
-                });
-                const tok = resPurchase.data.token
-    
-                 await axios.put(`${config.apiBaseUrl}/api/wallet/update_subtract/${product.price}`, null, {
-                    params: {
-                      token: accessToken
-                    }
-                });
-    
-                await axios.post(`${config.apiBaseUrl}/api/transaction/create`, formData, {
-                    params: {
-                      token: accessToken
-                    }
-                });
-    
-                const resOrder =  await axios.post(`${config.apiBaseUrl}/api/order/create/${tok}`, formData, {
-                    params: {
-                      token: accessToken
-                    }
-                });
-    
-                window.location.href = `/congrats/${resPurchase.data.token}`
-                
-                // Handle the response as needed
-            } catch (error) {
-                console.error(error.response?.data || error);
-                // Handle the error
-            }
+    const handleSubmit =  async () => {
+        setLoading(true);
+        const formData = new FormData();
+        formData.append('name', `${user.username}`);
+        formData.append('email', `${user.email}`);
+        formData.append('product', `${product.product_name}`)
+        formData.append('user_id', `${user._id}`)
+        formData.append('transaction_type', 'Purchase Token')
+        formData.append('amount', `${product.price}`)
+        try {
+            
+            const resPurchase =  await axios.post(`${config.apiBaseUrl}/api/gift/buy/${product.product_name}`, null, {
+                params: {
+                    token: accessToken
+                }
+            });
+            const tok = resPurchase.data.token
+
+                await axios.put(`${config.apiBaseUrl}/api/wallet/update_subtract/${product.price}`, null, {
+                params: {
+                    token: accessToken
+                }
+            });
+
+            await axios.post(`${config.apiBaseUrl}/api/transaction/create`, formData, {
+                params: {
+                    token: accessToken
+                }
+            });
+
+            const resOrder =  await axios.post(`${config.apiBaseUrl}/api/order/create/${tok}`, formData, {
+                params: {
+                    token: accessToken
+                }
+            });
+
+            window.location.href = `/congrats/${resPurchase.data.token}`
+            
+            // Handle the response as needed
+        } catch (error) {
+            console.error(error.response?.data || error);
+            // Handle the error
         }
+    }
     {
         !isLoggedIn && (
             window.location.href = '/login'

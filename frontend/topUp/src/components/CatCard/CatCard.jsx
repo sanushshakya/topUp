@@ -40,18 +40,20 @@ const CatCard = ({ item }) => {
   return (
 
     <div className='catCard'>
-      <span>
-        <Link to={`/category/${item.cat_name}`} className='link'>
-          <img src={item.image_url} alt="" />
-        </Link>
-      </span>
-      <span className='title'>{item.cat_name}</span>
-      <span className='desc'>{item.description}</span>
-      {user.role === 'admin' && (
+      <div className="container">
         <span>
-          <button onClick={handleDelete}>Delete</button>
-        </span>
-      )}
+            <Link to={`/category/${item.cat_name}`} className='link'>
+              <img src={item.image_url} alt="" />
+            </Link>
+          </span>
+          <span className='title'>{item.cat_name}</span>
+          <span className='desc'>{item.description}</span>
+          {user.role === 'admin' && (
+            <span>
+              <button onClick={handleDelete}>Delete</button>
+            </span>
+          )}
+      </div>
     </div>
   )
 }

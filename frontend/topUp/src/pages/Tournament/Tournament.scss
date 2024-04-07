@@ -53,7 +53,16 @@
     }
 }
 @media (max-width: 576px) {
-    .createTour{
+    .tournament{
         margin: 50px;
+        .container{
+            gap: 50px;
+            .bottom{
+                gap: 5px;
+                .card{
+                    gap: 5px;
+                }
+            }
+        }
     }
 }

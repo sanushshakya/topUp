@@ -96,7 +96,6 @@ const ProductDetail = () => {
                             <span>Step 4 : You can then redeem this code value as PUBG Mobile Unknown Cash.</span>
                         </span>
                     </div>
-                
                 </div>
             </div>
         </div>
