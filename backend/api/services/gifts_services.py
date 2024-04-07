@@ -1,7 +1,6 @@
 from api.models.gifts_model import Gifts
 from typing import List
 from bson import ObjectId
-from api.api.helpers.send_email import send_email, send_email_awaiting
 
 class GiftServices:
     @staticmethod
@@ -43,15 +42,8 @@ class GiftServices:
         gift = await Gifts.find_one(Gifts.product_name ==  product_name)
         if gift:
             tok = gift.tokens[0]
-            gift.tokens.remove(tok)  # Remove purchased token
+            gift.tokens.remove(tok)  
             await gift.save()
-            # # Attempt to send the email
-            # try:
-            #     send_email_awaiting(email, tok)
-            # except Exception as email_error:
-            #     # Handle the email sending error here (e.g., log the error)
-            #     print(f"Email sending error: {str(email_error)}")
-            #     # Optionally, you can choose to retry sending the email here
             return tok
             
     @staticmethod

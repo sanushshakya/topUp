@@ -1,5 +1,6 @@
 from api.models.wallets_model import Wallets
 from bson import ObjectId
+from api.api.helpers.send_email import send_email_add, send_email_buy
 
 class WalletServices:
     @staticmethod
@@ -37,11 +38,14 @@ class WalletServices:
 
     @staticmethod
     async def add_balance(email: str, balance: float):
-        return await WalletServices.update_wallet_balance(email, balance)
+        add = await WalletServices.update_wallet_balance(email, balance)
+        send_email_add(email, balance)
+        return add
 
     @staticmethod
     async def subtract_balance(email: str, balance: float):
-        return await WalletServices.update_wallet_balance(email, -balance)
+        sub = await WalletServices.update_wallet_balance(email, -balance)
+        send_email_buy(email, balance)
 
     @staticmethod
     async def delete_wallet(user_id: str):

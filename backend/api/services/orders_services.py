@@ -2,9 +2,9 @@ from typing import Optional, List
 from api.models.orders_model import Order
 from fastapi import HTTPException, status
 from bson import ObjectId
-
 from datetime import datetime, timezone, timedelta
 from beanie import Document
+
 
 
 class OrdersServices:
@@ -53,6 +53,7 @@ class OrdersServices:
             created_at=datetime.utcnow()
         )
         await order_doc.save()
+
         return order_doc
     
     @staticmethod

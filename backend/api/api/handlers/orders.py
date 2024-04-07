@@ -5,6 +5,7 @@ from api.api.deps.user_deps import get_current_user, is_admin
 from fastapi import Query
 from typing import Optional
 from datetime import datetime
+from api.api.helpers.send_email import send_email
 
 order_router = APIRouter()
 
@@ -52,6 +53,7 @@ async def create_order(tok:str,
                         current_user = Depends(get_current_user)):
     try:
         order = await OrdersServices.create_order(name, email, product, user_id, tok)
+        send_email(email)
         return order  # Return the created order object
     except pymongo.errors.DuplicateKeyError:
         raise HTTPException(
