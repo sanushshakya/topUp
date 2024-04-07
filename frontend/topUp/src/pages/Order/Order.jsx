@@ -127,7 +127,7 @@ const Order = () => {
             )}
           </div>
           {all && user.role === 'admin' && (
-            <div className="right">
+            <div className="right cards">
               {orders.map(ord => (
                 <OrderCard key={ord._id} item={ord} />
               ))}
@@ -135,7 +135,7 @@ const Order = () => {
           )}
     
           {user.role === 'user' && (
-            <div className="right">
+            <div className="right cards">
               {orderUsers.map(ordUser => (
                 <OrderCard key={ordUser._id} item={ordUser} />
               ))}
