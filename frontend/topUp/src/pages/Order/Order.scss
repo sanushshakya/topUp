@@ -25,8 +25,9 @@
             .right{
                 display: flex;
                 flex-direction: row-reverse;
+                width: 100%;
+                overflow-x: scroll;
                 gap: 50px;
-                flex-wrap: wrap;
                 form{
                     display: flex;
                     gap: 100px;
