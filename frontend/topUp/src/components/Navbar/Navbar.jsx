@@ -28,8 +28,6 @@ const Navbar = () => {
         }
        
     };
-    
-    
 
     useEffect(() => {
         if (accessToken) {
