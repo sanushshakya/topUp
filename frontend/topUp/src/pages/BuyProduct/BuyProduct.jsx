@@ -106,7 +106,7 @@ const BuyProduct = () => {
                     <div className="center">
                         <h1>{product.product_name}</h1>
                         <h1>Rs. {product.price}</h1>
-                        {product.cat_name === "Game" || product.cat_name=== "Freefire Unipin" || product.cat_name==="Itunes Gift Card" || product.cat_name==="Mobile legend Diamond Pin" || product.cat_name==="Pubg Mobile Uc" && (
+                        {product.cat_name === "Game" && (
                             <>
                             {product.price < balance.balance ? (
                                 <button onClick={handleSubmit}>Order</button>
