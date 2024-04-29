@@ -46,8 +46,12 @@
             display: none;
         }
         .details{
-
             gap: 5px;
+            .title{
+                max-width: 50px;
+                overflow-x: hidden;
+                font-size: 0.8rem;
+            }
             .price{
                 font-size: 0.8rem;
             }

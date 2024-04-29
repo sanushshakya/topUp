@@ -95,6 +95,7 @@ const BuyProduct = () => {
             window.location.href = '/login'
         )
     }
+    const validCategories = ["Game", "PUBG MOBILE", "FreeFire UniPin"];
 
     return (
         <div className='buy'>
@@ -106,7 +107,7 @@ const BuyProduct = () => {
                     <div className="center">
                         <h1>{product.product_name}</h1>
                         <h1>Rs. {product.price}</h1>
-                        {product.cat_name === "Game" && (
+                        {validCategories.includes(product.cat_name) && (
                             <>
                             {product.price < balance.balance ? (
                                 <button onClick={handleSubmit}>Order</button>
