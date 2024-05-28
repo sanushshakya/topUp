@@ -92,7 +92,7 @@ def send_reset_email(to_email, token):
     msg['To'] = to_email
     msg['Subject'] = 'Password Reset Request'
 
-    reset_link = f"http://localhost:5173/resetpassword/active?token={token}"
+    reset_link = f"https://www.esportscardnepal.com/resetpassword/active?token={token}"
     message_body = f"Please use the following link to reset your password: {reset_link}"
     msg.attach(MIMEText(message_body, 'plain'))
 
