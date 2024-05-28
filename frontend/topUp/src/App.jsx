@@ -120,7 +120,7 @@ function App() {
       element: <ResetPassword />,
     },
     {
-      path: "/updatepassword/active",
+      path: "/resetpassword/active",
       element: <UpdatePassword />,
     },
   ]);

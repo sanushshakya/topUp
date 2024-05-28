@@ -10,6 +10,7 @@ import config from "../../config";
 import axios from "axios";
 
 const ResetPassword = () => {
+  const [message, setMessage] = useState("");
   const schema = yup.object().shape({
     email: yup.string().email("Invalid email").required("Email is required"),
   });
@@ -31,10 +32,10 @@ const ResetPassword = () => {
         `${config.apiBaseUrl}/api/user/resetpassword`,
         formData
       );
-      console.log("Password reset request sent");
+      setMessage("Password reset request sent");
     } catch (error) {
       console.error(error.response?.data || error);
-      setError("Invalid Username");
+      setMessage("Invalid Email");
     }
   };
   return (
@@ -63,6 +64,7 @@ const ResetPassword = () => {
               )}
             </div>
             <button type="submit">Reset</button>
+            {message && <p>{message}</p>}
             {error && <div className="reset-error">{error}</div>}
           </form>
         </div>

@@ -12,10 +12,12 @@ const UpdatePassword = () => {
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
 
   const handlePasswordUpdate = async () => {
     if (newPassword !== confirmPassword) {
-      setMessage("Passwords do not match");
+      setError("Passwords do not match");
+      setMessage(false);
       return;
     }
 
@@ -28,8 +30,10 @@ const UpdatePassword = () => {
         formData
       );
       setMessage("Password reset successful");
+      setError(!error);
     } catch (error) {
-      setMessage("Failed to reset password");
+      setError("Failed to reset password");
+      setMessage(false);
       console.error(error.response?.data || error);
     }
   };
@@ -51,10 +55,15 @@ const UpdatePassword = () => {
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
         <button onClick={handlePasswordUpdate}>Update Password</button>
-        {message && <p>{message}</p>}
-        <Link className="link btn" to="/login">
-          Login
-        </Link>
+        {message && (
+          <>
+            <p>{message}</p>
+            <Link className="link btn" to="/login">
+              Login
+            </Link>
+          </>
+        )}
+        {error && <p>{error}</p>}
       </div>
     </div>
   );
