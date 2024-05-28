@@ -79,3 +79,26 @@ def send_email_buy(to_email, amount):
 
     # Close the SMTP server connection
     server.quit()
+
+def send_reset_email(to_email, token):
+    smtp_server = 'smtp.gmail.com'
+    smtp_port = 587
+    smtp_username = 'esportscardnepal@gmail.com'
+    smtp_password = 'gwml canw ldcc cban'
+
+    # Create the email content
+    msg = MIMEMultipart()
+    msg['From'] = smtp_username
+    msg['To'] = to_email
+    msg['Subject'] = 'Password Reset Request'
+
+    reset_link = f"http://localhost:5173/resetpassword/active?token={token}"
+    message_body = f"Please use the following link to reset your password: {reset_link}"
+    msg.attach(MIMEText(message_body, 'plain'))
+
+    # Connect to the SMTP server
+    server = smtplib.SMTP(smtp_server, smtp_port)
+    server.starttls()
+    server.login(smtp_username, smtp_password)
+    server.sendmail(smtp_username, to_email, msg.as_string())
+    server.quit()
