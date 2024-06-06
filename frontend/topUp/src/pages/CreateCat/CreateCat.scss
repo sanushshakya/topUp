@@ -1,13 +1,10 @@
 .cat{
-    margin: 50px 100px;
+    margin: 0px 20px;
     .container{
         form{
             display: flex;
             flex-direction: column;
             gap: 50px;
-            h1{
-                color: #FF8C32;
-            }
             .credentials{
                 display: flex;
                 flex-direction: column;
@@ -17,18 +14,16 @@
                     align-items: center;
                     justify-content: space-between;
                     border: solid 1px #FF8C32;
-                    width: 500px;
-                    padding-right: 20px;
                     border-radius: 20px;
                     color: #FF8C32;
-                    font-size: x-large;
                     input{
                         padding: 15px 30px;
                         border: none;
                         border-radius: 20px;
                         width: 100%;
-                        color: #FF8C32;
-                        font-size: large;
+                       
+                        background-color: transparent;
+                        outline: none;
                     }
                 }
                 .error-message{
@@ -36,36 +31,23 @@
                     color: #FF8C32;
                 }
             }
-            button{
-                background-color: #FF8C32;
-                border: none;
-                width: 20%;
-                border-radius: 20px;
-                padding: 10px 30px;
-                font-weight: 300;
-                font-size: 18px;
-                color: #fff;
-                cursor: pointer;
-            }
         }
     }
 }
-@media (max-width: 576px) {
+
+@media (min-width:728px){
     .cat{
-        margin: 20px;
-        .container{
-            form{
-                .credentials{
-                    span{
-                        width: 300px;
-                    }
-                }
-                button{
-                    width: 50%;
-                    font-size: 15px;
-                    text-align: center;
-                }
-            }
-        }
+        margin: 0px 200px;
+    }
+}
+@media (min-width:1024px){
+    .cat{
+        margin: 0px 300px;
+    }
+}
+
+@media (min-width:1220px){
+    .cat{
+        margin: 0px 500px;
     }
 }
