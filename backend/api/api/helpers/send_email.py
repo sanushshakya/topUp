@@ -24,6 +24,30 @@ def send_email(to_email):
     # Close the SMTP server connection
     server.quit()
     
+def send_email_balance_request(to_email, email_content):
+    # Email configuration
+    smtp_server = 'smtp.gmail.com'
+    smtp_port = 587
+    smtp_username = 'esportscardnepal@gmail.com'
+    smtp_password = 'gwml canw ldcc cban'
+
+    msg = MIMEMultipart()
+    msg['From'] = smtp_username
+    msg['To'] = "zonegaming405@gmail.com"
+    msg['Subject'] = "Wallet Recharge Request"
+    msg.attach(MIMEText(email_content, 'html'))
+
+    # Connect to the SMTP server
+    server = smtplib.SMTP(smtp_server, smtp_port)
+    server.starttls()
+    server.login(smtp_username, smtp_password)
+
+    # Send the email
+    server.sendmail(smtp_username, to_email, msg.as_string())
+
+    # Close the SMTP server connection
+    server.quit()    
+    
 def send_email_add(to_email, amount):
     # Email configuration
     smtp_server = 'smtp.gmail.com'
