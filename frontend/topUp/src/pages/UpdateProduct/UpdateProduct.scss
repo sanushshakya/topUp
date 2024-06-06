@@ -1,34 +1,44 @@
 .update{
-    margin: 50px 100px;
+    margin: 0px 20px;
     .container{
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
         form{
             display: flex;
             flex-direction: column;
             gap: 50px;
             span{
-                border: solid 1px #ff8c32;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                border: solid 1px #FF8C32;
                 border-radius: 20px;
-                width: 50%;
+                color: #FF8C32;
                 input{
-                    width: 75%;
-                    padding: 20px 80px;
+                    padding: 15px 30px;
                     border: none;
                     border-radius: 20px;
-                    color: #ff8c32;
-                    font-size: large;
+                    width: 100%;
+                    background-color: transparent;
+                    outline: none;
                 }
             }
-            button{
-                background-color: #ff8c32;
-                border: none;
-                color: white;
-                padding: 20px 42px;
-                text-align: center;
-                font-size: 1rem;
-                border-radius: 32px;
-                width: 30%;
-                cursor: pointer;
-            } 
         }
+    }
+}
+@media (min-width:728px){
+    .update{
+        margin: 0px 200px;
+    }
+}
+@media (min-width:1024px){
+    .update{
+        margin: 0px 300px;
+    }
+}
+@media (min-width:1220px){
+    .update{
+        margin: 0px 500px;
     }
 }

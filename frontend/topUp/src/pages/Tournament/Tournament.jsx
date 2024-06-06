@@ -36,8 +36,8 @@ const Tournament = () => {
       <div className="container">
         {user.role === "admin" && (
           <div className="btns">
-            <Link to="/createtour" className="link">
-              <button>New Tournament</button>
+            <Link to="/createtour" className="link btn-nav">
+              Create Tournament
             </Link>
           </div>
         )}
@@ -45,11 +45,14 @@ const Tournament = () => {
           <Tournaments key={tour._id} item={tour} />
         ))}
         <div className="bottom">
-          <h1>Links</h1>
+          <h3>Tournament Link</h3>
           <div className="card">
             <img src="discord.webp" />
-            <Link className="link" to="https://discord.com/invite/cFXFu63Mh7">
-              <h3>Discord</h3>
+            <Link
+              className="link btn-nav"
+              to="https://discord.com/invite/cFXFu63Mh7"
+            >
+              Discord
             </Link>
           </div>
         </div>
