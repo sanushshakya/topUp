@@ -94,10 +94,7 @@ const ProductDetail = () => {
               <span>Step 1 : Click buy button</span>
               <span>Step 3 : Click the order button</span>
               <span>Step 4 : Your order will be sent</span>
-              <span>
-                Re-check if you have enough balance in your wallet for the
-                purchase.
-              </span>
+              <span>Re-check if you have enough balance.</span>
             </span>
           </div>
           <div className="right">
