@@ -1,5 +1,5 @@
 .shop{
-    margin: 50px 100px;
+    margin: 0px 20px;
     .container{
         display: flex;
         flex-direction: column;
@@ -7,28 +7,24 @@
         .top{
             display: flex;
             justify-content: space-between;
+            align-items: center;
             .cmpTitle{
                 font-size: 1.2rem;
                 font-weight: 700;
             }
-            .add{
-                button{
-                    background-color: #ff8c32;
-                    border: none;
-                    color: white;
-                    padding: 5px 25px;
-                    text-align: center;
-                    font-size: 0.8rem;
-                    border-radius: 32px;
-                    cursor: pointer;
-                }
-            }
         }
         .products{
             display: flex;
-            justify-content: space-evenly;
+            justify-content: space-between;
+            align-items: center;
             flex-wrap: wrap;
-            gap: 50px;
+            gap: 20px;
         }
+    }
+}
+
+@media (min-width:912px){
+    .shop{
+        margin: 0px 100px;
     }
 }

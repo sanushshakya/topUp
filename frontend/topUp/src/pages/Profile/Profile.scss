@@ -1,75 +1,47 @@
-.profile{
-    margin: 50px 100px;
+.account{
+    margin: 0px 20px;
     .container{
-        display: flex;
-        flex-direction: column;
-        gap: 50px;
         .detail{
             display: flex;
-            justify-content: space-evenly;
-            .left{
-                display: flex;
-                flex-direction: column;
-                gap: 20px;
-                button {
-                    background-color: #ff8c32;
-                    border: none;
-                    border-radius: 20px;
-                    width: 100%;
-                    padding: 10px 30px;
-                    font-weight: 300;
-                    font-size: 18px;
-                    color: #fff;
-                    cursor: pointer;
-                }
+            flex-direction: column;
+            .settings{
+                display: none;
             }
-            .right{
+            .profile{
                 display: flex;
                 flex-direction: column;
-                gap: 50px;
+                gap: 30px;
                 .top{
                     display: flex;
-                    justify-content: center;
+                    justify-content: space-between;
                     align-items: center;
-                    gap: 150px;
                     .left{
                         img{
-                            width: 50px;
-                            height: 50px;
-                        }
-                    }
-                    .right{
-                        button{
-                            background-color: #ff8c32;
-                            border: none;
-                            border-radius: 20px;
-                            width: 100%;
-                            padding: 10px 30px;
-                            font-weight: 300;
-                            font-size: 18px;
-                            color: #fff;
-                            cursor: pointer;
+                            width: auto;
+                            height: 40px;
+                            object-fit: cover;
                         }
                     }
                 }
                 .bottom{
                     display: flex;
                     flex-direction: column;
-                    gap: 50px;
+                    gap: 20px;
                     span{
                         display: flex;
                         flex-direction: column;
                         gap: 10px;
                         label{
-                            font-size: 1.2rem;
+                            font-size: 1.1rem;
                             font-weight: 300;
                         }
                         h3{
-                            border: 0.5px solid #ff8c32;
+                            border: none;
+                            border-radius: 10px;
                             background-color: #fff;
-                            padding: 10px;
-                            font-size: 1.8rem;
-                            color: #ff8c32;
+                            padding: 10px 5px;
+                            font-size: 1.3rem;
+                            color: #020618;
                             font-weight: 500;
                         }
                     }
@@ -79,219 +51,136 @@
                         gap: 50px;
                         span{
                             display: flex;
-                            align-items: center;
-                            justify-content: space-between;
-                            border: solid 1px #ff8c32;
-                            border-radius: 20px;
-                            color: #ff8c32;
-                            font-size: x-large;
-                            input{
-                                padding: 10px 0;
-                                border: none;
-                                border-radius: 20px;
-                                width: 100%;
-                                color: #ff8c32;
-                                font-size: large;
-                                text-align: center;
-                            }
-                        }
-                        button{
-                            background-color: #ff8c32;
-                            border: none;
-                            color: #fff;
-                            padding: 15px 32px;
-                            text-align: center;
-                            font-size: 1rem;
-                            border-radius: 15px;
-                            cursor: pointer;
-                        }
-                    }
-                }
-            }
-            
-            .pass{
-                form{
-                    display: flex;
-                    flex-direction: column;
-                    gap: 50px;
-                    input{
-                        padding: 10px 0;
-                        border: 1px solid #ff8c32;
-                        border-radius: 20px;
-                        width: 100%;
-                        color: #ff8c32;
-                        font-size: large;
-                        text-align: center;
-                    }
-                    button{
-                        background-color: #ff8c32;
-                        border: none;
-                        color: #fff;
-                        padding: 15px 32px;
-                        text-align: center;
-                        font-size: 1rem;
-                        border-radius: 15px;
-                        cursor: pointer;
-                    }
-                }
-            }
-            .banner{
-                .top{
-                    button{
-                        background-color: #ff8c32;
-                        border: none;
-                        color: #fff;
-                        padding: 15px 32px;
-                        text-align: center;
-                        font-size: 1rem;
-                        border-radius: 15px;
-                        cursor: pointer;
-                    }
-                }
-                .bans{
-                    span{
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        gap: 50px;
-                        h3{
-                            font-size: 1rem;
-                        }
-                        button{
-                            background-color: #ff8c32;
-                            border: none;
-                            color: #fff;
+                            background-color: #ddd;
+                            border-radius: 10px;
                             padding: 10px;
-                            text-align: center;
-                            font-size: 1rem;
-                            cursor: pointer;
+                            input{
+                                width: 100%;
+                                background-color: transparent;
+                                outline: none;
+                                color: #020618;
+                                border: none;
+                                font-size: 0.8rem;
+                            }
                         }
                     }
                 }
             }
             .transaction{
-                flex-direction: row-reverse;
-                width: 100%;
-                overflow: scroll;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                .cards{
+                    display: flex;
+                    flex-direction: column-reverse;
+                    gap: 10px;
                 .transac{
                     display: flex;
                     flex-direction: column;
                     gap: 10px;
                     border: 1px solid #ff8c32;
                     padding: 10px;
+                    width: 300px;
+                }
                 }
             }
-            .addBan{
-                form{
+            .gifts{
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                .top{
                     display: flex;
+                    justify-content: space-between;
+                }
+                table {
+                    border-collapse: collapse;
+                    
+                }
+                thead {
+                background-color: #ff8c32;
+                color: white;
+                }
+                
+                th, td {
+                border: 1px solid #ff8c32;
+                padding: 10px;
+                text-align: center;
+                }
+                
+                tbody tr:nth-child(even) {
+                background-color: #f2f2f2;
+                }
+                .edit-btn{
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 10px;
+                    justify-content: center;
+                    align-items: center;
+                }
+                .bottom{
+                    color: #020618;
+                }
+            }
+            .banner{
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                .top{
+                    display: flex;
+                    justify-content: space-between;
+                }
+                .bottom{
+                    display: flex;
+                    justify-content: space-between;
+                    h3{
+                        font-size: 0.6rem;
+                        width: 100px;
+                    }
+                }
+            }
+        }
+    }
+}
 
-                    gap: 20px;
-                    input{
-                        padding: 15px 10px;
-                        color: #fff;
-                        gap: 20px;
-                        font-size: 1.2rem;
-                    }
-                    button{
-                        background-color: #ff8c32;
-                        border: none;
-                        color: #fff;
-                        padding: 10px;
-                        text-align: center;
-                        font-size: 1rem;
-                        cursor: pointer;
-                    }
-                }
-            }
-        }
-    }
-}
-@media (max-width: 980px) {
-    .profile{
-        margin: 20px;
+@media (min-width: 1220px){
+    .account{
+        margin-bottom: 100px;
         .container{
             .detail{
-                justify-content: space-between;
-            }
-        }
-    }
-}
-@media (max-width: 576px) {
-    .profile{
-        margin: 20px;
-        .container{
-            .detail{
-                justify-content: space-between;
-                .left{
-                    button{
-                        font-size: 0.8rem;
+                flex-direction: row;
+                justify-content: space-evenly;
+                .settings{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px; 
+                }
+                .profile{
+                    width: 700px;
+                }
+                .transaction{
+                    width: 700px;
+                    justify-content: center;
+                    align-items: center;
+                
+                    .cards{
+                        flex-direction: row-reverse;
+                        flex-wrap: wrap-reverse;
+                        justify-content: center;
+                        align-items: center;
                     }
                 }
-                .right{
-                    .top{
-                        gap: 20px;
-                        .left{
-                            img{
-                                width: 50px;
-                                height: 50px;
-                            }
-                        }
-                        .right{
-                            button{
-                                font-size: 0.8rem;
-                            }
-                        }
-                    }
-                    .bottom{
-                        gap: 20px;
-                        span{
-                            display: flex;
-                            flex-direction: column;
-                            gap: 10px;
-                            label{
-                                font-size: 0.8rem;
-                            }
-                            h3{
-                                padding: 10px;
-                                font-size: 1rem;
-                            }
-                        }
-                    }
+                .password{
+                    width: 700px;
                 }
-                .pass{
-                   form{
-                    button{
-                        font-size: 0.8rem;
-                    }
-                   }
-                }
-                .wallet{
-                    .top{
-                        flex-direction: column;
-                        .left{
-                            flex-direction: row;
-                            h3{
-                                font-size: 1rem;
-                            }
-                            h1{
-                                font-size: 1.5rem;
-                            }
-                        }
-                    }
+                .gifts{
+                    width: 700px;
                 }
                 .banner{
-                    .bans{
+                    width: 700px;
+                    .bottom{
                         h3{
-                            width: 200px;
-                            height: 50px;
-                            overflow:hidden;
-                        }
-                        span{
-                            display: flex;
-                            flex-direction: column;
-                            justify-content: center;
-                            align-items: center;
-                            gap: 10px;
+                            font-size: 0.8rem;
+                            width: 100%;
                         }
                     }
                 }

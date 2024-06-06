@@ -28,6 +28,7 @@ import Tournament from "./pages/Tournament/Tournament";
 import CreateTour from "./pages/CreateTour/CreateTour";
 import ResetPassword from "./pages/Login/ResetPassword";
 import UpdatePassword from "./pages/Login/UpdatePassword";
+import ApproveRecharge from "./pages/ApproveRecharge/ApproveRecharge";
 
 function App() {
   const Layout = () => {
@@ -86,11 +87,11 @@ function App() {
           element: <UpdateProduct />,
         },
         {
-          path: "/profile/:userId",
+          path: "/profile/*",
           element: <Profile />,
         },
         {
-          path: "/order",
+          path: "/order/*",
           element: <Order />,
         },
         {
@@ -104,6 +105,10 @@ function App() {
         {
           path: "/createtour",
           element: <CreateTour />,
+        },
+        {
+          path: "/approve_recharge",
+          element: <ApproveRecharge />,
         },
       ],
     },

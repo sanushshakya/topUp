@@ -1,58 +1,39 @@
 .payment{
-    margin: 50px 100px;
+    margin: 0px 20px;
     .container{
         display: flex;
         flex-direction: column;
-        gap: 50px;
+        gap: 20px;
         justify-content: center;
         align-items: center;
         h1{
             color: #ff8c32;
         }
         p{
-            font-size: 2rem;
+            font-size: 1.3rem;
+            text-align: justify;
         }
         .option{
             display: flex;
-            justify-content: space-evenly;
-            flex-wrap: wrap;
-            gap: 50px;
-            font-size: 2rem;
+            
+            gap: 20px;
             span{
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 20px;
-                p{
-                    color: #ff8c32;
-                }
                 img{
                     object-fit: cover;
-                    width: 400px;
-                    height: 400px;
+                    width: 150px;
+                    height: 200px;
                 }
             }
-        }
-        button{
-            background-color: #ff8c32;
-            border: none;
-            color: white;
-            padding: 5px 25px;
-            text-align: center;
-            font-size: 1rem;
-            border-radius: 32px;
-            cursor: pointer;
         }
     }
 }
-@media (max-width: 576px) {
+@media (min-width: 728px){
     .payment{
-        margin: 50px;
-        .container{
-            gap: 20px;
-            .option{
-                flex-direction: column;
-            }
-        }
+        margin: 0px 100px;
+    }
+}
+@media (min-width: 1220px){
+    .payment{
+        margin: 0px 500px;
     }
 }

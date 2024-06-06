@@ -1,23 +1,20 @@
 .about{
-    margin: 50px 100px 300px 100px;
+    margin: 0px 20px;
     .container{
         display: flex;
         flex-direction: column;
-        gap: 50px;
-        justify-content: center;
+        gap: 20px;
         align-items: center;
         span{
             display: flex;
             flex-direction:column;
             gap: 20px;
-            width: 70%;
-            text-align: justify;
-            justify-content: center;
-            align-items: center;
             h1{
+                text-align: center;
                 font-size: 2rem;
             }
             p{
+                text-align: justify;
                 font-size: 1rem;
             }
             h2{
@@ -26,15 +23,14 @@
         }
     }
 }
-@media (max-width: 912px) {
+
+@media (min-width: 728px) {
     .about{
-        margin: 50px 0px;
-        .container{
-            span{
-                font-size: 1.6rem;
-                width: 85%;
-                text-align: justify;
-            }
-        }
+        margin: 0px 100px;
+    }
+}
+@media (min-width: 1220px) {
+    .about{
+        margin: 0px 400px;
     }
 }

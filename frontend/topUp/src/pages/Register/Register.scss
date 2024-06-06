@@ -1,49 +1,35 @@
 .register{
-    margin: 100px;
-    padding-bottom: 200px;
+    margin: 20px;
     .container{
         display: flex;
-        gap: 300px;
+        flex-direction: column;
+        gap: 50px;
         .left{
+            display: none;
+        }
+        .mobile-left{
             display: flex;
-            gap: 120px;
             flex-direction: column;
             align-items: center;
-            color: #ff8c32;
-            border: solid 0.5px;
-            padding: 50px;
-            border-radius: 50px;
-            
-            .links{
-                font-weight: 700;
-                font-size: 48px;
-            }
-            h1{
-                font-weight: 600;
-                font-size: 40;
-            }
             img{
                 width: auto;
-                height: 120px;
+                height: 50px;
+                object-fit: cover;
             }
-            h3{
-                font-weight: 300;
-                font-size: 24px;
+            span{
+                font-weight: 700;
             }
         }
-        .right{
-            display: flex;
-            flex-direction: column;
+        .right{   
             form{
                 align-items: center;
                 display: flex;
                 flex-direction: column;
-                position: absolute;
-                gap: 70px;
+                gap: 20px;
                 h1{
                     color: #ff8c32;
                     font-weight: 500;
-                    font-size: 38px;
+                    font-size: 1.5rem;
                 }
                 .credentials{
                     display: flex;
@@ -54,18 +40,19 @@
                         align-items: center;
                         justify-content: space-between;
                         border: solid 1px #ff8c32;
-                        width: 500px;
+                        width: 100%;
                         padding-right: 20px;
                         border-radius: 20px;
                         color: #ff8c32;
-                        font-size: x-large;
+                        font-size: 1.2rem;
                         input{
                             padding: 15px 30px;
                             border: none;
                             border-radius: 20px;
                             width: 100%;
-                            color: #ff8c32;
-                            font-size: large;
+                            color: #ddd;
+                            font-size: 1.2rem;
+                            outline: none;
                         }
                     }
                     .error-message{
@@ -77,23 +64,18 @@
                     }
                 }
                 button{
-                    background-color: #ff8c32;
-                    border: none;
-                    border-radius: 20px;
-                    width: 100%;
-                    padding: 10px 30px;
-                    font-weight: 300;
-                    font-size: 18px;
-                    color: #fff;
-                    cursor: pointer;
+                   font-size: 1.2rem;
                 }
                 .success-message{
                     color: #ff8c32;
-                    font-size: 1.5rem;
+                    font-size: 1.2rem;
                     text-align: center;
                 }
                 .sign{
                     color: #ff8c32;
+                }
+                h3{
+                    text-align: center;
                 }
             }
         }
@@ -101,69 +83,45 @@
     }
 }
 
-@media only screen and (max-width: 600px){
+@media (min-width: 768px){
     .register{
+        margin: 100px 50px;
         .container{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            flex-direction: row;
+            justify-content: space-evenly;
+            .mobile-left{
+                display: none;
+            }
             .left{
                 display: flex;
                 flex-direction: column;
-                justify-content: center;
                 align-items: center;
-                border: none;
+                justify-content: space-between;
+                border: solid 0.5px #ff8c32;
+                padding: 50px;
+                border-radius: 50px;
                 .links{
                     font-weight: 700;
-                    font-size: 2rem;
+                    font-size: 1.3rem;
                 }
                 h1{
-                    display: none;
+                    font-weight: 600;
+                    font-size: 40;
                 }
                 img{
-                    display: none;
+                    width: auto;
+                    height: 50px;
                 }
                 h3{
-                    display: none;
-                }
-            }
-            .right{
-                display: flex;
-                flex-direction: column;
-                margin-top: -300px;
-                margin-bottom: 100px;
-                form{
-                    display: flex;
-                    flex-direction: column;
-                    position: relative;
-                    justify-content: center;
-                    align-items: center;
-                    .credentials{
-                        span{
-                            display: flex;
-                            justify-content: space-between;
-                            width: 100%;
-                            padding-right: 20px;
-                            border-radius: 20px;
-                            font-size: 1rem;
-                            input{
-                                width: 100%;
-                                font-size: 0.8rem;
-                            }
-                        }
-                        .error-message{
-                            font-size: 0.8rem;
-                        }
-                    }
-                    button{
-                        font-size: 1rem;
-                    }
-                    .success-message{
-                        font-size: 0.8rem;
-                    }
+                    font-weight: 300;
+                    font-size: 24px;
                 }
             }
         }
+    }
+}
+@media (min-width:1220px) {
+    .register{
+        margin: 100px;
     }
 }

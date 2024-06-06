@@ -3,14 +3,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 10px;
-    color: #138E9A;
-    font-size: 1.5rem;
-    border: none;
     cursor: pointer;
     img{
-        width: 335px;
-        height: 400px;
+        width: 80px;
+        height: 100px;
         object-fit: cover;
         border:  1px solid #ff8c32;
         border-radius: 10px;
@@ -24,40 +20,52 @@
         .price{
             color: #ff8c32;
         }
-    }
-    button{
-        background-color: #ff8c32;
-        border: none;
-        color: white;
-        padding: 5px 25px;
-        text-align: center;
-        font-size: 0.8rem;
-        border-radius: 32px;
-        cursor: pointer;
-    }
-}
-@media (max-width: 728px){
-    .productCard{
-        img{
-            width: 80px;
-            height: 100px;
-        }
         .status{
             display: none;
         }
+    }
+}
+@media (min-width: 728px){
+    .productCard{
+        img{
+            width: 180px;
+            height: 200px;
+        }
+        
         .details{
-            gap: 5px;
+            gap: 15px;
             .title{
-                max-width: 50px;
-                overflow-x: hidden;
-                font-size: 0.8rem;
+                font-size: 1.3rem;
             }
             .price{
-                font-size: 0.8rem;
+                font-size: 1.5rem;
+            }
+            .status{
+                display: flex;
             }
         }
-        button{
-            display: none;
+       
+    }
+}
+@media (min-width: 1220px){
+    .productCard{
+        img{
+            width: 320px;
+            height: 300px;
         }
+        
+        .details{
+            gap: 15px;
+            .title{
+                font-size: 1.3rem;
+            }
+            .price{
+                font-size: 1.5rem;
+            }
+            .status{
+                display: flex;
+            }
+        }
+       
     }
 }

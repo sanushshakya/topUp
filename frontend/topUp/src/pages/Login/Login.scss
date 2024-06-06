@@ -1,12 +1,10 @@
 .login{
-    margin: 250px 100px;
+    margin: 20px;
     .container{
-        display: flex;
-        justify-content: center;
-        align-items: center;
         .right{
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
             gap: 20px;
             .logo{
                 display: flex;
@@ -14,16 +12,21 @@
                 justify-content: center;
                 align-items: center;
                 gap: 10px;
+                cursor: pointer;
                 img{
-                    width: 80px;
-                    height: 80px;
+                    width: auto;
+                    height: 50px;
+                    object-fit: cover;
+                }
+                p{
+                    font-weight: 700;
                 }
             }
             form{
-                align-items: center;
                 display: flex;
                 flex-direction: column;
-                gap: 70px;
+                align-items: center;
+                gap: 40px;
                 span{
                     font-size: 2rem;
                     font-weight: 700;
@@ -42,18 +45,19 @@
                         align-items: center;
                         justify-content: space-between;
                         border: solid 1px #ff8c32;
-                        width: 500px;
                         padding-right: 20px;
                         border-radius: 20px;
                         color: #ff8c32;
-                        font-size: x-large;
+                        font-size: 1.2rem;
+                        width: 100%;
                         input{
                             padding: 15px 30px;
                             border: none;
                             border-radius: 20px;
                             width: 100%;
-                            color: #ff8c32;
+                            color: #ddd;
                             font-size: large;
+                            outline: none;
                         }
                     }
                     .error-message{
@@ -66,15 +70,7 @@
                     }
                 }
                 button{
-                    background-color: #ff8c32;
-                    border: none;
-                    border-radius: 20px;
-                    width: 100%;
-                    padding: 10px 30px;
-                    font-weight: 300;
-                    font-size: 18px;
-                    color: #fff;
-                    cursor: pointer;
+                    font-size: 1.3rem;  
                 }
                 .login-error{
                     color: #ff8c32;
@@ -85,34 +81,8 @@
     }
 }
 
-@media only screen and (max-width: 600px){
+@media (min-width: 728px){
     .login{
-        .container{
-            .right{
-                display: flex;
-                flex-direction: column;
-                margin-top: -200px;
-                margin-bottom: 100px;
-                form{
-                    .credentials{
-                        span{
-                            width: 100%;
-                            input{
-                                font-size: 0.6rem;
-                            }
-                        }
-                        .error-message{
-                            font-size: 0.8rem;
-                        }
-                    }
-                    button{
-                        font-size: 18px;
-                    }
-                    .login-error{
-                        font-size: 0.8rem;
-                    }
-                }
-            }
-        }
+        margin: 100px 0px;
     }
 }

@@ -1,73 +1,61 @@
-.footer{
-    margin: 100px 100px 50px 100px;
-    .container{
+.footer {
+    margin: 50px 20px;
+    .container {
         display: flex;
-        justify-content: space-between;
-        .left{
-            .logo{
-                font-size: 1.2rem;
+        flex-direction: column-reverse; 
+        align-items: center;
+        gap: 20px;
+        .left {
+            .logo {
                 text-align: center;
-              
+                font-weight: 700;
+            }
+            img{
+                width: auto;
+                height: 50px;
+                object-fit: cover;
             }
         }
-        .center{
+    
+        .center {
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 50px;
-            .icons{
+            align-items: center; 
+            gap: 10px;
+            .icons {
                 display: flex;
-                gap: 50px;
+                flex-direction: column; 
+                gap: 10px; 
+            }
+            p{
+                font-size: 0.6rem;
             }
         }
-        .right{
-            .contact{
-                display: flex;
-                flex-direction: column;
-                gap: 50px;
+        .right {
+            .contact {
+            display: flex;
+            flex-direction: column;
+            gap: 10px; 
+            text-align: center; 
             }
         }
     }
 }
-
-@media (max-width: 768px){
-    .footer {
-        margin: 20px; /* Adjust margin for mobile and tablet devices */
-        padding: 10px; /* Add padding for better spacing */
-        text-align: center; /* Center align text on smaller screens */
-    
-        .container {
-            flex-direction: column-reverse; /* Switch to a column layout on smaller screens */
-            gap: 20px;
-            .left {
-                .logo {
-                font-size: 1.5rem; /* Reduce font size for smaller screens */
-                margin-bottom: 10px; /* Add spacing below the logo */
-                text-align: center; /* Center align text on smaller screens */
+@media (min-width: 1220px){
+    .footer{
+        margin: 50px 100px;
+        .container{
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
+            .center{
+                .icons{
+                    flex-direction: row;
+                    font-size: 1.8rem;
+                    gap: 30px;
                 }
-                img{
-                    width: auto;
-                    height: 50px;
-                }
-            }
-        
-            .center {
-                align-items: center; /* Center content vertically on smaller screens */
-                gap: 10px;
-                .icons {
-                display: flex;
-                flex-direction: column; /* Stack icons vertically */
-                gap: 10px; /* Add spacing between icons */
-                }
-            }
-        
-            .right {
-                .contact {
-                display: flex;
-                flex-direction: column; /* Stack contact info vertically */
-                gap: 10px; /* Add spacing between contact info */
-                text-align: center; /* Center align text on smaller screens */
+                p{
+                    font-size: 1.2rem;
                 }
             }
         }

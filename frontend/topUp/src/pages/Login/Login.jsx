@@ -98,7 +98,7 @@ const Login = () => {
           <Link className="link" to="/">
             <div className="logo">
               <img src="Subject.png" />
-              <p>EsportsCardNepal</p>
+              <p>eSportsCardNepal</p>
             </div>
           </Link>
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -130,7 +130,9 @@ const Login = () => {
                 <Link to="/resetpassword">Forgot Password?</Link>
               </div>
             </div>
-            <button type="submit">Login</button>
+            <button type="submit" className="btn-nav">
+              Login
+            </button>
             {error && <div className="login-error">{error}</div>}
             <h3>
               Don't have an account?{" "}

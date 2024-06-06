@@ -2,60 +2,66 @@
     .container{
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
-        gap: 20px;
-        border: none;
         cursor: pointer;
         img{
-            margin-top: 20px;
-            width: 335px;
-            height: 400px;
+            width: 80px;
+            height: 100px;
             object-fit: cover;
-            border: 1px solid #ff8c32;
+            border:  1px solid #ff8c32;
             border-radius: 10px;
         }
         .title{
+            background-color: transparent;
             font-weight: 700;
-            font-size: 30px;
+            font-size: 1rem;
         }
         .desc{
-            font-weight: 300;
-            height: 40px;
-            overflow: hidden;
-            text-align: justify;
+            display: none;
         }
-        button{
-            background-color: #ff8c32;
-            border: none;
-            border-radius: 20px;
-            width: 100%;
-            padding: 10px 30px;
-            font-weight: 300;
-            font-size: 18px;
-            color: #fff;
-            cursor: pointer;
+        
+    }
+}
+@media (min-width: 728px){
+    .catCard{
+        .container{
+            gap: 15px;
+            img{
+                width: 180px;
+                height: 200px;
+            }
+            .title{
+                font-size: 1.5rem;
+            }
+            .desc{
+                display: block;
+                text-align: justify;
+                width: 150px;
+            }
         }
     }
 }
-@media (max-width: 576px){
+@media (min-width: 1220px){
     .catCard{
         .container{
+            gap: 15px;
             img{
-                width: 80px;
-                height: 100px;
+                width: 320px;
+                height: 320px;
             }
             .title{
-                font-size: 1rem;
+                font-size: 1.5rem;
             }
             .desc{
-                display: none;
+                display: block;
+                text-align: justify;
+                width: 150px;
             }
             button{
                 border-radius: 5px;
                 padding: 10px 15px;
                 font-size: 1rem;
-              
             }
         }
     }
