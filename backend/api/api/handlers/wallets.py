@@ -87,5 +87,5 @@ async def request_recharge(email: str = Form(...), amount: str = Form(...), code
     <a href="{approval_link}">Approve Recharge</a>
     """
     
-    send_email_balance_request(email, email_content)
+    send_email_balance_request(email_content)
     return {"msg": "Recharge request sent to admin."}

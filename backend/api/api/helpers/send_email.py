@@ -24,7 +24,7 @@ def send_email(to_email):
     # Close the SMTP server connection
     server.quit()
     
-def send_email_balance_request(to_email, email_content):
+def send_email_balance_request(email_content):
     # Email configuration
     smtp_server = 'smtp.gmail.com'
     smtp_port = 587
@@ -43,7 +43,7 @@ def send_email_balance_request(to_email, email_content):
     server.login(smtp_username, smtp_password)
 
     # Send the email
-    server.sendmail(smtp_username, to_email, msg.as_string())
+    server.sendmail(smtp_username, "zonegaming405@gmail.com", msg.as_string())
 
     # Close the SMTP server connection
     server.quit()    
