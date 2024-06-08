@@ -1,13 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./BuyProduct.scss";
 import { useParams, Link } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 import axios from "axios";
 import Cookies from "js-cookie";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faKey, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import config from "../../config";
 
 const BuyProduct = () => {
@@ -16,7 +11,6 @@ const BuyProduct = () => {
   const [user, setUser] = useState([]);
   const [balance, setBalance] = useState([]);
   const [loading, setLoading] = useState(false);
-
   const { productId } = useParams();
   const [product, setProduct] = useState("");
 
@@ -49,7 +43,7 @@ const BuyProduct = () => {
       }
     };
     fetchData();
-  }, [accessToken]);
+  }, [accessToken, productId]);
 
   const handleSubmit = async () => {
     setLoading(true);
@@ -92,7 +86,7 @@ const BuyProduct = () => {
         }
       );
 
-      const resOrder = await axios.post(
+      await axios.post(
         `${config.apiBaseUrl}/api/order/create/${tok}`,
         formData,
         {
@@ -110,22 +104,27 @@ const BuyProduct = () => {
       // Handle the error
     }
   };
-  {
-    !isLoggedIn && (window.location.href = "/login");
+
+  if (!isLoggedIn) {
+    window.location.href = "/login";
+    return null;
   }
-  const validCategories = ["Game", "PUBG MOBILE", "FreeFire UniPin"];
+
+  const validCategories = ["Others"];
 
   return (
     <div className="buy">
       <div className="container">
         <div className="top">
           <div className="left">
-            <img src={`/${product.image_url}`} />
+            <img src={`/${product.image_url}`} alt={product.product_name} />
           </div>
           <div className="center">
             <h1>{product.product_name}</h1>
             <h1>Rs. {product.price}</h1>
-            {validCategories.includes(product.cat_name) && (
+            {validCategories.includes(product.cat_name) ? (
+              <p>Contact Admin for the Purchase.</p>
+            ) : (
               <>
                 {product.price < balance.balance ? (
                   <button onClick={handleSubmit} className="btn-nav">

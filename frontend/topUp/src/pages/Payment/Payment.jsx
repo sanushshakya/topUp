@@ -20,10 +20,10 @@ const Payment = () => {
         </p>
         <div className="option">
           <span>
-            <img src="esewa.jpg" />
+            <img src="esewa.png" />
           </span>
           <span>
-            <img src="fonepay.jpg" />
+            <img src="ime.png" />
           </span>
         </div>
         <Link

@@ -13,10 +13,11 @@
     .btn-nav{
         border: none;
         background-color: #ff8c32;
-        padding: 5px 25px;
+        padding: 5px 15px;
         cursor: pointer;
         border-radius: 5px;
         text-align: center;
+        font-size: 0.8rem;
     }
     .btn-logout{
         border: none;
@@ -35,5 +36,16 @@
         border-radius: 5px;
         font-size: 1rem;
         background-color: transparent;
+    }
+}
+@media (min-width: 728px){
+    .btn-nav{
+        border: none;
+        background-color: #ff8c32;
+        padding: 5px 15px;
+        cursor: pointer;
+        border-radius: 5px;
+        text-align: center;
+        font-size: 1rem;
     }
 }
