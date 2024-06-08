@@ -11,6 +11,7 @@ const BuyProduct = () => {
   const [user, setUser] = useState([]);
   const [balance, setBalance] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [isOrdering, setIsOrdering] = useState(false); // State to track if ordering process is ongoing
   const { productId } = useParams();
   const [product, setProduct] = useState("");
 
@@ -46,6 +47,8 @@ const BuyProduct = () => {
   }, [accessToken, productId]);
 
   const handleSubmit = async () => {
+    if (isOrdering) return; // Prevent multiple orders while processing one
+    setIsOrdering(true); // Set state to indicate ordering process has started
     setLoading(true);
     const formData = new FormData();
     formData.append("name", `${user.username}`);
@@ -102,6 +105,8 @@ const BuyProduct = () => {
     } catch (error) {
       console.error(error.response?.data || error);
       // Handle the error
+    } finally {
+      setIsOrdering(false); // Reset ordering state after process completes
     }
   };
 
@@ -127,8 +132,12 @@ const BuyProduct = () => {
             ) : (
               <>
                 {product.price < balance.balance ? (
-                  <button onClick={handleSubmit} className="btn-nav">
-                    Order
+                  <button
+                    onClick={handleSubmit}
+                    className="btn-nav"
+                    disabled={isOrdering}
+                  >
+                    {isOrdering ? "Ordering..." : "Order"}
                   </button>
                 ) : (
                   <h1>Not Enough Balance.</h1>
