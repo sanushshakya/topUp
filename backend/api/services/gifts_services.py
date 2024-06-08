@@ -20,6 +20,11 @@ class GiftServices:
     async def read_gift_by_id(gift_id: str):
         gift_id = ObjectId(gift_id)
         return await Gifts.find_one(Gifts.id == gift_id)
+    
+    @staticmethod
+    async def read_gift_by_product_name(product_name: str):
+        gift = await Gifts.find_one(Gifts.product_name == product_name)
+        return gift
 
     @staticmethod
     async def update_gift_tokens(product_name: str, tokens: list[str]):

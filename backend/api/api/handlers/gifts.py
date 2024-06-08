@@ -99,3 +99,13 @@ async def delete_token_from_gift(gift_id: str, token_to_delete: str, current_use
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="Failed to delete token from gift."
         ) from e
+        
+@gift_router.get("/read_by_product_name/{product_name}", summary="Read gifts by name")
+async def read_gift_product_name(product_name: str):
+    try:
+        return await GiftServices.read_gift_by_product_name(product_name)
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Failed to read gift."
+        ) from e
