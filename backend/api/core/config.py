@@ -15,7 +15,7 @@ class JwtSetting(BaseSettings):
     JWT_SECRET_KEY: str = "supersecretkey"
     JWT_REFRESH_SECRET_KEY: str = "superrefreshsecretkey"
     ALGORITHM: str = "HS256"
-    ACCESS_TOKEN_EXPIRE_MINUTES: int = 15
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 100
     REFRESH_TOKEN_EXPIRE_MINUTES:  int = 60*24*7
     BACKEND_CORS_ORIGINS: List[AnyHttpUrl] = []
     
