@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import config from "../../config";
 import "./ApproveRecharge.scss";
 import Cookies from "js-cookie";
 
 const ApproveRecharge = () => {
   const accessToken = Cookies.get("accessToken");
-  const [isLoggedIn, setIsLoggedIn] = useState(!!Cookies.get("accessToken"));
   const [searchParams] = useSearchParams();
   const email = searchParams.get("email");
   const token = searchParams.get("token");
   const [message, setMessage] = useState("");
   const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+  const [isProcessing, setIsProcessing] = useState(false); // State to track if processing
 
   useEffect(() => {
     if (!accessToken) {
-      window.location.href = "/login";
+      navigate("/login");
       return;
     }
 
@@ -26,21 +27,20 @@ const ApproveRecharge = () => {
           `${config.apiBaseUrl}/api/auth/test-token/${accessToken}`
         );
         setUser(response.data);
-        console.log(response.data);
       } catch (error) {
         console.error(error.response?.data || error);
-        setIsLoggedIn(false);
+        navigate("/login");
       }
     };
 
     fetchUserData();
-  }, [accessToken]);
+  }, [accessToken, navigate]);
 
   useEffect(() => {
-    {
-      user && user.role != "admin" && (window.location.href = "/login");
-    }
     const handleRechargeBalance = async () => {
+      if (isProcessing) return; // Prevent duplicate processing
+
+      setIsProcessing(true); // Set processing state to true
       const formData = new FormData();
       formData.append("email", email);
       formData.append("token", token);
@@ -50,34 +50,34 @@ const ApproveRecharge = () => {
         await axios.put(
           `${config.apiBaseUrl}/api/wallet/update_add`,
           formData,
-          {
-            params: { token: accessToken },
-          }
+          { params: { token: accessToken } }
         );
 
         await axios.post(
           `${config.apiBaseUrl}/api/transaction/create_recharge_transaction`,
           formData,
-          {
-            params: { token: accessToken },
-          }
+          { params: { token: accessToken } }
         );
 
-        setMessage("Wallet recharged successfully.");
+        alert("Recharge Successful.");
+        navigate("/");
       } catch (error) {
         setMessage("Failed to recharge wallet.");
         console.error(error.response?.data || error);
+      } finally {
+        setIsProcessing(false); // Reset processing state
       }
     };
 
-    handleRechargeBalance();
-  }, [user, email, token, accessToken]);
+    if (user && user.role === "admin" && !isProcessing) {
+      handleRechargeBalance();
+    }
+  }, [user, email, token, accessToken, navigate, isProcessing]);
 
   return (
     <div className="approveRecharge">
       <h2>Approve Wallet Recharge</h2>
-      {message && <p>{message}</p>}
-      {!message && <p>Please wait a moment.</p>}
+      {message ? <p>{message}</p> : <p>Please wait a moment.</p>}
     </div>
   );
 };
