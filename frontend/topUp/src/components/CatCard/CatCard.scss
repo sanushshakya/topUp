@@ -13,9 +13,10 @@
             border-radius: 10px;
         }
         .title{
-            background-color: transparent;
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 0.8rem;
+            width: 80px;
+            text-align: center;
         }
         .desc{
             display: none;
@@ -34,11 +35,7 @@
             .title{
                 font-size: 1.5rem;
             }
-            .desc{
-                display: block;
-                text-align: justify;
-                width: 150px;
-            }
+           
         }
     }
 }
@@ -52,10 +49,11 @@
             }
             .title{
                 font-size: 1.5rem;
+                width: 100%;
             }
             .desc{
                 display: block;
-                text-align: justify;
+                text-align: center;
                 width: 150px;
             }
             button{

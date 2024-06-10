@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -19,7 +19,17 @@ const Register = () => {
   const schema = yup.object().shape({
     username: yup.string().required("Username is required"),
     email: yup.string().email("Invalid email").required("Email is required"),
-    password: yup.string().required("Password is required"),
+    password: yup
+      .string()
+      .required("Password is required")
+      .min(8, "Password must be at least 8 characters long")
+      .matches(/[a-z]/, "Password must contain at least one lowercase letter")
+      .matches(/[A-Z]/, "Password must contain at least one uppercase letter")
+      .matches(/\d/, "Password must contain at least one number")
+      .matches(
+        /[@$!%*?&#]/,
+        "Password must contain at least one special character"
+      ),
     phone: yup
       .string()
       .required("Phone number is required")
@@ -57,7 +67,7 @@ const Register = () => {
     <div className="register">
       <div className="container">
         <div className="mobile-left">
-          <img src="Subject.png" />
+          <img src="Subject.png" alt="Subject" />
           <Link to="/" className="link links">
             <span>eSportsCardNepal</span>
           </Link>
@@ -67,7 +77,7 @@ const Register = () => {
             <span>eSportsCardNepal</span>
           </Link>
           <h1>NAMASTE</h1>
-          <img src="Subject.png" />
+          <img src="Subject.png" alt="Subject" />
           <h3>
             Buy Exciting
             <br />
