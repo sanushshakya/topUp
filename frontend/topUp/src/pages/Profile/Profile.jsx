@@ -5,6 +5,9 @@ import axios from "axios";
 import "./Profile.scss";
 import config from "../../config";
 import { faL } from "@fortawesome/free-solid-svg-icons";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
 const Profile = () => {
   const accessToken = Cookies.get("accessToken");
@@ -69,12 +72,32 @@ const Profile = () => {
       console.error(error.response?.data || error);
     }
   };
-  const handlePassUpdate = async (e) => {
-    e.preventDefault();
+  const schema = yup.object().shape({
+    password: yup
+      .string()
+      .required("Password is required")
+      .min(8, "Password must be at least 8 characters long")
+      .matches(/[a-z]/, "Password must contain at least one lowercase letter")
+      .matches(/[A-Z]/, "Password must contain at least one uppercase letter")
+      .matches(/\d/, "Password must contain at least one number")
+      .matches(
+        /[@$!%*?&#]/,
+        "Password must contain at least one special character"
+      ),
+  });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+
+  const handlePassUpdate = async (data) => {
     const formData = new FormData();
-    formData.append("password", e.target.password.value);
+    formData.append("password", data.password);
     try {
-      const response = await axios.put(
+      await axios.put(
         `${config.apiBaseUrl}/api/user/update/${user._id}`,
         formData,
         {
@@ -83,6 +106,7 @@ const Profile = () => {
           },
         }
       );
+      alert("Password updated successfully");
     } catch (error) {
       console.error(error.response?.data || error);
     }
@@ -466,14 +490,18 @@ const Profile = () => {
             {location.pathname === "/profile/password" && (
               <div className="profile">
                 <div className="bottom">
-                  <form onSubmit={handlePassUpdate}>
+                  <form onSubmit={handleSubmit(handlePassUpdate)}>
                     <span>
                       <input
-                        name="password"
                         type="password"
+                        name="password"
                         placeholder="Enter new password"
+                        {...register("password")}
                       />
                     </span>
+                    {errors.password && (
+                      <p className="error">{errors.password.message}</p>
+                    )}
                     <button type="submit" className="btn-nav">
                       Change Password
                     </button>
