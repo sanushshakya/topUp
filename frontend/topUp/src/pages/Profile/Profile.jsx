@@ -8,6 +8,8 @@ import { faL } from "@fortawesome/free-solid-svg-icons";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 const Profile = () => {
   const accessToken = Cookies.get("accessToken");
@@ -24,6 +26,7 @@ const Profile = () => {
   const location = useLocation();
   const [products, setProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState("");
+  const [isOrdering, setIsOrdering] = useState(false);
 
   const handleProfile = () => {
     setProfile(!profile);
@@ -51,6 +54,8 @@ const Profile = () => {
     }
   };
   const handleRechargeRequest = async (e) => {
+    if (isOrdering) return; // Prevent multiple orders while processing one
+    setIsOrdering(true); // Set state to indicate ordering process has started
     e.preventDefault();
     const formData = new FormData();
     formData.append("email", e.target.email.value);
@@ -455,12 +460,14 @@ const Profile = () => {
                         required
                       />
                     </span>
-
-                    <button type="submit" className="btn-nav">
-                      Request Amount
-                    </button>
+                    {isOrdering ? (
+                      <FontAwesomeIcon icon={faSpinner} spin />
+                    ) : (
+                      <button type="submit" className="btn-nav">
+                        Request Amount
+                      </button>
+                    )}
                   </form>
-
                   <p>
                     Note: Please enter amount you send before to the admin's
                     account and also enter the transaction id.

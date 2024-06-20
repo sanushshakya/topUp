@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./BuyProduct.scss";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
 import config from "../../config";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 const BuyProduct = () => {
   const accessToken = Cookies.get("accessToken");
@@ -50,21 +52,34 @@ const BuyProduct = () => {
     if (isOrdering) return; // Prevent multiple orders while processing one
     setIsOrdering(true); // Set state to indicate ordering process has started
     setLoading(true);
-    const formData = new FormData();
-    formData.append("name", `${user.username}`);
-    formData.append("email", `${user.email}`);
-    formData.append("product", `${product.product_name}`);
-    formData.append("user_id", `${user._id}`);
-    formData.append("transaction_type", "Purchase Token");
-    formData.append("amount", `${product.price}`);
+
     try {
+      // Recheck balance before making the purchase
+      const resBalance = await axios.get(`${config.apiBaseUrl}/api/wallet/read`, {
+        params: { token: accessToken },
+      });
+      const currentBalance = resBalance.data.balance;
+
+      if (currentBalance < product.price) {
+        alert("Not enough balance.");
+        setIsOrdering(false);
+        setLoading(false);
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append("name", `${user.username}`);
+      formData.append("email", `${user.email}`);
+      formData.append("product", `${product.product_name}`);
+      formData.append("user_id", `${user._id}`);
+      formData.append("transaction_type", "Purchase Token");
+      formData.append("amount", `${product.price}`);
+
       const resPurchase = await axios.post(
         `${config.apiBaseUrl}/api/gift/buy/${product.product_name}`,
         null,
         {
-          params: {
-            token: accessToken,
-          },
+          params: { token: accessToken },
         }
       );
       const tok = resPurchase.data.token;
@@ -73,40 +88,25 @@ const BuyProduct = () => {
         `${config.apiBaseUrl}/api/wallet/update_subtract/${product.price}`,
         null,
         {
-          params: {
-            token: accessToken,
-          },
+          params: { token: accessToken },
         }
       );
 
-      await axios.post(
-        `${config.apiBaseUrl}/api/transaction/create`,
-        formData,
-        {
-          params: {
-            token: accessToken,
-          },
-        }
-      );
+      await axios.post(`${config.apiBaseUrl}/api/transaction/create`, formData, {
+        params: { token: accessToken },
+      });
 
-      await axios.post(
-        `${config.apiBaseUrl}/api/order/create/${tok}`,
-        formData,
-        {
-          params: {
-            token: accessToken,
-          },
-        }
-      );
+      await axios.post(`${config.apiBaseUrl}/api/order/create/${tok}`, formData, {
+        params: { token: accessToken },
+      });
 
       window.location.href = `/congrats/${resPurchase.data.token}`;
-
-      // Handle the response as needed
     } catch (error) {
       console.error(error.response?.data || error);
       // Handle the error
     } finally {
       setIsOrdering(false); // Reset ordering state after process completes
+      setLoading(false);
     }
   };
 
@@ -131,14 +131,16 @@ const BuyProduct = () => {
               <p>Contact Admin for the Purchase.</p>
             ) : (
               <>
-                {product.price < balance.balance ? (
-                  <button
-                    onClick={handleSubmit}
-                    className="btn-nav"
-                    disabled={isOrdering}
-                  >
-                    {isOrdering ? "Ordering..." : "Order"}
-                  </button>
+                {product.price <= balance.balance ? (
+                  <>
+                    {isOrdering ? (
+                      <FontAwesomeIcon icon={faSpinner} spin />
+                    ) : (
+                      <button onClick={handleSubmit} className="btn-nav">
+                        Order
+                      </button>
+                    )}
+                  </>
                 ) : (
                   <h1>Not Enough Balance.</h1>
                 )}
