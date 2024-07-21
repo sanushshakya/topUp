@@ -78,8 +78,8 @@ async def request_recharge(email: str = Form(...), amount: str = Form(...), code
     }
     token = jwt.encode(token_data, settings.JWT_SECRET_KEY, algorithm=settings.ALGORITHM)
     # Send email to admin
-    # approval_link = f"https://www.esportscardnepal.com/approve_recharge?email={email}&token={token}"
-    approval_link = f"http://localhost:5173/approve_recharge?email={email}&token={token}"
+    approval_link = f"https://www.esportscardnepal.com/approve_recharge?email={email}&token={token}"
+    # approval_link = f"http://localhost:5173/approve_recharge?email={email}&token={token}"
     
     email_content = f"""
     A user has requested a wallet recharge.
