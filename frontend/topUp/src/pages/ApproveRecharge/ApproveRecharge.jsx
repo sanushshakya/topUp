@@ -39,14 +39,30 @@ const ApproveRecharge = () => {
   useEffect(() => {
     const handleRechargeBalance = async () => {
       if (isProcessing) return; // Prevent duplicate processing
-
       setIsProcessing(true); // Set processing state to true
-      const formData = new FormData();
-      formData.append("email", email);
-      formData.append("token", token);
-      formData.append("transaction_type", "Balance Recharge");
+
+      // Check if token exists in the database
+      const tokenData = await axios.get(
+        `${config.apiBaseUrl}/api/token/read/${token}`,
+        { params: { token: accessToken } }
+      );
+
+      if (tokenData.data < 1) {
+        setMessage("Invalid token.");
+        setIsProcessing(false);
+        return;
+      }
 
       try {
+        const formData = new FormData();
+        formData.append("email", email);
+        formData.append("token", token);
+        formData.append("transaction_type", "Balance Recharge");
+
+        await axios.delete(`${config.apiBaseUrl}/api/token/delete/${token}`, {
+          params: { token: accessToken },
+        });
+
         await axios.put(
           `${config.apiBaseUrl}/api/wallet/update_add`,
           formData,
@@ -63,7 +79,6 @@ const ApproveRecharge = () => {
         navigate("/");
       } catch (error) {
         setMessage("Failed to recharge wallet.");
-        console.error(error.response?.data || error);
       } finally {
         setIsProcessing(false); // Reset processing state
       }

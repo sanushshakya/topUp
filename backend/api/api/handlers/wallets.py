@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException, status, Form
 from api.models.wallets_model import Wallets
+from api.services.tokens_services import TokenServices
 from api.services.wallets_services import WalletServices
 from api.api.deps.user_deps import get_current_user, is_admin
 from api.api.helpers.send_email import send_email_balance_request
@@ -77,8 +78,8 @@ async def request_recharge(email: str = Form(...), amount: str = Form(...), code
     }
     token = jwt.encode(token_data, settings.JWT_SECRET_KEY, algorithm=settings.ALGORITHM)
     # Send email to admin
-    approval_link = f"https://www.esportscardnepal.com/approve_recharge?email={email}&token={token}"
-    # approval_link = f"http://localhost:5173/approve_recharge?email={email}&token={token}"
+    # approval_link = f"https://www.esportscardnepal.com/approve_recharge?email={email}&token={token}"
+    approval_link = f"http://localhost:5173/approve_recharge?email={email}&token={token}"
     
     email_content = f"""
     A user has requested a wallet recharge.
@@ -87,6 +88,6 @@ async def request_recharge(email: str = Form(...), amount: str = Form(...), code
     Transaction Id: {code}
     <a href="{approval_link}">Approve Recharge</a>
     """
-    
     send_email_balance_request(email_content)
+    await TokenServices.create_tokens(token)
     return {"msg": "Recharge request sent to admin."}
